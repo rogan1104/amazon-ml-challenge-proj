@@ -1,0 +1,10 @@
+signal,condition_pairs,true_matches,false_pairs,p_match_given_condition
+exact_normalized_name (S1-S2),7427709,511311,6916398,0.068838
+exact_normalized_address (S1-S2),505873,413044,92829,0.816497
+same_country + exact_name (S1-S2),6020803,407332,5613471,0.067654
+same_country (S1-S2) baseline (estimated),5775254399373,3693619,5775250705754,6.396e-07
+exact_raw_name (S1-S2),3923353,174617,3748736,0.044507
+exact_raw_address (S1-S2),5,5,0,1.0
+exact_normalized_name (S1-S3),7915706,532797,7382909,0.067309
+exact_normalized_address (S1-S3),205981,170902,35079,0.829698
+same_country + exact_name (S1-S3),7858186,532797,7325389,0.067802

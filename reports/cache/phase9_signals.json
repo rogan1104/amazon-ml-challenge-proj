@@ -1,0 +1,69 @@
+{
+  "signals": {
+    "signals": [
+      {
+        "signal": "exact_normalized_name (S1-S2)",
+        "condition_pairs": 7427709,
+        "true_matches": 511311,
+        "false_pairs": 6916398,
+        "p_match_given_condition": 0.068838
+      },
+      {
+        "signal": "exact_normalized_address (S1-S2)",
+        "condition_pairs": 505873,
+        "true_matches": 413044,
+        "false_pairs": 92829,
+        "p_match_given_condition": 0.816497
+      },
+      {
+        "signal": "same_country + exact_name (S1-S2)",
+        "condition_pairs": 6020803,
+        "true_matches": 407332,
+        "false_pairs": 5613471,
+        "p_match_given_condition": 0.067654
+      },
+      {
+        "signal": "same_country (S1-S2) baseline (estimated)",
+        "condition_pairs": 5775254399373,
+        "true_matches": 3693619,
+        "false_pairs": 5775250705754,
+        "p_match_given_condition": 6.396e-07
+      },
+      {
+        "signal": "exact_raw_name (S1-S2)",
+        "condition_pairs": 3923353,
+        "true_matches": 174617,
+        "false_pairs": 3748736,
+        "p_match_given_condition": 0.044507
+      },
+      {
+        "signal": "exact_raw_address (S1-S2)",
+        "condition_pairs": 5,
+        "true_matches": 5,
+        "false_pairs": 0,
+        "p_match_given_condition": 1.0
+      },
+      {
+        "signal": "exact_normalized_name (S1-S3)",
+        "condition_pairs": 7915706,
+        "true_matches": 532797,
+        "false_pairs": 7382909,
+        "p_match_given_condition": 0.067309
+      },
+      {
+        "signal": "exact_normalized_address (S1-S3)",
+        "condition_pairs": 205981,
+        "true_matches": 170902,
+        "false_pairs": 35079,
+        "p_match_given_condition": 0.829698
+      },
+      {
+        "signal": "same_country + exact_name (S1-S3)",
+        "condition_pairs": 7858186,
+        "true_matches": 532797,
+        "false_pairs": 7325389,
+        "p_match_given_condition": 0.067802
+      }
+    ]
+  }
+}
