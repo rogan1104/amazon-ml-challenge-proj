@@ -1,0 +1,1257 @@
+{
+  "name_noise": {
+    "total_pattern_hits": 243682,
+    "pattern_frequencies": {
+      "typo_or_substitution": {
+        "count": 40876,
+        "pct": 16.77
+      },
+      "minor_token_diff": {
+        "count": 38213,
+        "pct": 15.68
+      },
+      "suffix_limited": {
+        "count": 33760,
+        "pct": 13.85
+      },
+      "suffix_private": {
+        "count": 24612,
+        "pct": 10.1
+      },
+      "missing_or_extra_words": {
+        "count": 23701,
+        "pct": 9.73
+      },
+      "suffix_llc": {
+        "count": 16697,
+        "pct": 6.85
+      },
+      "suffix_incorporated": {
+        "count": 12349,
+        "pct": 5.07
+      },
+      "case_only": {
+        "count": 10945,
+        "pct": 4.49
+      },
+      "normalized_exact": {
+        "count": 10945,
+        "pct": 4.49
+      },
+      "word_order": {
+        "count": 6049,
+        "pct": 2.48
+      },
+      "punctuation_only": {
+        "count": 5951,
+        "pct": 2.44
+      },
+      "exact": {
+        "count": 4642,
+        "pct": 1.9
+      },
+      "other_variation": {
+        "count": 3979,
+        "pct": 1.63
+      },
+      "suffix_corporation": {
+        "count": 3789,
+        "pct": 1.55
+      },
+      "suffix_company": {
+        "count": 2947,
+        "pct": 1.21
+      },
+      "suffix_llp": {
+        "count": 2012,
+        "pct": 0.83
+      },
+      "suffix_lp": {
+        "count": 1284,
+        "pct": 0.53
+      },
+      "ampersand_and": {
+        "count": 919,
+        "pct": 0.38
+      },
+      "suffix_sa": {
+        "count": 10,
+        "pct": 0.0
+      },
+      "suffix_gmbh": {
+        "count": 2,
+        "pct": 0.0
+      }
+    },
+    "examples": {
+      "suffix_limited": [
+        {
+          "s1_name": "Premier Indo Trading Limited",
+          "other_name": "\u0aaa\u0acd\u0ab0\u0ac0\u0aae\u0abf\u0aaf\u0ab0 \u0a87\u0aa8\u0acd\u0aa1\u0acb \u0a9f\u0acd\u0ab0\u0ac7\u0aa1\u0abf\u0a82\u0a97 \u0ab2\u0abf\u0aae\u0abf\u0a9f\u0ac7\u0aa1"
+        },
+        {
+          "s1_name": "Hari Estate Private Limited",
+          "other_name": "\u0939\u0930\u093f \u090f\u0938\u094d\u091f\u0947\u091f \u092a\u094d\u0930\u093e\u0907\u0935\u0947\u091f \u0932\u093f\u092e\u093f\u091f\u0947\u0921"
+        },
+        {
+          "s1_name": "Grow Security Private Limited",
+          "other_name": "Grow Security Private"
+        },
+        {
+          "s1_name": "Global Constructions Pvt Ltd",
+          "other_name": "\u0a97\u0acd\u0ab2\u0acb\u0aac\u0ab2 \u0a95\u0aa8\u0acd\u0ab8\u0acd\u0a9f\u0acd\u0ab0\u0a95\u0acd\u0ab6\u0aa8\u0acd\u0ab8 \u0aaa\u0acd\u0ab0\u0abe. \u0ab2\u0abf."
+        },
+        {
+          "s1_name": "Omshakti Trading Pvt Ltd",
+          "other_name": "0mshakti Trtgadng Pvt Ltd"
+        },
+        {
+          "s1_name": "Indian Logistics Pvt Ltd",
+          "other_name": "\u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0ba9\u0bcd \u0bb2\u0bbe\u0b9c\u0bbf\u0bb8\u0bcd\u0b9f\u0bbf\u0b95\u0bcd\u0bb8\u0bcd \u0baa\u0bbf\u0bb0\u0bc8\u0bb5\u0bc7\u0b9f\u0bcd \u0bb2\u0bbf\u0bae\u0bbf\u0b9f\u0bc6\u0b9f\u0bcd"
+        },
+        {
+          "s1_name": "Safina Products Limited",
+          "other_name": "Safina Products"
+        },
+        {
+          "s1_name": "Real Consultants Private Limited",
+          "other_name": "\u0930\u093f\u092f\u0932 \u0915\u0902\u0938\u0932\u094d\u091f\u0947\u0902\u091f\u094d\u0938 \u092a\u094d\u0930\u093e\u0907\u0935\u0947\u091f \u0932\u093f\u092e\u093f\u091f\u0947\u0921"
+        },
+        {
+          "s1_name": "Lok Sangh",
+          "other_name": "Shri >> Lok Sangh Ltd"
+        },
+        {
+          "s1_name": "Universal Care Private Limited",
+          "other_name": "\u092f\u0942\u0928\u093f\u0935\u0930\u094d\u0938\u0932 \u0915\u0947\u092f\u0930 \u092a\u094d\u0930\u093e\u0907\u0935\u0947\u091f \u0932\u093f\u092e\u093f\u091f\u0947\u0921"
+        },
+        {
+          "s1_name": "Aditya Software Private Limited",
+          "other_name": "\u0906\u0926\u093f\u0924\u094d\u092f \u0938\u0949\u092b\u094d\u091f\u0935\u0947\u092f\u0930 \u092a\u094d\u0930\u093e\u0907\u0935\u0947\u091f \u0932\u093f\u092e\u093f\u091f\u0947\u0921"
+        },
+        {
+          "s1_name": "Al Consultants Private Limited",
+          "other_name": "\u0c85\u0cb2\u0ccd \u0c95\u0ca8\u0ccd\u0cb8\u0cb2\u0ccd\u0c9f\u0cc6\u0c82\u0c9f\u0ccd\u0cb8\u0ccd \u0caa\u0ccd\u0cb0\u0cc8\u0cb5\u0cc7\u0c9f\u0ccd \u0cb2\u0cbf\u0cae\u0cbf\u0c9f\u0cc6\u0ca1\u0ccd"
+        },
+        {
+          "s1_name": "Cc Trading Private Limited",
+          "other_name": "Cc Trading Phiioavte Limited Limited"
+        },
+        {
+          "s1_name": "Dream International Private Limited",
+          "other_name": "Dream International Private"
+        },
+        {
+          "s1_name": "Laxmi Agro Private Limited",
+          "other_name": "LAXMI AGRO PRIVATE-LIMITED"
+        }
+      ],
+      "suffix_private": [
+        {
+          "s1_name": "Hari Estate Private Limited",
+          "other_name": "\u0939\u0930\u093f \u090f\u0938\u094d\u091f\u0947\u091f \u092a\u094d\u0930\u093e\u0907\u0935\u0947\u091f \u0932\u093f\u092e\u093f\u091f\u0947\u0921"
+        },
+        {
+          "s1_name": "Grow Security Private Limited",
+          "other_name": "Grow Security Private"
+        },
+        {
+          "s1_name": "Global Constructions Pvt Ltd",
+          "other_name": "\u0a97\u0acd\u0ab2\u0acb\u0aac\u0ab2 \u0a95\u0aa8\u0acd\u0ab8\u0acd\u0a9f\u0acd\u0ab0\u0a95\u0acd\u0ab6\u0aa8\u0acd\u0ab8 \u0aaa\u0acd\u0ab0\u0abe. \u0ab2\u0abf."
+        },
+        {
+          "s1_name": "Omshakti Trading Pvt Ltd",
+          "other_name": "0mshakti Trtgadng Pvt Ltd"
+        },
+        {
+          "s1_name": "Indian Logistics Pvt Ltd",
+          "other_name": "\u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0ba9\u0bcd \u0bb2\u0bbe\u0b9c\u0bbf\u0bb8\u0bcd\u0b9f\u0bbf\u0b95\u0bcd\u0bb8\u0bcd \u0baa\u0bbf\u0bb0\u0bc8\u0bb5\u0bc7\u0b9f\u0bcd \u0bb2\u0bbf\u0bae\u0bbf\u0b9f\u0bc6\u0b9f\u0bcd"
+        },
+        {
+          "s1_name": "Real Consultants Private Limited",
+          "other_name": "\u0930\u093f\u092f\u0932 \u0915\u0902\u0938\u0932\u094d\u091f\u0947\u0902\u091f\u094d\u0938 \u092a\u094d\u0930\u093e\u0907\u0935\u0947\u091f \u0932\u093f\u092e\u093f\u091f\u0947\u0921"
+        },
+        {
+          "s1_name": "Universal Care Private Limited",
+          "other_name": "\u092f\u0942\u0928\u093f\u0935\u0930\u094d\u0938\u0932 \u0915\u0947\u092f\u0930 \u092a\u094d\u0930\u093e\u0907\u0935\u0947\u091f \u0932\u093f\u092e\u093f\u091f\u0947\u0921"
+        },
+        {
+          "s1_name": "Aditya Software Private Limited",
+          "other_name": "\u0906\u0926\u093f\u0924\u094d\u092f \u0938\u0949\u092b\u094d\u091f\u0935\u0947\u092f\u0930 \u092a\u094d\u0930\u093e\u0907\u0935\u0947\u091f \u0932\u093f\u092e\u093f\u091f\u0947\u0921"
+        },
+        {
+          "s1_name": "Al Consultants Private Limited",
+          "other_name": "\u0c85\u0cb2\u0ccd \u0c95\u0ca8\u0ccd\u0cb8\u0cb2\u0ccd\u0c9f\u0cc6\u0c82\u0c9f\u0ccd\u0cb8\u0ccd \u0caa\u0ccd\u0cb0\u0cc8\u0cb5\u0cc7\u0c9f\u0ccd \u0cb2\u0cbf\u0cae\u0cbf\u0c9f\u0cc6\u0ca1\u0ccd"
+        },
+        {
+          "s1_name": "Cc Trading Private Limited",
+          "other_name": "Cc Trading Phiioavte Limited Limited"
+        },
+        {
+          "s1_name": "Dream International Private Limited",
+          "other_name": "Dream International Private"
+        },
+        {
+          "s1_name": "Laxmi Agro Private Limited",
+          "other_name": "LAXMI AGRO PRIVATE-LIMITED"
+        },
+        {
+          "s1_name": "Aira Trading Private Limited",
+          "other_name": "PRIVATE AIRA TRADING LIMITED"
+        },
+        {
+          "s1_name": "Aayat Centre Private Limited",
+          "other_name": "Aayat  Centre Private Ltd"
+        },
+        {
+          "s1_name": "Belleza Hire Private Limited",
+          "other_name": "BELLEZA HIRE LIMITED CENTER"
+        }
+      ],
+      "suffix_llc": [
+        {
+          "s1_name": "Royal Prairie Nano LLC",
+          "other_name": "ROYAL  PRAIRIE"
+        },
+        {
+          "s1_name": "Choice Valley Aura, LLC",
+          "other_name": "Choice Valley Aura, L.L.C."
+        },
+        {
+          "s1_name": "Chavez and Bishop LLC",
+          "other_name": "Chavez and Bishop LLC [Service]"
+        },
+        {
+          "s1_name": "Viveros Anchor Trading LLC",
+          "other_name": "Viver0s Anchor Trading"
+        },
+        {
+          "s1_name": "M & J Floating PC",
+          "other_name": "M & J FLOATING LLC"
+        },
+        {
+          "s1_name": "Sterling Manufacturing LLC",
+          "other_name": "Sterling Mgufcactgubrnig LLC"
+        },
+        {
+          "s1_name": "Garcia Jackson LLC",
+          "other_name": "Garcia Jackson Llc"
+        },
+        {
+          "s1_name": "Hoven Ace Information LLC",
+          "other_name": "Hoven \u00c1ce Information LLC"
+        },
+        {
+          "s1_name": "Legacy Software Advisors LLC",
+          "other_name": "Legacy Software Advisors Llc"
+        },
+        {
+          "s1_name": "Chiropractic Innovative Clinic LLC",
+          "other_name": "Chiropractic Innovative LLC Center"
+        },
+        {
+          "s1_name": "Data Consumer Innovations LLC",
+          "other_name": "Data Consumer  Innovations"
+        },
+        {
+          "s1_name": "Foundry LLC",
+          "other_name": "F0UNDRY L.L.C."
+        },
+        {
+          "s1_name": "Zidyne LLC",
+          "other_name": "The Zidyne LLC"
+        },
+        {
+          "s1_name": "9-Sons",
+          "other_name": "9-Sons LLC"
+        },
+        {
+          "s1_name": "EDS Grand Ngl LLC",
+          "other_name": "Eds Eds Grand Ngl Llc"
+        }
+      ],
+      "missing_or_extra_words": [
+        {
+          "s1_name": "Royal Prairie Nano LLC",
+          "other_name": "ROYAL  PRAIRIE"
+        },
+        {
+          "s1_name": "Grow Security Private Limited",
+          "other_name": "Grow Security Private"
+        },
+        {
+          "s1_name": "Safina Products Limited",
+          "other_name": "Safina Products"
+        },
+        {
+          "s1_name": "Chavez and Bishop LLC",
+          "other_name": "Chavez and Bishop LLC [Service]"
+        },
+        {
+          "s1_name": "Lok Sangh",
+          "other_name": "Shri >> Lok Sangh Ltd"
+        },
+        {
+          "s1_name": "91/19 Nuveen",
+          "other_name": "91/19 Nuveen Co"
+        },
+        {
+          "s1_name": "Dream International Private Limited",
+          "other_name": "Dream International Private"
+        },
+        {
+          "s1_name": "Butler, Andrews and Moriarty",
+          "other_name": "Butler, Andrews and Moriarty Corporation"
+        },
+        {
+          "s1_name": "Sterling Oxley Associates",
+          "other_name": "Sterling Oxley"
+        },
+        {
+          "s1_name": "Data Consumer Innovations LLC",
+          "other_name": "Data Consumer  Innovations"
+        },
+        {
+          "s1_name": "Gurgaon Tours Pvt Ltd",
+          "other_name": "GURGAON TOURS PVT"
+        },
+        {
+          "s1_name": "Sweeney Dynamic Chase Inc.",
+          "other_name": "The Sweeney Dynamic Chase Inc."
+        },
+        {
+          "s1_name": "Zidyne LLC",
+          "other_name": "The Zidyne LLC"
+        },
+        {
+          "s1_name": "Surya Energy Limited",
+          "other_name": "Surya Energy"
+        },
+        {
+          "s1_name": "9-Sons",
+          "other_name": "9-Sons LLC"
+        }
+      ],
+      "minor_token_diff": [
+        {
+          "s1_name": "Chiropractic Best Care Associates P.C.",
+          "other_name": "CHIROPRACTIC BEMT CARE ASSOCIATES (P.C.)"
+        },
+        {
+          "s1_name": "Hanson's Horizon Massage",
+          "other_name": "HANSON'S MASSAGE SERVICE"
+        },
+        {
+          "s1_name": "Brazier Industries L.L.C.",
+          "other_name": "Brazier Inulrase L.L.C."
+        },
+        {
+          "s1_name": "Dermatology Creative Care Associates Inc",
+          "other_name": "Dermatology Creative-Care Associates Inc"
+        },
+        {
+          "s1_name": "Romy Krupa, M.D.",
+          "other_name": "R0my Krupa M.D."
+        },
+        {
+          "s1_name": "Horizon & Co",
+          "other_name": "H0rizon & C\u00f3"
+        },
+        {
+          "s1_name": "Medi Institute",
+          "other_name": "Medi Service"
+        },
+        {
+          "s1_name": "Pan Logistics Co",
+          "other_name": "Pan Logistics  Co"
+        },
+        {
+          "s1_name": "Sweet Tavern",
+          "other_name": "SWEET TAVERN"
+        },
+        {
+          "s1_name": "Advanced Electronics Brands Inc",
+          "other_name": "Advanced Brands Inc Center Center"
+        },
+        {
+          "s1_name": "NXU Fincon LLP",
+          "other_name": "NXU Fincon-LLP"
+        },
+        {
+          "s1_name": "Era Forum Company",
+          "other_name": "Mr Era  Forum"
+        },
+        {
+          "s1_name": "Harris & Heard Restaurant",
+          "other_name": "Harri Heard & Restaurant"
+        },
+        {
+          "s1_name": "M & J Floating PC",
+          "other_name": "M & J FLOATING LLC"
+        },
+        {
+          "s1_name": "Womens Health Creative Care Associates",
+          "other_name": "W0MENS HEALTH CREATIVE CARE ASSOCIATES"
+        }
+      ],
+      "typo_or_substitution": [
+        {
+          "s1_name": "Chiropractic Best Care Associates P.C.",
+          "other_name": "CHIROPRACTIC BEMT CARE ASSOCIATES (P.C.)"
+        },
+        {
+          "s1_name": "Brazier Industries L.L.C.",
+          "other_name": "Brazier Inulrase L.L.C."
+        },
+        {
+          "s1_name": "Romy Krupa, M.D.",
+          "other_name": "R0my Krupa M.D."
+        },
+        {
+          "s1_name": "Grow Security Private Limited",
+          "other_name": "Grow Security Private"
+        },
+        {
+          "s1_name": "Omshakti Trading Pvt Ltd",
+          "other_name": "0mshakti Trtgadng Pvt Ltd"
+        },
+        {
+          "s1_name": "Horizon & Co",
+          "other_name": "H0rizon & C\u00f3"
+        },
+        {
+          "s1_name": "Choice Valley Aura, LLC",
+          "other_name": "Choice Valley Aura, L.L.C."
+        },
+        {
+          "s1_name": "Chavez and Bishop LLC",
+          "other_name": "Chavez and Bishop LLC [Service]"
+        },
+        {
+          "s1_name": "Viveros Anchor Trading LLC",
+          "other_name": "Viver0s Anchor Trading"
+        },
+        {
+          "s1_name": "91/19 Nuveen",
+          "other_name": "91/19 Nuveen Co"
+        },
+        {
+          "s1_name": "Harris & Heard Restaurant",
+          "other_name": "Harri Heard & Restaurant"
+        },
+        {
+          "s1_name": "Heritage Marketing Partners Inc",
+          "other_name": "Heritage Marketing P\u00e1rtners Inc"
+        },
+        {
+          "s1_name": "M & J Floating PC",
+          "other_name": "M & J FLOATING LLC"
+        },
+        {
+          "s1_name": "Womens Health Creative Care Associates",
+          "other_name": "W0MENS HEALTH CREATIVE CARE ASSOCIATES"
+        },
+        {
+          "s1_name": "Dream International Private Limited",
+          "other_name": "Dream International Private"
+        }
+      ],
+      "punctuation_only": [
+        {
+          "s1_name": "Dermatology Creative Care Associates Inc",
+          "other_name": "Dermatology Creative-Care Associates Inc"
+        },
+        {
+          "s1_name": "NXU Fincon LLP",
+          "other_name": "NXU Fincon-LLP"
+        },
+        {
+          "s1_name": "Laxmi Agro Private Limited",
+          "other_name": "LAXMI AGRO PRIVATE-LIMITED"
+        },
+        {
+          "s1_name": "A Platinum Corporate Inc.",
+          "other_name": "A Platinum Corporate (Inc.)"
+        },
+        {
+          "s1_name": "Ivory Kauffman, D.C.",
+          "other_name": "Ivory-Kauffman, D.C."
+        },
+        {
+          "s1_name": "#6 Aspac",
+          "other_name": "#6  (Aspac)"
+        },
+        {
+          "s1_name": "Strategic Infrastructure Group",
+          "other_name": "Strategic Infrastructure (Group)"
+        },
+        {
+          "s1_name": "South Lifesciences Partners",
+          "other_name": "SOUTH LIFESCIENCES-PARTNERS"
+        },
+        {
+          "s1_name": "Silver Cafe",
+          "other_name": "SILVER [CAFE]"
+        },
+        {
+          "s1_name": "Clear Engineering International LLC",
+          "other_name": "Clear-Engineering International LLC"
+        },
+        {
+          "s1_name": "Sullivan Battery LLC",
+          "other_name": "Sullivan Battery ([LLC])"
+        },
+        {
+          "s1_name": "GFM Investment Pvt. Ltd.",
+          "other_name": "GFM Investment Pvt Ltd"
+        },
+        {
+          "s1_name": "Ntech (India) Vision Ltd",
+          "other_name": "Ntech (India)  Vision (Ltd)"
+        },
+        {
+          "s1_name": "Hedwiga Hernandez Australian LP",
+          "other_name": "Hedwiga-Hernandez Australian LP"
+        },
+        {
+          "s1_name": "Storm's Summit Technologies",
+          "other_name": "STORM'S-SUMMIT [TECHNOLOGIES]"
+        }
+      ],
+      "suffix_incorporated": [
+        {
+          "s1_name": "Dermatology Creative Care Associates Inc",
+          "other_name": "Dermatology Creative-Care Associates Inc"
+        },
+        {
+          "s1_name": "Advanced Electronics Brands Inc",
+          "other_name": "Advanced Brands Inc Center Center"
+        },
+        {
+          "s1_name": "Heritage Marketing Partners Inc",
+          "other_name": "Heritage Marketing P\u00e1rtners Inc"
+        },
+        {
+          "s1_name": "Continental Myers Inc",
+          "other_name": "Continental Mers Inc"
+        },
+        {
+          "s1_name": "A Platinum Corporate Inc.",
+          "other_name": "A Platinum Corporate (Inc.)"
+        },
+        {
+          "s1_name": "Hollis Prime Hair Studio Inc",
+          "other_name": "hollis prime hair studio inc"
+        },
+        {
+          "s1_name": "Sweeney Dynamic Chase Inc.",
+          "other_name": "The Sweeney Dynamic Chase Inc."
+        },
+        {
+          "s1_name": "Wood, Bey & Dockter Iii LP",
+          "other_name": "Wood, Bey & Dockter Iii Inc"
+        },
+        {
+          "s1_name": "Atlantic Summit Neurosciences Inc.",
+          "other_name": "ATLANTIC SUMMIT NEUROSCIENCES"
+        },
+        {
+          "s1_name": "Bulkers Inc",
+          "other_name": "BULKERS INCORPORATED"
+        },
+        {
+          "s1_name": "Bulkers Inc",
+          "other_name": "BULKERS INCORPORATED"
+        },
+        {
+          "s1_name": "Plunkett Pacific Lithium",
+          "other_name": "Plunkett Pacific Lithium Inc"
+        },
+        {
+          "s1_name": "Brown, Dudek & Harper Inc",
+          "other_name": "Brown, D\u00fadek & Harper Inc"
+        },
+        {
+          "s1_name": "Wong, Cyndia K., MD",
+          "other_name": "Wong, Cyndia K., MD [Inc]"
+        },
+        {
+          "s1_name": "Ingaberg Bauer Dragon, Inc",
+          "other_name": "Ingaberg Bauer"
+        }
+      ],
+      "exact": [
+        {
+          "s1_name": "Ellissa's Media",
+          "other_name": "Ellissa's Media"
+        },
+        {
+          "s1_name": "Hoffman Pinnacle Massage LLC",
+          "other_name": "Hoffman Pinnacle Massage LLC"
+        },
+        {
+          "s1_name": "Nas & Co",
+          "other_name": "Nas & Co"
+        },
+        {
+          "s1_name": "Argentum College",
+          "other_name": "Argentum College"
+        },
+        {
+          "s1_name": "Piedmont Trust",
+          "other_name": "Piedmont Trust"
+        },
+        {
+          "s1_name": "Balaify Inc.",
+          "other_name": "Balaify Inc."
+        },
+        {
+          "s1_name": "Happy Coffee",
+          "other_name": "Happy Coffee"
+        },
+        {
+          "s1_name": "Sacramento Chiropractic Partners Group",
+          "other_name": "Sacramento Chiropractic Partners Group"
+        },
+        {
+          "s1_name": "Family Specialists",
+          "other_name": "Family Specialists"
+        },
+        {
+          "s1_name": "Dreams Academy Private Limited",
+          "other_name": "Dreams Academy Private Limited"
+        },
+        {
+          "s1_name": "Quality Security",
+          "other_name": "Quality Security"
+        },
+        {
+          "s1_name": "Custom Lodging",
+          "other_name": "Custom Lodging"
+        },
+        {
+          "s1_name": "Cascade Committee",
+          "other_name": "Cascade Committee"
+        },
+        {
+          "s1_name": "AY Technical",
+          "other_name": "AY Technical"
+        },
+        {
+          "s1_name": "Wright Newbridge",
+          "other_name": "Wright Newbridge"
+        }
+      ],
+      "other_variation": [
+        {
+          "s1_name": "Maid Nails!",
+          "other_name": "maidnails.com"
+        },
+        {
+          "s1_name": "Hotel Developers",
+          "other_name": "\u09b9\u09cb\u099f\u09c7\u09b2 \u09a1\u09c7\u09ad\u09c7\u09b2\u09aa\u09be\u09b0\u09b8"
+        },
+        {
+          "s1_name": "Hopper Charter School",
+          "other_name": "Hopper School Ch\u00e1rt\u00e9r"
+        },
+        {
+          "s1_name": "Guru Food",
+          "other_name": "\u0917\u0941\u0930\u0941 \u092b\u0942\u0921"
+        },
+        {
+          "s1_name": "Star Power",
+          "other_name": "\u0cb8\u0ccd\u0c9f\u0cbe\u0cb0\u0ccd \u0caa\u0cb5\u0cb0\u0ccd"
+        },
+        {
+          "s1_name": "Office of Finance",
+          "other_name": "0FFICEFINANCE.COM"
+        },
+        {
+          "s1_name": "Foot & Ankle Group",
+          "other_name": "FOOTANKLE.COM"
+        },
+        {
+          "s1_name": "One Logistics",
+          "other_name": "\u0b92\u0ba9\u0bcd \u0bb2\u0bbe\u0b9c\u0bbf\u0bb8\u0bcd\u0b9f\u0bbf\u0b95\u0bcd\u0bb8\u0bcd"
+        },
+        {
+          "s1_name": "Interfaith Fellowship",
+          "other_name": "INTERFAITH [SERVICE] (ID: 80320)"
+        },
+        {
+          "s1_name": "Boliva Holdings",
+          "other_name": "Wexavi"
+        },
+        {
+          "s1_name": "Oncology Medicine PC",
+          "other_name": "VIOONYXZETA"
+        },
+        {
+          "s1_name": "Fantasy Sangh",
+          "other_name": "Shri FANTASY SANAH"
+        },
+        {
+          "s1_name": "Seven Estate",
+          "other_name": "\u0938\u0947\u0935\u0928 \u090f\u0938\u094d\u091f\u0947\u091f"
+        },
+        {
+          "s1_name": "Dynamic Defense Works",
+          "other_name": "Dynamic Works D\u00e9fense"
+        },
+        {
+          "s1_name": "Prince Clinic",
+          "other_name": "Sri Prince Coiimnc"
+        }
+      ],
+      "word_order": [
+        {
+          "s1_name": "JJ Diamond Pan",
+          "other_name": "Jj Pan Diamond"
+        },
+        {
+          "s1_name": "LVN Dwellings Partners",
+          "other_name": "Dwellings LVN (Partners)"
+        },
+        {
+          "s1_name": "Timber Harbors PC",
+          "other_name": "Timber-PC Harbors"
+        },
+        {
+          "s1_name": "Aira Trading Private Limited",
+          "other_name": "PRIVATE AIRA TRADING LIMITED"
+        },
+        {
+          "s1_name": "2Nd Floor Green Park Main Near Green Park Market Buildcon",
+          "other_name": "2ND FLOOR FLOOR GREEN PARK MAIN NEAR GREEN PARK MARKET-BUILDCON"
+        },
+        {
+          "s1_name": "EDS Grand Ngl LLC",
+          "other_name": "Eds Eds Grand Ngl Llc"
+        },
+        {
+          "s1_name": "Headway Gas Pvt Ltd",
+          "other_name": "PVT HEADWAY GAS LTD"
+        },
+        {
+          "s1_name": "The Dent Barbershop!",
+          "other_name": "The Dent Barbershop! Barbershop!"
+        },
+        {
+          "s1_name": "Taj Seva Samiti",
+          "other_name": "Seva Taj [Samiti]"
+        },
+        {
+          "s1_name": "Bangalore Services Company",
+          "other_name": "Company Bangalore Services"
+        },
+        {
+          "s1_name": "Goldy Parsons, P.A.",
+          "other_name": "GOLDY PARSONS, PARSONS, P.A."
+        },
+        {
+          "s1_name": "Southern Hospitality Limited",
+          "other_name": "HOSPITALITY SOUTHERN LIMITED"
+        },
+        {
+          "s1_name": "Buckley, Brooks and Dwire Corporation",
+          "other_name": "Buckley, Dwire and Brooks Corporation"
+        },
+        {
+          "s1_name": "Indo Traders Pvt. Ltd.",
+          "other_name": "PVT. INDO LTD. TRADERS"
+        },
+        {
+          "s1_name": "Paz Harbor Ishares Inc",
+          "other_name": "Paz Ishares Harbor [Inc]"
+        }
+      ],
+      "suffix_company": [
+        {
+          "s1_name": "Horizon & Co",
+          "other_name": "H0rizon & C\u00f3"
+        },
+        {
+          "s1_name": "Pan Logistics Co",
+          "other_name": "Pan Logistics  Co"
+        },
+        {
+          "s1_name": "Era Forum Company",
+          "other_name": "Mr Era  Forum"
+        },
+        {
+          "s1_name": "91/19 Nuveen",
+          "other_name": "91/19 Nuveen Co"
+        },
+        {
+          "s1_name": "Powell Innovative Blackrock Co",
+          "other_name": "POWELL INNOVATIVE BLACKROCK COMPANY"
+        },
+        {
+          "s1_name": "Powell Innovative Blackrock Co",
+          "other_name": "POWELL INNOVATIVE BLACKROCK COMPANY"
+        },
+        {
+          "s1_name": "Bangalore Services Company",
+          "other_name": "Company Bangalore Services"
+        },
+        {
+          "s1_name": "Royal & Co",
+          "other_name": "Smt ROYAL  & CO"
+        },
+        {
+          "s1_name": "Fox's Data",
+          "other_name": "Fox's Data Co"
+        },
+        {
+          "s1_name": "Schwartz Holding Company Inc",
+          "other_name": "Schwartz Company Inc Center"
+        },
+        {
+          "s1_name": "Mta Infratech Co",
+          "other_name": "Mta Infbratech Co #13485"
+        },
+        {
+          "s1_name": "Pankaj Trust Company",
+          "other_name": "Mr Pankaj Trust  Company"
+        },
+        {
+          "s1_name": "Gurukripa & Co",
+          "other_name": "& Gurukripa Company"
+        },
+        {
+          "s1_name": "Gurukripa & Co",
+          "other_name": "& Gurukripa Company"
+        },
+        {
+          "s1_name": "Beacon Security Company",
+          "other_name": "BEACON SECURITY COMPANY"
+        }
+      ],
+      "case_only": [
+        {
+          "s1_name": "Pan Logistics Co",
+          "other_name": "Pan Logistics  Co"
+        },
+        {
+          "s1_name": "Sweet Tavern",
+          "other_name": "SWEET TAVERN"
+        },
+        {
+          "s1_name": "Garcia Jackson LLC",
+          "other_name": "Garcia Jackson Llc"
+        },
+        {
+          "s1_name": "Legacy Software Advisors LLC",
+          "other_name": "Legacy Software Advisors Llc"
+        },
+        {
+          "s1_name": "Cardiology Medicine Corp",
+          "other_name": "Cardiology  Medicine Corp"
+        },
+        {
+          "s1_name": "Hollis Prime Hair Studio Inc",
+          "other_name": "hollis prime hair studio inc"
+        },
+        {
+          "s1_name": "Clean Supreme Excavation LLC",
+          "other_name": "CLEAN  SUPREME EXCAVATION LLC"
+        },
+        {
+          "s1_name": "Alvarez Prairie Leapfrog LLC",
+          "other_name": "Alvarez Prairie Leapfrog Llc"
+        },
+        {
+          "s1_name": "Engineering Real Bharati Pvt. Ltd.",
+          "other_name": "ENGINEERING REAL BHARATI PVT. LTD."
+        },
+        {
+          "s1_name": "Piedmont Ministries",
+          "other_name": "piedmont ministries"
+        },
+        {
+          "s1_name": "Miller Clean Corp",
+          "other_name": "Miller Clean  Corp"
+        },
+        {
+          "s1_name": "Metro Atlantic Advanced Corp",
+          "other_name": "METRO ATLANTIC ADVANCED CORP"
+        },
+        {
+          "s1_name": "Anantpur Rewa (india) Private Limited",
+          "other_name": "ANANTPUR REWA (INDIA) PRIVATE LIMITED"
+        },
+        {
+          "s1_name": "Ahmedabad Ventures",
+          "other_name": "Ahmedabad  Ventures"
+        },
+        {
+          "s1_name": "Legacy Semiconductor Worldwide",
+          "other_name": "LEGACY SEMICONDUCTOR WORLDWIDE"
+        }
+      ],
+      "normalized_exact": [
+        {
+          "s1_name": "Pan Logistics Co",
+          "other_name": "Pan Logistics  Co"
+        },
+        {
+          "s1_name": "Sweet Tavern",
+          "other_name": "SWEET TAVERN"
+        },
+        {
+          "s1_name": "Garcia Jackson LLC",
+          "other_name": "Garcia Jackson Llc"
+        },
+        {
+          "s1_name": "Legacy Software Advisors LLC",
+          "other_name": "Legacy Software Advisors Llc"
+        },
+        {
+          "s1_name": "Cardiology Medicine Corp",
+          "other_name": "Cardiology  Medicine Corp"
+        },
+        {
+          "s1_name": "Hollis Prime Hair Studio Inc",
+          "other_name": "hollis prime hair studio inc"
+        },
+        {
+          "s1_name": "Clean Supreme Excavation LLC",
+          "other_name": "CLEAN  SUPREME EXCAVATION LLC"
+        },
+        {
+          "s1_name": "Alvarez Prairie Leapfrog LLC",
+          "other_name": "Alvarez Prairie Leapfrog Llc"
+        },
+        {
+          "s1_name": "Engineering Real Bharati Pvt. Ltd.",
+          "other_name": "ENGINEERING REAL BHARATI PVT. LTD."
+        },
+        {
+          "s1_name": "Piedmont Ministries",
+          "other_name": "piedmont ministries"
+        },
+        {
+          "s1_name": "Miller Clean Corp",
+          "other_name": "Miller Clean  Corp"
+        },
+        {
+          "s1_name": "Metro Atlantic Advanced Corp",
+          "other_name": "METRO ATLANTIC ADVANCED CORP"
+        },
+        {
+          "s1_name": "Anantpur Rewa (india) Private Limited",
+          "other_name": "ANANTPUR REWA (INDIA) PRIVATE LIMITED"
+        },
+        {
+          "s1_name": "Ahmedabad Ventures",
+          "other_name": "Ahmedabad  Ventures"
+        },
+        {
+          "s1_name": "Legacy Semiconductor Worldwide",
+          "other_name": "LEGACY SEMICONDUCTOR WORLDWIDE"
+        }
+      ],
+      "suffix_llp": [
+        {
+          "s1_name": "NXU Fincon LLP",
+          "other_name": "NXU Fincon-LLP"
+        },
+        {
+          "s1_name": "Big Management LLP",
+          "other_name": "\u092c\u093f\u0917 \u092e\u0948\u0928\u0947\u091c\u092e\u0947\u0902\u091f LLP"
+        },
+        {
+          "s1_name": "Hotel Smart Global LLP",
+          "other_name": "Hotel Sm\u00e1rt Global LLP"
+        },
+        {
+          "s1_name": "Shakti Trading LLP",
+          "other_name": "\u0ab6\u0a95\u0acd\u0aa4\u0abf \u0a9f\u0acd\u0ab0\u0ac7\u0aa1\u0abf\u0a82\u0a97 \u0a8f\u0ab2\u0a8f\u0ab2\u0aaa\u0ac0"
+        },
+        {
+          "s1_name": "Jai Healthcare LLP",
+          "other_name": "\u0c1c\u0c48 \u0c39\u0c46\u0c32\u0c4d\u0c24\u0c4d\u200c\u0c15\u0c47\u0c30\u0c4d \u0c0e\u0c32\u0c4d\u200c\u0c0e\u0c32\u0c4d\u200c\u0c2a\u0c40"
+        },
+        {
+          "s1_name": "Prestige Pumps LLP",
+          "other_name": "Prestige P\u00famps LLP"
+        },
+        {
+          "s1_name": "Dynamic Constructions LLP",
+          "other_name": "\u0921\u093e\u092f\u0928\u093e\u092e\u093f\u0915 \u0915\u0902\u0938\u094d\u091f\u094d\u0930\u0915\u094d\u0936\u0902\u0938 \u090f\u0932\u090f\u0932\u092a\u0940"
+        },
+        {
+          "s1_name": "Trading Sr Electricals LLP",
+          "other_name": "L.L.P. Trading Sr Electricals"
+        },
+        {
+          "s1_name": "Grace Mutual LLP",
+          "other_name": "Shri grace mutual llp | www.gracemutu.com"
+        },
+        {
+          "s1_name": "Hotel Smart Global LLP",
+          "other_name": "\u0939\u094b\u091f\u0932 \u0938\u094d\u092e\u093e\u0930\u094d\u091f \u0917\u094d\u0932\u094b\u092c\u0932 \u090f\u0932\u090f\u0932\u092a\u0940"
+        },
+        {
+          "s1_name": "Mona Consultancy LLP",
+          "other_name": "Mona Conbsugtanfcy LLP"
+        },
+        {
+          "s1_name": "Kolkata Properties LLP",
+          "other_name": "Kolkata Properties"
+        },
+        {
+          "s1_name": "Software Financiers LLP",
+          "other_name": "S0ftware Financiers Financiers LLP"
+        },
+        {
+          "s1_name": "Urban Software LLP",
+          "other_name": "\u0905\u0930\u094d\u092c\u0928 \u0938\u0949\u092b\u094d\u091f\u0935\u0947\u092f\u0930 \u090f\u0932\u090f\u0932\u092a\u0940"
+        },
+        {
+          "s1_name": "Foundation Unitech Contracts LLP",
+          "other_name": "Foundation \u00danitech Contracts LLP"
+        }
+      ],
+      "suffix_corporation": [
+        {
+          "s1_name": "Butler, Andrews and Moriarty",
+          "other_name": "Butler, Andrews and Moriarty Corporation"
+        },
+        {
+          "s1_name": "Cardiology Medicine Corp",
+          "other_name": "Cardiology  Medicine Corp"
+        },
+        {
+          "s1_name": "Solstice Corp",
+          "other_name": "S0lstice Corp Partners"
+        },
+        {
+          "s1_name": "Poindexter Mountain Data",
+          "other_name": "Poindexter Mountain Data Corporation"
+        },
+        {
+          "s1_name": "Surgical Medicine",
+          "other_name": "SURGICAL-MEDICINE CORPORATION"
+        },
+        {
+          "s1_name": "Miller Clean Corp",
+          "other_name": "Miller Clean  Corp"
+        },
+        {
+          "s1_name": "Metro Atlantic Advanced Corp",
+          "other_name": "METRO ATLANTIC ADVANCED CORP"
+        },
+        {
+          "s1_name": "Rsk Advisors",
+          "other_name": "Sri Rsk Advisors Corp"
+        },
+        {
+          "s1_name": "Stephi Sward Elite Chemical Corporation",
+          "other_name": "Stephi Sward Elite Chemical"
+        },
+        {
+          "s1_name": "Frontier Program",
+          "other_name": "FRONTIER PROGRAM CORP"
+        },
+        {
+          "s1_name": "Buckley, Brooks and Dwire Corporation",
+          "other_name": "Buckley, Dwire and Brooks Corporation"
+        },
+        {
+          "s1_name": "Secure Prairie Fortis",
+          "other_name": "Secure  Prairie Fortis Corp"
+        },
+        {
+          "s1_name": "Valley Securities Corp",
+          "other_name": "valley securities corp"
+        },
+        {
+          "s1_name": "Crump and Valencia Americas Corp",
+          "other_name": "Crump and Valencia Corp Center"
+        },
+        {
+          "s1_name": "Physical Therapy Star Group Partners",
+          "other_name": "Physical Therapy Star Group Partners Corporation"
+        }
+      ],
+      "suffix_lp": [
+        {
+          "s1_name": "Wood, Bey & Dockter Iii LP",
+          "other_name": "Wood, Bey & Dockter Iii Inc"
+        },
+        {
+          "s1_name": "Livvy Ceballos Bay Tinto",
+          "other_name": "Livvy Ceballos Bay Tinto LP"
+        },
+        {
+          "s1_name": "Walters Media LP",
+          "other_name": "waltersmedia.com"
+        },
+        {
+          "s1_name": "Fair Oaks, Borough Of",
+          "other_name": "FAIR OAKS, BOROUGH OF LP"
+        },
+        {
+          "s1_name": "Edwina Amaral Preferred End",
+          "other_name": "Edwina Amaral Preferred End LP"
+        },
+        {
+          "s1_name": "Hedwiga Hernandez Australian LP",
+          "other_name": "Hedwiga-Hernandez Australian LP"
+        },
+        {
+          "s1_name": "Housing Center",
+          "other_name": "Housing Center LP"
+        },
+        {
+          "s1_name": "Gloriane's Diamond Wireless",
+          "other_name": "Gloriane's Diamond Wireless LP"
+        },
+        {
+          "s1_name": "Pediatric Continental Partners LP",
+          "other_name": "Pediatric-Continental"
+        },
+        {
+          "s1_name": "Golden Industrial Consultants",
+          "other_name": "GOLDEN INDUSTRIAL  CONSULTANTS LP"
+        },
+        {
+          "s1_name": "Brannen Medical Center LP",
+          "other_name": "Brannen-Medical Center LP"
+        },
+        {
+          "s1_name": "Ferrus Land LP",
+          "other_name": "FERRUS  LAND"
+        },
+        {
+          "s1_name": "A 3 Modern Oyster LP",
+          "other_name": "A 3 MODERN LP SERVICES"
+        },
+        {
+          "s1_name": "Ballard's Frontier Advisory Spokane Valley",
+          "other_name": "Ballard's Frontier Advisory Spokane Valley LP"
+        },
+        {
+          "s1_name": "Direct Blue Intercontinental LP",
+          "other_name": "Direct Blue Intercontinental  LP"
+        }
+      ],
+      "ampersand_and": [
+        {
+          "s1_name": "Anderson, Muench and Cook LLC",
+          "other_name": "Anderson, Muench and Cook Llc"
+        },
+        {
+          "s1_name": "Pascarella and Morgan Inc",
+          "other_name": "Pascarella and Morgan  Inc"
+        },
+        {
+          "s1_name": "Gifford and Albert City",
+          "other_name": "Gifford and Albert  City"
+        },
+        {
+          "s1_name": "Laird, Draper and Scala Inc.",
+          "other_name": "LAIRD, DRAPER AND SCALA INC."
+        },
+        {
+          "s1_name": "Beckerman and Parra",
+          "other_name": "BECKERMAN AND PARRA"
+        },
+        {
+          "s1_name": "Deville, Gosha & Toscano Adr LLC",
+          "other_name": "Deville, Gosha &  Toscano Adr LLC"
+        },
+        {
+          "s1_name": "Roque and Nottingham Era LLC",
+          "other_name": "Roque and Nottingham  Era LLC"
+        },
+        {
+          "s1_name": "Silver & Davis Quasaredge LLC",
+          "other_name": "Silver & Davis Quasaredge Llc"
+        },
+        {
+          "s1_name": "Michael & Gerber Merger Corp",
+          "other_name": "Michael &  Gerber Merger Corp"
+        },
+        {
+          "s1_name": "P F & M Home P.C.",
+          "other_name": "P F and M Home  P.C."
+        },
+        {
+          "s1_name": "Department of Parks and Recreation",
+          "other_name": "Department of Parks and  Recreation"
+        },
+        {
+          "s1_name": "Renner & Evans Ares LLC",
+          "other_name": "Renner & Evans Ares Llc"
+        },
+        {
+          "s1_name": "Lewis, Morgan & Baker Inc.",
+          "other_name": "lewis, morgan & baker inc."
+        },
+        {
+          "s1_name": "Nguyen, Espindola and Tosti LLC",
+          "other_name": "Nguyen, Espindola and Tosti Llc"
+        },
+        {
+          "s1_name": "Villanueva, Tingley & Martinez Inc",
+          "other_name": "Villanueva, Tingley & Martinez  Inc"
+        }
+      ],
+      "suffix_sa": [
+        {
+          "s1_name": "SA Media Pvt Ltd",
+          "other_name": "Pvt SA Media Ltd"
+        },
+        {
+          "s1_name": "Stag LLC",
+          "other_name": "SA  LLC"
+        },
+        {
+          "s1_name": "SA Tradecom Ltd",
+          "other_name": "SA TRADECOM"
+        },
+        {
+          "s1_name": "India Sa Services Pvt. Ltd.",
+          "other_name": "India  Sa Scviecs Pvt. Ltd."
+        },
+        {
+          "s1_name": "Shelley & Sa LLC",
+          "other_name": "5helley & Sa"
+        },
+        {
+          "s1_name": "SA Cornerstone Malt",
+          "other_name": "SA Cornerstone  Malt LLC"
+        },
+        {
+          "s1_name": "Sa Academy",
+          "other_name": "Dr Sa Academy Corp"
+        },
+        {
+          "s1_name": "Lowe Star Chs Inc",
+          "other_name": "Lowe Sa Chs \u00cdnc"
+        },
+        {
+          "s1_name": "India Sach Sa Private Limited",
+          "other_name": "India Sach Sa  Private Limited"
+        },
+        {
+          "s1_name": "Speck Ares LLC",
+          "other_name": "SA"
+        }
+      ],
+      "suffix_gmbh": [
+        {
+          "s1_name": "Golden Gmbh Pvt. Ltd.",
+          "other_name": "Glidemn Gmbh Pvt. Ltd."
+        },
+        {
+          "s1_name": "Barddhaman Gmbh Private Limited",
+          "other_name": "Barddhaman Gmbh Private Ltd"
+        }
+      ]
+    }
+  }
+}

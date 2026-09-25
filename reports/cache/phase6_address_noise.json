@@ -1,0 +1,1329 @@
+{
+  "address_noise": {
+    "total_pattern_hits": 188178,
+    "pattern_frequencies": {
+      "abbrev_road": {
+        "count": 26948,
+        "pct": 14.32
+      },
+      "numeric_diff": {
+        "count": 26694,
+        "pct": 14.19
+      },
+      "abbrev_street": {
+        "count": 20335,
+        "pct": 10.81
+      },
+      "abbrev_number": {
+        "count": 18748,
+        "pct": 9.96
+      },
+      "abbrev_drive": {
+        "count": 15460,
+        "pct": 8.22
+      },
+      "abbrev_avenue": {
+        "count": 12892,
+        "pct": 6.85
+      },
+      "other_variation": {
+        "count": 10776,
+        "pct": 5.73
+      },
+      "missing_numbers": {
+        "count": 9946,
+        "pct": 5.29
+      },
+      "abbrev_floor": {
+        "count": 8761,
+        "pct": 4.66
+      },
+      "abbrev_lane": {
+        "count": 6925,
+        "pct": 3.68
+      },
+      "normalized_exact": {
+        "count": 6235,
+        "pct": 3.31
+      },
+      "case_only": {
+        "count": 5368,
+        "pct": 2.85
+      },
+      "abbrev_court": {
+        "count": 4711,
+        "pct": 2.5
+      },
+      "component_reorder": {
+        "count": 4346,
+        "pct": 2.31
+      },
+      "missing_postal": {
+        "count": 3345,
+        "pct": 1.78
+      },
+      "abbrev_apartment": {
+        "count": 2253,
+        "pct": 1.2
+      },
+      "exact": {
+        "count": 2177,
+        "pct": 1.16
+      },
+      "abbrev_boulevard": {
+        "count": 1432,
+        "pct": 0.76
+      },
+      "postal_diff": {
+        "count": 521,
+        "pct": 0.28
+      },
+      "abbrev_suite": {
+        "count": 305,
+        "pct": 0.16
+      }
+    },
+    "examples": {
+      "abbrev_road": [
+        {
+          "s1_addr": "21/247 Akash Ganga Apartm, Ent, Sola Road Naranpura, Ahmadabad City, Ahmedabad, Gujarat",
+          "other_addr": "#21/247 AKASH GANGA APARTM, ENT, SOLA ROAD NARANPURA, AHMADABAD CITY, \u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4"
+        },
+        {
+          "s1_addr": "11101 Armentrout Road, Fredericktown, OH",
+          "other_addr": "11101 ARMENTROUT RD, FREDERICKTOWN, OH"
+        },
+        {
+          "s1_addr": "11101 Armentrout Road, Fredericktown, OH",
+          "other_addr": "11101 ARMENTROUT RD, FREDERICKTOWN, OH"
+        },
+        {
+          "s1_addr": "44W 575 Plato Road, Burlington, IL",
+          "other_addr": "4W 575 PLATO ROAD, BURLINGTON, IL"
+        },
+        {
+          "s1_addr": "103/26/1 Foreshore Road, Howrah, West Bengal",
+          "other_addr": "NO 103/26/1 FORESHORE ROAD, HOWRAH, West Bengal"
+        },
+        {
+          "s1_addr": "Virudhunagar, Tamil Nadu, Aruppukottai, 1-28-4/1, Ananthapuri Nagar, Iind Street, Madurai Road",
+          "other_addr": "1-28-4/1, ANANTHAPURI NAGAR, IIND STREET, MADURAI ROAD, ARUPPUKOTTAI, Tamil Nadu"
+        },
+        {
+          "s1_addr": "8, Suryakiran Duplex, Nr. P D Pandya College Rd, Ahmadabad City, Ahmedabad, Gujarat",
+          "other_addr": "10, SURYAKIRAN DUPLEX, NR. P D PANDYA COLLEGE RD, AHMADABAD CITY, Gujarat"
+        },
+        {
+          "s1_addr": "158 Cemetery Road, Drexel, NC",
+          "other_addr": "158-162 CEMETERY ROAD, DREXEL, NC"
+        },
+        {
+          "s1_addr": "Rajiv Gandhi Nagar, 80 Feet Road, B R Layout, Sowripalayam, Coimbatore, Tamil Nadu, No.89, Coimbatore",
+          "other_addr": "#89, RAJIV GANDHI NAGAR, 80 FEET ROAD, B R LAYOUT, SOWRIPALAYAM, COIMBATORE, Tamil Nadu"
+        },
+        {
+          "s1_addr": "288 Amelia Olive Branch Road, Amelia, OH",
+          "other_addr": "AMELIA OLIVE BRANCH ROAD, AMELLIA, OH"
+        },
+        {
+          "s1_addr": "Ground Floor, Sagar Darshan, 40, North Avenue Road Santacruz West, Mumbai, Mumbai City, Maharashtra",
+          "other_addr": "Maharashtra, GROUND FLOOR, SAGAR DARSHAN, 40, NORTH AVENUE ROAD SANTACRUZ WEST, MUMBAI"
+        },
+        {
+          "s1_addr": "Nataraj Mini Tower, 554-A, D.B. Road Near Subbu Mess, R S Puram, Coimbatore, Tamil Nadu",
+          "other_addr": "NATRAJ MINI TOWER, 554-, D.B. ROAD NEAR SUBBU MESS, R S PURAM, COIMBATORE, Tamil Nadu"
+        },
+        {
+          "s1_addr": "1935 Mitthoefer Road, Indianapolis, IN",
+          "other_addr": "INDIANAPOLIS, 1933 MITTHOEFER ROAD, IN"
+        },
+        {
+          "s1_addr": "Mumbai, Maharashtra, 2, Seawind Terraces, 148, Dr. M. B. Raut Marg, Shivaji Park, Road No.2, Mumbai",
+          "other_addr": "2, SEAWIND TERRACES, 148, DR. M. B. RAUT MARG, SHIVAJI PARK, ROAD NO.2, MUMBAI, Maharashtra"
+        },
+        {
+          "s1_addr": "B 1203 Ahad Opus, Sarjapur Road, Bangalore South, Bangalore, Karnataka",
+          "other_addr": "B 1203 AHAD OPUS, SARJAPUR ROAD, BANGALORE, BANGALORE SOUTH, Karnataka"
+        }
+      ],
+      "other_variation": [
+        {
+          "s1_addr": "G-52, Sector-6, Noida, Gautam Buddha Nagar, Uttar Pradesh",
+          "other_addr": "G-52, SECTOR-6, GAUTAM BUDDHA NAGAR, Uttar Pradesh"
+        },
+        {
+          "s1_addr": "Neem Chowk, Sanwaliyaji, Near Sri Sanwariya Temple, Bhadesar, Chittorgarh, Rajasthan",
+          "other_addr": "NEEM CHOWK, SANWALIYAJI, NEAR SRI SANWARIYA TEMPLE, BHADESAR, \u0930\u093e\u091c\u0938\u094d\u0925\u093e\u0928"
+        },
+        {
+          "s1_addr": "6W, Jhauganj, Patna City, Patna, Bihar",
+          "other_addr": "6W, JHAUGANJ, PATNA CITY, \u092c\u093f\u0939\u093e\u0930"
+        },
+        {
+          "s1_addr": "55545 Santa Fe Trail, Yucca Valley, CA",
+          "other_addr": "##55545 SANTA FE TRL, YUCCA VALLEY, CA"
+        },
+        {
+          "s1_addr": "4072 Reunion Creek Parkway, Apex, NC",
+          "other_addr": "#4072 REUNION CREEK PKWY, AEPX CITY, NC"
+        },
+        {
+          "s1_addr": "105, Sai Sangam, Behind Tungareshwar Sweet Mart, Navghar, Vasai - West, Dist - Thane, Thane, Maharashtra",
+          "other_addr": "105, SAI SANGAM, BEHIND TUNGARESHWAR SWEET MART, NAVGHAR, VASAI - WEST, DIST - THANE, THANE, \u092e\u0939\u093e\u0930\u093e\u0937\u094d\u091f\u094d\u0930"
+        },
+        {
+          "s1_addr": "B-3/32, Rajasthali Aptts, Pitampura, Delhi, North West Delhi, Delhi",
+          "other_addr": "B-3/32, DELHI, NORTH WEST DELHI, Delhi"
+        },
+        {
+          "s1_addr": "MO, Kansas City, 1601 55th Terrace",
+          "other_addr": "1601 55ST TER, MO, KANSAS CITY"
+        },
+        {
+          "s1_addr": "8436 19, Caneadea, NY",
+          "other_addr": "8436 19, BELFAST, NY"
+        },
+        {
+          "s1_addr": "Columbus, 284 Buckeye Circle, OH",
+          "other_addr": "284 BUCKEYE CIR, COLUMBUS, OH"
+        },
+        {
+          "s1_addr": "3/333(Old 17/270) Nadavarambu, Near Mukundapuram Temple, Ve, Layanadu, Thrissur, Kerala",
+          "other_addr": "3/333(OLD 17/270) NADAVARAMBU, THRISSUR, Kerala"
+        },
+        {
+          "s1_addr": "Gram - Gangahra, Post - Thamanpura, Ballia, Uttar Pradesh",
+          "other_addr": "GARM - GANGAHRA, POST - THAMANPURA, Uttar Pradesh"
+        },
+        {
+          "s1_addr": "E 140, Level Ii Shastri Nagar, New Delhi, Delhi",
+          "other_addr": "E 140., LEVEL II SHASTRI NAGAR, NEW DELHI, \u0926\u093f\u0932\u094d\u0932\u0940"
+        },
+        {
+          "s1_addr": "4404 Nolensville Pike, Nashville, TN",
+          "other_addr": "4404 NOLENSVILE PIKE, NASHVILLE, TN"
+        },
+        {
+          "s1_addr": "1 Excalibur Place, Newport News City, VA",
+          "other_addr": "1 EXCALIBUR PLACE, NEWPORT NEWS, VA"
+        }
+      ],
+      "case_only": [
+        {
+          "s1_addr": "V-300 Rajouri Garden, New Delhi, Delhi",
+          "other_addr": "V-300 RAJOURI GARDEN, NEW DELHI, Delhi"
+        },
+        {
+          "s1_addr": "10-6-169, Bada Bazar 1St Lancer, Ahmed Nagar, Hyderabad, Telangana",
+          "other_addr": "10-6-169, BADA BAZAR 1ST LANCER, AHMED NAGAR, HYDERABAD, Telangana"
+        },
+        {
+          "s1_addr": "2565 Alabama Avenue, Saint Louis Park, MN",
+          "other_addr": "2565 ALABAMA AVENUE, SAINT LOUIS PARK, MN"
+        },
+        {
+          "s1_addr": "513 Cain Avenue, Morristown, TN",
+          "other_addr": "513 CAIN AVENUE, MORRISTOWN, TN"
+        },
+        {
+          "s1_addr": "415 14th Street, Bandera, TX",
+          "other_addr": "415 14TH STREET, BANDERA, TX"
+        },
+        {
+          "s1_addr": "Plot No- A/430, Kalawati Complex, Ramnagri More, Po-Ashiana Nagar, Ps- Rajeev Nagar, Patna, Bihar",
+          "other_addr": "PLOT NO- A/430, KALAWATI COMPLEX, RAMNAGRI MORE, PO-ASHIANA NAGAR, PS- RAJEEV NAGAR, PATNA, Bihar"
+        },
+        {
+          "s1_addr": "508 1/2 Broadway Avenue, Shawnee, OK",
+          "other_addr": "508 1/2 BROADWAY AVENUE, SHAWNEE, OK"
+        },
+        {
+          "s1_addr": "5746 Vt Route 30, Sudbury, VT",
+          "other_addr": "5746 VT ROUTE 30, SUDBURY, VT"
+        },
+        {
+          "s1_addr": "3750 Conway Drive, Mobile, AL",
+          "other_addr": "3750 CONWAY DRIVE, MOBILE, AL"
+        },
+        {
+          "s1_addr": "110 Poplar Lane, Justice, IL",
+          "other_addr": "110 POPLAR LANE, JUSTICE, IL"
+        },
+        {
+          "s1_addr": "Sa 5/129-G-2-M Chitragupt Nagar Colony Ramreypur, Varanasi, Uttar Pradesh",
+          "other_addr": "SA 5/129-G-2-M CHITRAGUPT NAGAR COLONY RAMREYPUR, VARANASI, Uttar Pradesh"
+        },
+        {
+          "s1_addr": "20318 Sequoia Trace, Spring, TX",
+          "other_addr": "20318 SEQUOIA TRACE, SPRING, TX"
+        },
+        {
+          "s1_addr": "12, Bramin Street, Nemilichery Chrompet, Chennai, Tamil Nadu",
+          "other_addr": "12, BRAMIN STREET, NEMILICHERY CHROMPET, CHENNAI, Tamil Nadu"
+        },
+        {
+          "s1_addr": "D -1007, Ground Floor, New Friends Colony, New Delhi, South Delhi, Delhi",
+          "other_addr": "D -1007, GROUND FLOOR, NEW FRIENDS COLONY, NEW DELHI, SOUTH DELHI, Delhi"
+        },
+        {
+          "s1_addr": "55 Dr E Moses Roadworli, Mumbai, Maharashtra",
+          "other_addr": "55 DR E MOSES ROADWORLI, MUMBAI, Maharashtra"
+        }
+      ],
+      "normalized_exact": [
+        {
+          "s1_addr": "V-300 Rajouri Garden, New Delhi, Delhi",
+          "other_addr": "V-300 RAJOURI GARDEN, NEW DELHI, Delhi"
+        },
+        {
+          "s1_addr": "10-6-169, Bada Bazar 1St Lancer, Ahmed Nagar, Hyderabad, Telangana",
+          "other_addr": "10-6-169, BADA BAZAR 1ST LANCER, AHMED NAGAR, HYDERABAD, Telangana"
+        },
+        {
+          "s1_addr": "2565 Alabama Avenue, Saint Louis Park, MN",
+          "other_addr": "2565 ALABAMA AVENUE, SAINT LOUIS PARK, MN"
+        },
+        {
+          "s1_addr": "513 Cain Avenue, Morristown, TN",
+          "other_addr": "513 CAIN AVENUE, MORRISTOWN, TN"
+        },
+        {
+          "s1_addr": "415 14th Street, Bandera, TX",
+          "other_addr": "415 14TH STREET, BANDERA, TX"
+        },
+        {
+          "s1_addr": "Plot No- A/430, Kalawati Complex, Ramnagri More, Po-Ashiana Nagar, Ps- Rajeev Nagar, Patna, Bihar",
+          "other_addr": "PLOT NO- A/430, KALAWATI COMPLEX, RAMNAGRI MORE, PO-ASHIANA NAGAR, PS- RAJEEV NAGAR, PATNA, Bihar"
+        },
+        {
+          "s1_addr": "508 1/2 Broadway Avenue, Shawnee, OK",
+          "other_addr": "508 1/2 BROADWAY AVENUE, SHAWNEE, OK"
+        },
+        {
+          "s1_addr": "5746 Vt Route 30, Sudbury, VT",
+          "other_addr": "5746 VT ROUTE 30, SUDBURY, VT"
+        },
+        {
+          "s1_addr": "3750 Conway Drive, Mobile, AL",
+          "other_addr": "3750 CONWAY DRIVE, MOBILE, AL"
+        },
+        {
+          "s1_addr": "4189 R Street, Auburn, WA",
+          "other_addr": "#4189 R STREET, AUBURN, WA"
+        },
+        {
+          "s1_addr": "25 Woodlawn Avenue, Ansonia, CT",
+          "other_addr": "#25 WOODLAWN AVENUE, ANSONIA, CT"
+        },
+        {
+          "s1_addr": "110 Poplar Lane, Justice, IL",
+          "other_addr": "110 POPLAR LANE, JUSTICE, IL"
+        },
+        {
+          "s1_addr": "Sa 5/129-G-2-M Chitragupt Nagar Colony Ramreypur, Varanasi, Uttar Pradesh",
+          "other_addr": "SA 5/129-G-2-M CHITRAGUPT NAGAR COLONY RAMREYPUR, VARANASI, Uttar Pradesh"
+        },
+        {
+          "s1_addr": "2 Jay Place, Orangetown, NY",
+          "other_addr": "##2 JAY PLACE, ORANGETOWN, NY"
+        },
+        {
+          "s1_addr": "20318 Sequoia Trace, Spring, TX",
+          "other_addr": "20318 SEQUOIA TRACE, SPRING, TX"
+        }
+      ],
+      "abbrev_drive": [
+        {
+          "s1_addr": "904 Center Drive, Spokane Valley, WA",
+          "other_addr": "904- CENTER DR, SPOKANE VALLEY, WA"
+        },
+        {
+          "s1_addr": "904 Center Drive, Spokane Valley, WA",
+          "other_addr": "904- CENTER DR, SPOKANE VALLEY, WA"
+        },
+        {
+          "s1_addr": "5362 Meadowlane Drive, Granite Falls, NC",
+          "other_addr": "536 MEADOWLANE DRIVE, GRANITE FALLS, NC"
+        },
+        {
+          "s1_addr": "5031 Willowmere Drive, Dayton, OH",
+          "other_addr": "5031 1/2 WILLOWMERE DRIVE, DAYTON, OH"
+        },
+        {
+          "s1_addr": "1634 Fieldstone Drive, Shorewood, IL",
+          "other_addr": "IL, INCORPORATED, 1634 Fieldstone Drive"
+        },
+        {
+          "s1_addr": "3750 Conway Drive, Mobile, AL",
+          "other_addr": "3750 CONWAY DRIVE, MOBILE, AL"
+        },
+        {
+          "s1_addr": "6 Cunningham Drive, Monroe, NY",
+          "other_addr": "6 CUNNINGHAM DR, NY, MONROE"
+        },
+        {
+          "s1_addr": "6 Cunningham Drive, Monroe, NY",
+          "other_addr": "6 CUNNINGHAM DR, NY, MONROE"
+        },
+        {
+          "s1_addr": "26419 Hillside Drive, Spring, TX",
+          "other_addr": "26419 HILLSIDE DRIBE, SPRING, TX"
+        },
+        {
+          "s1_addr": "Mumbai, Maharashtra, 2, Seawind Terraces, 148, Dr. M. B. Raut Marg, Shivaji Park, Road No.2, Mumbai",
+          "other_addr": "2, SEAWIND TERRACES, 148, DR. M. B. RAUT MARG, SHIVAJI PARK, ROAD NO.2, MUMBAI, Maharashtra"
+        },
+        {
+          "s1_addr": "4613 Kellywood Drive, Henrico County, VA",
+          "other_addr": "KELLYWOOD DRIVE, GLEN ALLEN, VA"
+        },
+        {
+          "s1_addr": "5179 Chantilly Drive, Cincinnati, OH",
+          "other_addr": "5179 CANTILLY DR, CINCINNATI, OH"
+        },
+        {
+          "s1_addr": "5179 Chantilly Drive, Cincinnati, OH",
+          "other_addr": "5179 CANTILLY DR, CINCINNATI, OH"
+        },
+        {
+          "s1_addr": "3209 Jack Cullen Drive, Texarkana, AR",
+          "other_addr": "3209 JACK CULLEN DRIVE, AR, TEXARKANA"
+        },
+        {
+          "s1_addr": "709 Claybrook Drive, Logan Township, PA",
+          "other_addr": "709-711 CLAYBROOK DR, LOGAN TOWNSHIP, PA"
+        }
+      ],
+      "abbrev_street": [
+        {
+          "s1_addr": "Plot No.65, S1, 2Nd Floor, Annai Therasa Street, V.O.C.Nagar, Pammal, Chennai, Tamil Nadu",
+          "other_addr": "65, S1, 2ND FLOOR, ANNAI THERASA STREET, V.O.C.NAGAR, PAMMAL, CHENNAI, CHENGALPATTU, \u0ba4\u0bae\u0bbf\u0bb4\u0bcd\u0ba8\u0bbe\u0b9f\u0bc1"
+        },
+        {
+          "s1_addr": "203 Hersom Street, Unit 1, New Bedford, MA",
+          "other_addr": "203 Hersom Street, NEW BEDFORD, MA"
+        },
+        {
+          "s1_addr": "1016 Limestone Street, Benson, AZ",
+          "other_addr": "1016 LIMESTONE ST, BENSON, AZ"
+        },
+        {
+          "s1_addr": "1016 Limestone Street, Benson, AZ",
+          "other_addr": "1016 LIMESTONE ST, BENSON, AZ"
+        },
+        {
+          "s1_addr": "415 14th Street, Bandera, TX",
+          "other_addr": "415 14TH STREET, BANDERA, TX"
+        },
+        {
+          "s1_addr": "Virudhunagar, Tamil Nadu, Aruppukottai, 1-28-4/1, Ananthapuri Nagar, Iind Street, Madurai Road",
+          "other_addr": "1-28-4/1, ANANTHAPURI NAGAR, IIND STREET, MADURAI ROAD, ARUPPUKOTTAI, Tamil Nadu"
+        },
+        {
+          "s1_addr": "404 Morrissey Street, Franklin, TN",
+          "other_addr": "404 MORRISSEY ST, FRANKLIN, TN"
+        },
+        {
+          "s1_addr": "404 Morrissey Street, Franklin, TN",
+          "other_addr": "404 MORRISSEY ST, FRANKLIN, TN"
+        },
+        {
+          "s1_addr": "2388 Champlain Street, DC, Unit 1, Washington",
+          "other_addr": "2388 CHAMPLAIN ST, WASHINGTON, DC"
+        },
+        {
+          "s1_addr": "2388 Champlain Street, DC, Unit 1, Washington",
+          "other_addr": "2388 CHAMPLAIN ST, WASHINGTON, DC"
+        },
+        {
+          "s1_addr": "408 1/2 Comal Street, Austin, TX",
+          "other_addr": "TX, AUSTIN, 408 1/2-410 COMAL STREET"
+        },
+        {
+          "s1_addr": "322 Hickory Street, Nowata, OK",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "1813 44th Street, North Little Rock, AR",
+          "other_addr": "1813 44ND STREET, NORTH LITTLE ROCK, AR"
+        },
+        {
+          "s1_addr": "4189 R Street, Auburn, WA",
+          "other_addr": "#4189 R STREET, AUBURN, WA"
+        },
+        {
+          "s1_addr": "2998 3430, St George City, UT",
+          "other_addr": "2998 3430, SAINT GEORGE, UT"
+        }
+      ],
+      "abbrev_floor": [
+        {
+          "s1_addr": "Plot No.65, S1, 2Nd Floor, Annai Therasa Street, V.O.C.Nagar, Pammal, Chennai, Tamil Nadu",
+          "other_addr": "65, S1, 2ND FLOOR, ANNAI THERASA STREET, V.O.C.NAGAR, PAMMAL, CHENNAI, CHENGALPATTU, \u0ba4\u0bae\u0bbf\u0bb4\u0bcd\u0ba8\u0bbe\u0b9f\u0bc1"
+        },
+        {
+          "s1_addr": "2B, Dover Terrace, Ground Floor, Kolkata, Kolkata, Howrah, West Bengal",
+          "other_addr": "BLOCK G-310 2B, KOLKATA, HOWRAH, \u09aa\u09b6\u09cd\u099a\u09bf\u09ae\u09ac\u0999\u09cd\u0997"
+        },
+        {
+          "s1_addr": "Ka-45, Sf, Third Floor Kaushambhi, Ghaziabad, Uttar Pradesh",
+          "other_addr": "HN 324 KA-45, GHAZIABAD, Uttar Pradesh"
+        },
+        {
+          "s1_addr": "Ground Floor, Sagar Darshan, 40, North Avenue Road Santacruz West, Mumbai, Mumbai City, Maharashtra",
+          "other_addr": "Maharashtra, GROUND FLOOR, SAGAR DARSHAN, 40, NORTH AVENUE ROAD SANTACRUZ WEST, MUMBAI"
+        },
+        {
+          "s1_addr": "A 3 Ground Floor Shri Manibhandh Appt Anand Nagar Hingane Khurd Opposite Post Office, Pune, Maharashtra",
+          "other_addr": "A 3/1 GROUND FLOOR SHRI MANIBHANDH APPT ANAND NAGAR HINGANE KHURD OPPOSITE POST OFFICE, PUNE, Maharashtra"
+        },
+        {
+          "s1_addr": "G 36, 2Nd Floor, Palam Extension, Harijan Basti, Sector 7, Dwarka, Delhi, New Delhi, Delhi",
+          "other_addr": "G 36, 2ND FLOOR, PALAM EXTENSION, HARIJAN BASTI, SECTOR 7, DWARKA, NEW DELHI, SOUTH WEST DELHI, \u0926\u093f\u0932\u094d\u0932\u0940"
+        },
+        {
+          "s1_addr": "3308 160, Bonifay, FL",
+          "other_addr": "160, BONIFAY, FL"
+        },
+        {
+          "s1_addr": "Balaji Towers, 16/1A Abdul Hamid Street, 6Th Floor, Room No. 6E, Kolkata, Kolkata, Howrah, West Bengal",
+          "other_addr": "BALAJI TOWERS, 16/1A ABDUL HAMID STREET, 6TH FLOOR, ROOM NO. 6E, KOLKATA, KOLKATA, NULL, West Bengal"
+        },
+        {
+          "s1_addr": "5/6, Jay Tower 1St Wing, Ground Floor, Selvas Road, Pardi, Valsad, Gujarat",
+          "other_addr": "\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4, DOOR NO 566 5/6, JAY TOWER 1ST WING, GROUND FLOOR, SELVAS ROAD, PARDI"
+        },
+        {
+          "s1_addr": "Workflo Hitex Bizness Sqr, 4Th Floor, Unit 405-411, Shaikpet, Hyderabad, Telangana",
+          "other_addr": "WORKFLO HITEX BIZNESS SQR, 4TH. FLOOR, UNIT 405-411, SHAIKPET, Telangana"
+        },
+        {
+          "s1_addr": "D -1007, Ground Floor, New Friends Colony, New Delhi, South Delhi, Delhi",
+          "other_addr": "D -1007, GROUND FLOOR, NEW FRIENDS COLONY, NEW DELHI, SOUTH DELHI, Delhi"
+        },
+        {
+          "s1_addr": "No.93/24, Peters Road, Ground Floor New College Shopping Complex, Royapettha, Chennai, Tamil Nadu",
+          "other_addr": "NO.93/24, CHENNAI, Tamil Nadu"
+        },
+        {
+          "s1_addr": "Delhi, East Delhi, Delhi, Cbd Ground, Shahdara, Sf-25 2Nd Floor Cross River Mall",
+          "other_addr": "SF-25 2ND FLOOR CROSS RIVER MALL, CBD GROUND, SHAHDARA, DELHI, EAST DELHI, Delhi"
+        },
+        {
+          "s1_addr": "House No.2-A Ground Floor, Block F, Vijay Nagar Cit, Delhi, North West Delhi, Delhi",
+          "other_addr": "NORTH WEST DELHI, HOUSE NO.2-A GROUND FLOOR, BLOCK F, VIJAY NAGAR CIT, \u0926\u093f\u0932\u094d\u0932\u0940, DELHI"
+        },
+        {
+          "s1_addr": "G-4, First Floor, Pushkar Enclave Paschim Vihar, Delhi, West Delhi, Delhi",
+          "other_addr": "G-4, FIRST FLOOR, PUSHKAR ENCLAVE PASCHIM VIHAR, DELHI, Delhi"
+        }
+      ],
+      "abbrev_number": [
+        {
+          "s1_addr": "Plot No.65, S1, 2Nd Floor, Annai Therasa Street, V.O.C.Nagar, Pammal, Chennai, Tamil Nadu",
+          "other_addr": "65, S1, 2ND FLOOR, ANNAI THERASA STREET, V.O.C.NAGAR, PAMMAL, CHENNAI, CHENGALPATTU, \u0ba4\u0bae\u0bbf\u0bb4\u0bcd\u0ba8\u0bbe\u0b9f\u0bc1"
+        },
+        {
+          "s1_addr": "103/26/1 Foreshore Road, Howrah, West Bengal",
+          "other_addr": "NO 103/26/1 FORESHORE ROAD, HOWRAH, West Bengal"
+        },
+        {
+          "s1_addr": "Flat No. 1, C Wing, Pranayraj Plaza Sno 55/1 Gokulnagar Dhanori, Pune, Maharashtra",
+          "other_addr": "FLAT NO. 7-1, C WING, PRANAYRAJ PLAZA SNO 55/1 GOKULNAGAR DHANORI, PUNE REGION, PUNE, Maharashtra"
+        },
+        {
+          "s1_addr": "Rajiv Gandhi Nagar, 80 Feet Road, B R Layout, Sowripalayam, Coimbatore, Tamil Nadu, No.89, Coimbatore",
+          "other_addr": "#89, RAJIV GANDHI NAGAR, 80 FEET ROAD, B R LAYOUT, SOWRIPALAYAM, COIMBATORE, Tamil Nadu"
+        },
+        {
+          "s1_addr": "Plot No 1051/5517, Lane 6, Jagamohan Nagar Khandagiri, Bhubaneswar, Khordha, Orissa",
+          "other_addr": "\u0b13\u0b21\u0b3c\u0b3f\u0b36\u0b3e, PLOT NO 1051/5517, LANE 6, JAGAMOHAN NAGAR KHANDAGIRI, BHUBANESWAR"
+        },
+        {
+          "s1_addr": "Plot No- A/430, Kalawati Complex, Ramnagri More, Po-Ashiana Nagar, Ps- Rajeev Nagar, Patna, Bihar",
+          "other_addr": "PLOT NO- A/430, KALAWATI COMPLEX, RAMNAGRI MORE, PO-ASHIANA NAGAR, PS- RAJEEV NAGAR, PATNA, Bihar"
+        },
+        {
+          "s1_addr": "Bangalore, 29Th Main, Btm Layout, 2Nd, Karnataka, Bangalore, C/O Kolour Koncepts International No. 10/28 23Rd Cross",
+          "other_addr": "Karnataka, C/O KOLOUR KONCEPTS INTERNATIONAL NO. 0/28 23RD CROSS, 29TH MAIN, BTM LAYOUT, 2ND, BANGALORE"
+        },
+        {
+          "s1_addr": "H.No. 84, Tejgarhi, Meerut, Uttar Pradesh",
+          "other_addr": "0084 , TEJGARHI, MEERUT, Uttar Pradesh"
+        },
+        {
+          "s1_addr": "Pune, Office No. 512, Survey No. 133/134, Brand Square, Pune City, Maharashtra",
+          "other_addr": "BLOCK D-504 OFFICE NO. 512, SURVEY NO. 133/134, BRAND SQUARE, PUNE CITY, Maharashtra"
+        },
+        {
+          "s1_addr": "Mumbai, Maharashtra, 2, Seawind Terraces, 148, Dr. M. B. Raut Marg, Shivaji Park, Road No.2, Mumbai",
+          "other_addr": "2, SEAWIND TERRACES, 148, DR. M. B. RAUT MARG, SHIVAJI PARK, ROAD NO.2, MUMBAI, Maharashtra"
+        },
+        {
+          "s1_addr": "No 1038 23Rd Main 24Th Cross A Block Sahakarnagar, Bengaluru, Bangalore, Karnataka",
+          "other_addr": "DOR NO 3-1038 23RD MAIN 24TH CROSS A BLOCK SAHAKARNAGAR, BENGALURU, Karnataka"
+        },
+        {
+          "s1_addr": "Karnataka, Vishwa Vokkaligara Raitha Hitha Rakshana Samithi, Chowdeshwari Nagar, Kolar, No.6",
+          "other_addr": "#6, KOLAR, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95"
+        },
+        {
+          "s1_addr": "Balaji Towers, 16/1A Abdul Hamid Street, 6Th Floor, Room No. 6E, Kolkata, Kolkata, Howrah, West Bengal",
+          "other_addr": "BALAJI TOWERS, 16/1A ABDUL HAMID STREET, 6TH FLOOR, ROOM NO. 6E, KOLKATA, KOLKATA, NULL, West Bengal"
+        },
+        {
+          "s1_addr": "5/6, Jay Tower 1St Wing, Ground Floor, Selvas Road, Pardi, Valsad, Gujarat",
+          "other_addr": "\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4, DOOR NO 566 5/6, JAY TOWER 1ST WING, GROUND FLOOR, SELVAS ROAD, PARDI"
+        },
+        {
+          "s1_addr": "Hs No. 1/337, Ambakattuvalappil House, Kumaranellore, Thrissur, Thrissur, Kerala",
+          "other_addr": "HS NO. 6/337, AMBAKATTUVALAPPIL HOUSE, KUMARANELLORE, THRISSUR, THRISSUR, Kerala"
+        }
+      ],
+      "numeric_diff": [
+        {
+          "s1_addr": "203 Hersom Street, Unit 1, New Bedford, MA",
+          "other_addr": "203 Hersom Street, NEW BEDFORD, MA"
+        },
+        {
+          "s1_addr": "44W 575 Plato Road, Burlington, IL",
+          "other_addr": "4W 575 PLATO ROAD, BURLINGTON, IL"
+        },
+        {
+          "s1_addr": "5362 Meadowlane Drive, Granite Falls, NC",
+          "other_addr": "536 MEADOWLANE DRIVE, GRANITE FALLS, NC"
+        },
+        {
+          "s1_addr": "5031 Willowmere Drive, Dayton, OH",
+          "other_addr": "5031 1/2 WILLOWMERE DRIVE, DAYTON, OH"
+        },
+        {
+          "s1_addr": "2465 Schmidt Way, Unit #324, Beaverton, OR",
+          "other_addr": "OR, 2467 SCHMIDT WAY, BEAVERTON"
+        },
+        {
+          "s1_addr": "Flat No. 1, C Wing, Pranayraj Plaza Sno 55/1 Gokulnagar Dhanori, Pune, Maharashtra",
+          "other_addr": "FLAT NO. 7-1, C WING, PRANAYRAJ PLAZA SNO 55/1 GOKULNAGAR DHANORI, PUNE REGION, PUNE, Maharashtra"
+        },
+        {
+          "s1_addr": "2B, Dover Terrace, Ground Floor, Kolkata, Kolkata, Howrah, West Bengal",
+          "other_addr": "BLOCK G-310 2B, KOLKATA, HOWRAH, \u09aa\u09b6\u09cd\u099a\u09bf\u09ae\u09ac\u0999\u09cd\u0997"
+        },
+        {
+          "s1_addr": "8, Suryakiran Duplex, Nr. P D Pandya College Rd, Ahmadabad City, Ahmedabad, Gujarat",
+          "other_addr": "10, SURYAKIRAN DUPLEX, NR. P D PANDYA COLLEGE RD, AHMADABAD CITY, Gujarat"
+        },
+        {
+          "s1_addr": "158 Cemetery Road, Drexel, NC",
+          "other_addr": "158-162 CEMETERY ROAD, DREXEL, NC"
+        },
+        {
+          "s1_addr": "Ka-45, Sf, Third Floor Kaushambhi, Ghaziabad, Uttar Pradesh",
+          "other_addr": "HN 324 KA-45, GHAZIABAD, Uttar Pradesh"
+        },
+        {
+          "s1_addr": "2388 Champlain Street, DC, Unit 1, Washington",
+          "other_addr": "2388 CHAMPLAIN ST, WASHINGTON, DC"
+        },
+        {
+          "s1_addr": "Rancho Cucamonga, 7054 La Ronda Court, CA",
+          "other_addr": "07054 LA RONDA COURT, RANCHO CUCAMONGA TOWNSHIP, CA"
+        },
+        {
+          "s1_addr": "408 1/2 Comal Street, Austin, TX",
+          "other_addr": "TX, AUSTIN, 408 1/2-410 COMAL STREET"
+        },
+        {
+          "s1_addr": "Bangalore, 29Th Main, Btm Layout, 2Nd, Karnataka, Bangalore, C/O Kolour Koncepts International No. 10/28 23Rd Cross",
+          "other_addr": "Karnataka, C/O KOLOUR KONCEPTS INTERNATIONAL NO. 0/28 23RD CROSS, 29TH MAIN, BTM LAYOUT, 2ND, BANGALORE"
+        },
+        {
+          "s1_addr": "1830 Spaulding Avenue, Chicago, IL",
+          "other_addr": "1830 1/2 SPAULDING AVE, CHCAGO, IL"
+        }
+      ],
+      "abbrev_avenue": [
+        {
+          "s1_addr": "2565 Alabama Avenue, Saint Louis Park, MN",
+          "other_addr": "2565 ALABAMA AVENUE, SAINT LOUIS PARK, MN"
+        },
+        {
+          "s1_addr": "4812 Rhoads Avenue, Santa Barbara, CA",
+          "other_addr": "4812 RHOADS AVE, SANTA BARBARA, CA"
+        },
+        {
+          "s1_addr": "4812 Rhoads Avenue, Santa Barbara, CA",
+          "other_addr": "4812 RHOADS AVE, SANTA BARBARA, CA"
+        },
+        {
+          "s1_addr": "513 Cain Avenue, Morristown, TN",
+          "other_addr": "513 CAIN AVENUE, MORRISTOWN, TN"
+        },
+        {
+          "s1_addr": "261 7th Avenue, Deruyter, NY",
+          "other_addr": "SEVENTH AVE, DERUYTER, NY"
+        },
+        {
+          "s1_addr": "261 7th Avenue, Deruyter, NY",
+          "other_addr": "SEVENTH AVE, DERUYTER, NY"
+        },
+        {
+          "s1_addr": "2516 Grand Avenue, Bronx, NY",
+          "other_addr": "2516 Grand Avenue, N/A, BRONX, NY"
+        },
+        {
+          "s1_addr": "508 1/2 Broadway Avenue, Shawnee, OK",
+          "other_addr": "508 1/2 BROADWAY AVENUE, SHAWNEE, OK"
+        },
+        {
+          "s1_addr": "1830 Spaulding Avenue, Chicago, IL",
+          "other_addr": "1830 1/2 SPAULDING AVE, CHCAGO, IL"
+        },
+        {
+          "s1_addr": "1830 Spaulding Avenue, Chicago, IL",
+          "other_addr": "1830 1/2 SPAULDING AVE, CHCAGO, IL"
+        },
+        {
+          "s1_addr": "MO, Unit B, Columbia, 205 Forest Avenue",
+          "other_addr": "MO, 205 FOREST AVENUE, COLUMBIA"
+        },
+        {
+          "s1_addr": "8907 Belleview Avenue, Kansas City, MO",
+          "other_addr": "8907 BELLEVIEW AVE, KASNAS CITY, MO"
+        },
+        {
+          "s1_addr": "8907 Belleview Avenue, Kansas City, MO",
+          "other_addr": "8907 BELLEVIEW AVE, KASNAS CITY, MO"
+        },
+        {
+          "s1_addr": "Ground Floor, Sagar Darshan, 40, North Avenue Road Santacruz West, Mumbai, Mumbai City, Maharashtra",
+          "other_addr": "Maharashtra, GROUND FLOOR, SAGAR DARSHAN, 40, NORTH AVENUE ROAD SANTACRUZ WEST, MUMBAI"
+        },
+        {
+          "s1_addr": "1111 32nd Avenue, Unit Apartment 120, Fargo, ND",
+          "other_addr": "ND, FARGO, 1111 32nd Ave"
+        }
+      ],
+      "missing_numbers": [
+        {
+          "s1_addr": "76/2, Opp. Crazy Corner, Shivaji Statue, Jalna, Maharashtra",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "261 7th Avenue, Deruyter, NY",
+          "other_addr": "SEVENTH AVE, DERUYTER, NY"
+        },
+        {
+          "s1_addr": "288 Amelia Olive Branch Road, Amelia, OH",
+          "other_addr": "AMELIA OLIVE BRANCH ROAD, AMELLIA, OH"
+        },
+        {
+          "s1_addr": "322 Hickory Street, Nowata, OK",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "1943 Millsap Highway, Mineral Wells, TX",
+          "other_addr": "TX, MILLSAP HWY, MINERAL WELLS"
+        },
+        {
+          "s1_addr": "932 Cahal Avenue, Unit B, Nashville, TN",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "Ocean Isle Beach, 1702 Linkside Way, NC",
+          "other_addr": "OCEAN ISLE BEACH, NC, LINKSIDE WAY"
+        },
+        {
+          "s1_addr": "1702 N Street, Belleville, KS",
+          "other_addr": "N ST, BELLEVILLE, KS"
+        },
+        {
+          "s1_addr": "4928 Crestwood Way, Sacramento, CA",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "4613 Kellywood Drive, Henrico County, VA",
+          "other_addr": "KELLYWOOD DRIVE, GLEN ALLEN, VA"
+        },
+        {
+          "s1_addr": "C-1/355 Indira Nagar, Kanpur, Uttar Pradesh",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "2048 Miami Road, Euclid, OH",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "V Pride, Opp. Kulkarni Garden Kulkarni Colony, Nashik, Maharashtra",
+          "other_addr": "#402 V PRIDE, OPP. KULKARNI GARDEN KULKARNI COLONY, NASHIK, Maharashtra"
+        },
+        {
+          "s1_addr": "3600 La Habra Way, CA, Sacramento",
+          "other_addr": "LA HABRA WAY, SACRAMENTO TOWNSHIP, CA"
+        },
+        {
+          "s1_addr": "191 Spring Street, Gloversville, NY",
+          "other_addr": NaN
+        }
+      ],
+      "component_reorder": [
+        {
+          "s1_addr": "Thane, Samriddhi, Indralok Phase 8, Maharashtra, Thane, A-1803",
+          "other_addr": "Maharashtra, A-1803, SAMRIDDHI, INDRALOK PHASE 8, THANE"
+        },
+        {
+          "s1_addr": "Mumbai, Maharashtra, 2, Seawind Terraces, 148, Dr. M. B. Raut Marg, Shivaji Park, Road No.2, Mumbai",
+          "other_addr": "2, SEAWIND TERRACES, 148, DR. M. B. RAUT MARG, SHIVAJI PARK, ROAD NO.2, MUMBAI, Maharashtra"
+        },
+        {
+          "s1_addr": "B 1203 Ahad Opus, Sarjapur Road, Bangalore South, Bangalore, Karnataka",
+          "other_addr": "B 1203 AHAD OPUS, SARJAPUR ROAD, BANGALORE, BANGALORE SOUTH, Karnataka"
+        },
+        {
+          "s1_addr": "6016 Wildhurst Lane, OH, Oregon",
+          "other_addr": "6016 WILDHURST LANE, OREGON, OH"
+        },
+        {
+          "s1_addr": "G No 271/1, Tippehali, Sangola, Solapur, Sangola, Solapur, Maharashtra",
+          "other_addr": "Maharashtra, G NO 271/1, TIPPEHALI, SANGOLA, SOLAPUR, SANGOLA"
+        },
+        {
+          "s1_addr": "3209 Jack Cullen Drive, Texarkana, AR",
+          "other_addr": "3209 JACK CULLEN DRIVE, AR, TEXARKANA"
+        },
+        {
+          "s1_addr": "2921 La Palomita Road, Albuquerque, NM",
+          "other_addr": "NM, 2921 LA PALOMITA ROAD, ALBUQUERQUE"
+        },
+        {
+          "s1_addr": "Delhi, East Delhi, Delhi, Cbd Ground, Shahdara, Sf-25 2Nd Floor Cross River Mall",
+          "other_addr": "SF-25 2ND FLOOR CROSS RIVER MALL, CBD GROUND, SHAHDARA, DELHI, EAST DELHI, Delhi"
+        },
+        {
+          "s1_addr": "West Bengal, M/S. Azad Afrodi Udyog Unsani Near P.K. Forge, Howrah",
+          "other_addr": "M/S. AZAD AFRODI UDYOG UNSANI NEAR P.K. FORGE, HOWRAH, West Bengal"
+        },
+        {
+          "s1_addr": "Panipat, House No.29 R, Model Town, Panipat, Haryana",
+          "other_addr": "HOUSE NO.29  R, MODEL TOWN, PANIPAT, Haryana"
+        },
+        {
+          "s1_addr": "780 Columbia 77, Magnolia, AR",
+          "other_addr": "MAGNOLIA, 780 COLUMBIA 77, AR"
+        },
+        {
+          "s1_addr": "VA, Alexandria City, 31 Taylor Run Parkway",
+          "other_addr": "31 TAYLOR RUN PARKWAY, ALEXANDRIA CITY, VA"
+        },
+        {
+          "s1_addr": "Ahmedabad, Gujarat, Behind Ishwer Bhavan Nearnavarangpura",
+          "other_addr": "BEHIND ISHWER BHAVAN NEARNAVARANGPURA, AHMEDABAD, Gujarat"
+        },
+        {
+          "s1_addr": "Wework Latitude, 9Th Floor Rmz Latitude Co, Bangalore North, Bangalore, Karnataka",
+          "other_addr": "WEWORK LATITUDE, 9TH FLOOR RMZ LATITUDE CO, BANGALORE NORTH, Karnataka"
+        },
+        {
+          "s1_addr": "Delhi, East Delhi, Delhi, A-18/1-2 Radhey Puri Extension Delhi",
+          "other_addr": "A-18/1-2 RADHEY PURI EXTENSION DELHI, DELHI, EAST DELHI, Delhi"
+        }
+      ],
+      "abbrev_boulevard": [
+        {
+          "s1_addr": "104 Aeroplane Boulevard, Big Bear City, CA",
+          "other_addr": "104 AEROPLANE BLVD, BIG BEAR CITY, CA"
+        },
+        {
+          "s1_addr": "104 Aeroplane Boulevard, Big Bear City, CA",
+          "other_addr": "104 AEROPLANE BLVD, BIG BEAR CITY, CA"
+        },
+        {
+          "s1_addr": "28851 Vistancia Boulevard, Unit 1030, Peoria, AZ",
+          "other_addr": "28851 VISTANCIA BLVD, PEORIA, AZ"
+        },
+        {
+          "s1_addr": "28851 Vistancia Boulevard, Unit 1030, Peoria, AZ",
+          "other_addr": "28851 VISTANCIA BLVD, PEORIA, AZ"
+        },
+        {
+          "s1_addr": "AZ, Unit 1051, 2323 Apache Boulevard, Tempe",
+          "other_addr": "AZ, 2323 APACHE BOULEVARD, TEMPE"
+        },
+        {
+          "s1_addr": "2303 Bush Boulevard, Reynoldsburg, OH",
+          "other_addr": "2303  BUSH BLVD, REYNOLDBSURG, OH"
+        },
+        {
+          "s1_addr": "2303 Bush Boulevard, Reynoldsburg, OH",
+          "other_addr": "2303  BUSH BLVD, REYNOLDBSURG, OH"
+        },
+        {
+          "s1_addr": "770 Silver Springs Boulevard, Unit APT 1619, Wichita, KS",
+          "other_addr": "KS, 770 SILER SPRINGS BLVD, WICHITA"
+        },
+        {
+          "s1_addr": "770 Silver Springs Boulevard, Unit APT 1619, Wichita, KS",
+          "other_addr": "KS, 770 SILER SPRINGS BLVD, WICHITA"
+        },
+        {
+          "s1_addr": "2303 T C Jester Boulevard, Houston, TX",
+          "other_addr": "303 T C Jester Boulevard, HOUSTON, TX"
+        },
+        {
+          "s1_addr": "1569 Baldwin Boulevard, Islip, NY",
+          "other_addr": "1569 BALDWIN BOULEVARD, NORTH BAY SHORE, NY"
+        },
+        {
+          "s1_addr": "4103 Dayton Boulevard, Unit 076, Red Bank, TN",
+          "other_addr": "4103 Dayton Boulevard, CHATTNAOOGA, TN"
+        },
+        {
+          "s1_addr": "1407 Zion Park Boulevard, Springdale, UT",
+          "other_addr": "1407 ZION PARK BLVD, SPPRINGDALE, UT"
+        },
+        {
+          "s1_addr": "1407 Zion Park Boulevard, Springdale, UT",
+          "other_addr": "1407 ZION PARK BLVD, SPPRINGDALE, UT"
+        },
+        {
+          "s1_addr": "735 Franklin Boulevard, Gastonia, NC",
+          "other_addr": "735 FRANKLIN BLVD, GASTONIA, NC"
+        }
+      ],
+      "abbrev_lane": [
+        {
+          "s1_addr": "Plot No 1051/5517, Lane 6, Jagamohan Nagar Khandagiri, Bhubaneswar, Khordha, Orissa",
+          "other_addr": "\u0b13\u0b21\u0b3c\u0b3f\u0b36\u0b3e, PLOT NO 1051/5517, LANE 6, JAGAMOHAN NAGAR KHANDAGIRI, BHUBANESWAR"
+        },
+        {
+          "s1_addr": "110 Poplar Lane, Justice, IL",
+          "other_addr": "110 POPLAR LANE, JUSTICE, IL"
+        },
+        {
+          "s1_addr": "6016 Wildhurst Lane, OH, Oregon",
+          "other_addr": "6016 WILDHURST LANE, OREGON, OH"
+        },
+        {
+          "s1_addr": "919 Slate Valley Lane, Spring, TX",
+          "other_addr": "919C SLATE VALLEY LANE, SPRING, TX"
+        },
+        {
+          "s1_addr": "393 Country Club Lane, Haverstraw, NY",
+          "other_addr": "393 COUNTRY CLUB LN, HAVERSTRAW, NY"
+        },
+        {
+          "s1_addr": "393 Country Club Lane, Haverstraw, NY",
+          "other_addr": "393 COUNTRY CLUB LN, HAVERSTRAW, NY"
+        },
+        {
+          "s1_addr": "5541 Shooters Hill Lane, Fairfax County, VA",
+          "other_addr": "#5541 SHOOTERS HILL LN, FAIRFAX CIY, VA"
+        },
+        {
+          "s1_addr": "5541 Shooters Hill Lane, Fairfax County, VA",
+          "other_addr": "#5541 SHOOTERS HILL LN, FAIRFAX CIY, VA"
+        },
+        {
+          "s1_addr": "291 Napoleon Lane, Princeton, WV",
+          "other_addr": "291 NAPOLEON LN, PRINCETON, WV"
+        },
+        {
+          "s1_addr": "291 Napoleon Lane, Princeton, WV",
+          "other_addr": "291 NAPOLEON LN, PRINCETON, WV"
+        },
+        {
+          "s1_addr": "307 Woodcock Lane, Lafayette, TN",
+          "other_addr": "307. WOODCOCK LANE, LAFAYETTE, TN"
+        },
+        {
+          "s1_addr": "3407 Waterfowl Lane, Hamilton, OH",
+          "other_addr": "OH, HAMILTON, 3407 WATERFOWL LN"
+        },
+        {
+          "s1_addr": "3407 Waterfowl Lane, Hamilton, OH",
+          "other_addr": "OH, HAMILTON, 3407 WATERFOWL LN"
+        },
+        {
+          "s1_addr": "6250 Hidden Springs Lane, Worden, IL",
+          "other_addr": "6250 HIDDEN SPRINGS LANE, WORDEN, IL"
+        },
+        {
+          "s1_addr": "30 Judith Lane, Unit 1, Waltham, MA",
+          "other_addr": "30 JUDITH LANE, WALTHAM, MA"
+        }
+      ],
+      "abbrev_court": [
+        {
+          "s1_addr": "Rancho Cucamonga, 7054 La Ronda Court, CA",
+          "other_addr": "07054 LA RONDA COURT, RANCHO CUCAMONGA TOWNSHIP, CA"
+        },
+        {
+          "s1_addr": "25 Woodlawn Avenue, Ansonia, CT",
+          "other_addr": "#25 WOODLAWN AVENUE, ANSONIA, CT"
+        },
+        {
+          "s1_addr": "16592 La Louisiane Court, St. George City, LA",
+          "other_addr": "16592 LA LOUISIANE COURT, ST. GEORGE CITY, LA"
+        },
+        {
+          "s1_addr": "TN, Memphis, 1211 Fountain Court",
+          "other_addr": "TN, MEMPHIS, 1211 FOUNTAIN CT"
+        },
+        {
+          "s1_addr": "TN, Memphis, 1211 Fountain Court",
+          "other_addr": "TN, MEMPHIS, 1211 FOUNTAIN CT"
+        },
+        {
+          "s1_addr": "OH, 8021 Chester Court, West Chester",
+          "other_addr": "802 CHESTER COURT, WEST CHESTER, OH"
+        },
+        {
+          "s1_addr": "673 Sedgeworth Court, Simi Valley, CA",
+          "other_addr": "673 SEDGEWORTH COURT, SIMI VALLEY, CA"
+        },
+        {
+          "s1_addr": "1905 Tremont Court, Fl 1, Columbia, MO",
+          "other_addr": "1905- TREMONT COURT, COLUMBIA, MO"
+        },
+        {
+          "s1_addr": "Bowling Green, 620 Whisperwood Court, KY",
+          "other_addr": "620-622 WHISPERWOOD COURT, BOWLING GREEN, KY"
+        },
+        {
+          "s1_addr": "12010 Orchard Court, Stafford, TX",
+          "other_addr": "ORCHARD COURT, STAFFORD, TX"
+        },
+        {
+          "s1_addr": "156 Homeplace Court, Fayetteville, NC",
+          "other_addr": "156 HOMEPLACE CT, FAYETTEVILLE, NC"
+        },
+        {
+          "s1_addr": "156 Homeplace Court, Fayetteville, NC",
+          "other_addr": "156 HOMEPLACE CT, FAYETTEVILLE, NC"
+        },
+        {
+          "s1_addr": "41 Shore Road, Morris, CT",
+          "other_addr": "41 SHORE RD, PO BOX 438, MORRIS, CT"
+        },
+        {
+          "s1_addr": "112 King Richard Court, Jacksonville, NC",
+          "other_addr": "112 KING RICHARD CT, JACKSONVILLE, NC"
+        },
+        {
+          "s1_addr": "112 King Richard Court, Jacksonville, NC",
+          "other_addr": "112 KING RICHARD CT, JACKSONVILLE, NC"
+        }
+      ],
+      "missing_postal": [
+        {
+          "s1_addr": "Rancho Cucamonga, 7054 La Ronda Court, CA",
+          "other_addr": "07054 LA RONDA COURT, RANCHO CUCAMONGA TOWNSHIP, CA"
+        },
+        {
+          "s1_addr": "505 4545, Winnsboro, TX",
+          "other_addr": "00505 4545, WINNSBORO, TX"
+        },
+        {
+          "s1_addr": "9210 Taconic State Parkway, Ghent, NY",
+          "other_addr": "09210 TACONIC STATE PARKWAY, GHENT, NY"
+        },
+        {
+          "s1_addr": "20950 80, Wills Point, TX",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "1106 Elizabeth Street, Newport, OR",
+          "other_addr": "01106 Elizabeth Street, null, NEWPORT, OR"
+        },
+        {
+          "s1_addr": "1215 Country Crossing Way, San Tan Valley, AZ",
+          "other_addr": "QUEEN CREEK, 01215 COUNTRY CROSSING WAY, AZ"
+        },
+        {
+          "s1_addr": "130, Extension 2Nd Cross, Vinayaka Nagar, Near Stella Marys English School, Gubbi, Tumkur, Karnataka",
+          "other_addr": "00847 130, EXTENSION 2ND CROSS, VINAYAKA NAGAR, NEAR STELLA MARYS ENGLISH SCHOOL, GUBBI, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95"
+        },
+        {
+          "s1_addr": "12010 Orchard Court, Stafford, TX",
+          "other_addr": "ORCHARD COURT, STAFFORD, TX"
+        },
+        {
+          "s1_addr": "79875 Unionvale Kenwood Road, Adena, OH",
+          "other_addr": "UNIONVALE KENWOOD ROAD, ADENA CITY, OH"
+        },
+        {
+          "s1_addr": "TX, 6129 Acres Drive, Houston",
+          "other_addr": "006129 ACRES DR, HOUSTON, TX"
+        },
+        {
+          "s1_addr": "28951 Beckendorff Road, Katy, TX",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "11201 Native Texan Trail, Austin, TX",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "15669 Marketplace Way, Phoenix, AZ",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "Cannelton, IN, 5821 66",
+          "other_addr": "05821 66, CANNELTON, IN"
+        },
+        {
+          "s1_addr": "6434 Mockingbird Lane, Dallas, TX",
+          "other_addr": "06434 MOCKINGBIRD LANE, DALLAS, TX"
+        }
+      ],
+      "abbrev_apartment": [
+        {
+          "s1_addr": "1111 32nd Avenue, Unit Apartment 120, Fargo, ND",
+          "other_addr": "ND, FARGO, 1111 32nd Ave"
+        },
+        {
+          "s1_addr": "Apt Btf4, Elegant Palace, 7Th Main, 2Nd Cross, Nobo, Bangalore South, Bangalore, Karnataka",
+          "other_addr": "APT BTF4/9, ELEGANT PALACE, 7TH MAIN, 2ND CROSS, NOBO, BANGALORE SOUTH, null, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95"
+        },
+        {
+          "s1_addr": "139 Rombout Avenue, Unit Apartment 6, Beacon, NY",
+          "other_addr": "NY, 139. ROMBOUT AVE, BEACON"
+        },
+        {
+          "s1_addr": "A4 Aasha Apartment 61 Pulla Avenue, Shenoy Nagar, Chennai, Tamil Nadu",
+          "other_addr": "A#4 AASHA APARTMENT 61 PULLA AVENUE, SHENOY NAGAR, CHENNAI, Tamil Nadu"
+        },
+        {
+          "s1_addr": "B-401, Sterling Apartment Muir Road, Allahabad, Uttar Pradesh",
+          "other_addr": "B-401, STERLING APARTMENT MUIR ROAD, ALLAHABAD, \u0909\u0924\u094d\u0924\u0930 \u092a\u094d\u0930\u0926\u0947\u0936"
+        },
+        {
+          "s1_addr": "7948 59th Place, Unit APARTMENT  104, Tulsa, OK",
+          "other_addr": "OK, 7948 59TH PL, TULSA"
+        },
+        {
+          "s1_addr": "4435 78th Street, Unit APT 203A, Scottsdale, AZ",
+          "other_addr": "4435  78ST ST, <NULL>, SCOTTSDALE, AZ"
+        },
+        {
+          "s1_addr": "145, Park Road, Apt Road, Erode, Tamil Nadu",
+          "other_addr": "#621 145, PARK ROAD, APT ROAD, ERODE, Tamil Nadu"
+        },
+        {
+          "s1_addr": "3104 Four Seasons Court, Unit APARTMENT A1, Dundalk, MD",
+          "other_addr": "3104 FOUR SEASONS CT, DUNDLAK, MD"
+        },
+        {
+          "s1_addr": "A-104, Ganga Apartment P. K. Salve Nagar, Mohan Nagar, Nagpur, Maharashtra",
+          "other_addr": "Maharashtra, H.NO 234 A-104, GANGA APARTMENT P. K. SALVE NAGAR, MOHAN NAGAR"
+        },
+        {
+          "s1_addr": "12 Bevan Street, Unit Apartment 2, Cohoes, NY",
+          "other_addr": "12 Bevan Street, COHOES, NY"
+        },
+        {
+          "s1_addr": "214 Plum Avenue, Unit APT A, Bozeman, MT",
+          "other_addr": "00214 Plum Avenue, BOZEMAN, MT"
+        },
+        {
+          "s1_addr": "708 Neighborhood Road, Unit Apartment 9D, Ulster, NY",
+          "other_addr": "708 NEIGHBORHOOD RD, LAKE KATRINE, NY"
+        },
+        {
+          "s1_addr": "2700 Foxhunt Lane, Unit APT E, Blacksburg Town, VA",
+          "other_addr": "2700 FOXHUNT LANE, BLACKSBURG TOWN, VA"
+        },
+        {
+          "s1_addr": "320 Omaha Street, Unit APT 7, City Of Washburn, WI",
+          "other_addr": "320 OMAHA STREET, CITY OF WASHBURN, WI"
+        }
+      ],
+      "postal_diff": [
+        {
+          "s1_addr": "88728 Fountain Road, Elmira, OR",
+          "other_addr": "58728 FOUNTAIN RD, ELMIRA CITY, OR"
+        },
+        {
+          "s1_addr": "11734 Bollinger Park Court, Houston, TX",
+          "other_addr": "011734 BOLLINGER PARK CT, HOUSTON, TX"
+        },
+        {
+          "s1_addr": "29469 175th Lane, New Prague, MN",
+          "other_addr": "29482 175TH LANE, NEW PRAGUE, MN"
+        },
+        {
+          "s1_addr": "11800 White Avenue, Unit UNIT 5, Adelanto, CA",
+          "other_addr": "12028 WHITE AVE, ADEELANTO, CA"
+        },
+        {
+          "s1_addr": "53133 Wildlife Drive, South Bend, IN",
+          "other_addr": "53143 WILDLIFE DR, SOUTH BEND, IN"
+        },
+        {
+          "s1_addr": "11636 166, Tyler, TX",
+          "other_addr": "11636-11638 166, TYLER, TX"
+        },
+        {
+          "s1_addr": "MN, 20392 490th Lane, Mcgregor",
+          "other_addr": "020392 490TH LN, MCGREGOR, MN"
+        },
+        {
+          "s1_addr": "40525 Hazel Place, Loudoun County, VA",
+          "other_addr": "040525 HAZEL PLACE, LOUDOUN COUNTY, VA"
+        },
+        {
+          "s1_addr": "31246 103rd Street, Baldwin, MN",
+          "other_addr": "31246-31248 103ND ST, BALDWIN, MN"
+        },
+        {
+          "s1_addr": "14519 Reddington Avenue, Maple Heights, OH",
+          "other_addr": "#14502 REDDINGTON AVENUE, MAPLE HEIGHTS, OH"
+        },
+        {
+          "s1_addr": "11664 Belle Manor Drive, Arlington, TN",
+          "other_addr": "11664-11668 BELLE MANOR DR, ARLINGTON, TN"
+        },
+        {
+          "s1_addr": "18789 Oakland School Road, Moniteau, MO",
+          "other_addr": "18789-18791 OAKLAND SCHOOL ROAD, MONITEAU, MO"
+        },
+        {
+          "s1_addr": "TX, 26031 Mills Ridge Court, Kingwood",
+          "other_addr": "26031-26033 MILLS RIDGE CT, KINGWOOD, TX"
+        },
+        {
+          "s1_addr": "13687 Summerfield Drive, Athens, AL",
+          "other_addr": "AL, 13626 SUMMERFIELD DR, ATHESN"
+        },
+        {
+          "s1_addr": "Ganraj Sankul F. No.55869, A5 P? Vati, Nashik, Maharashtra",
+          "other_addr": "GANRAJ SANKUL F. NO.55868, /A5 P? VATI, NASHIK, \u092e\u0939\u093e\u0930\u093e\u0937\u094d\u091f\u094d\u0930"
+        }
+      ],
+      "abbrev_suite": [
+        {
+          "s1_addr": "161 Marine Drive, Unit Suite 10E, Buffalo, NY",
+          "other_addr": "161. MARINE DRIVE, BUFFALO, NY"
+        },
+        {
+          "s1_addr": "Silver Point Suite No 1Baner Road, Pune, Maharashtra",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "951 Poplar Street, Unit SUITE 100, Casper, WY",
+          "other_addr": "951 POPLAR ST, CASPER, WY"
+        },
+        {
+          "s1_addr": "Siddha Weston, 9, Weston Strreet, 3Rd Floor, Suite No. 321, Kolkata, Kolkata, Howrah, West Bengal",
+          "other_addr": "SIDDHA WESTON, 9, WESTON STRREET, 3RD FLOOR, SUITE NO. 321, KOLKATA, KOLKATA, \u09aa\u09b6\u09cd\u099a\u09bf\u09ae\u09ac\u0999\u09cd\u0997"
+        },
+        {
+          "s1_addr": "Aryaman Group, Suite # 402, 4Th Floor, City Tower, Dhole Patil Road, Pune, Maharashtra",
+          "other_addr": "ARYAMAN GROUP, SUGTE # 402, 4TH FLOOR, CITY TOWER, DHOLE PATIL ROAD, PUNE, Maharashtra"
+        },
+        {
+          "s1_addr": "Unit Suite B5, Great Neck Plaza, 15 Canterbury Road, NY",
+          "other_addr": "#15 CANTERBURY RD, GREAT NECK, NY"
+        },
+        {
+          "s1_addr": "640 Kreag Road, Unit Suite 201, Perinton, NY",
+          "other_addr": "640 KREAG ROAD, PERINTON, NY"
+        },
+        {
+          "s1_addr": "521 Butler Farm Road, Unit STE C, Hampton City, VA",
+          "other_addr": "521 BUTLER FARM RD, HAMPTON CITY, VA"
+        },
+        {
+          "s1_addr": "300 Court Street, Unit Ste 202, City Of Onalaska, WI",
+          "other_addr": "300. COURT STREET, ONALASKA TOWNSIHP, WI"
+        },
+        {
+          "s1_addr": "527 Bellevue Drive, Unit Suite 200, Bend, OR",
+          "other_addr": "527. BELLEVUE DR, OR, BEND"
+        },
+        {
+          "s1_addr": "2 Fifteenth Street, Unit Suite 1, Watervliet, NY",
+          "other_addr": "##2 FIFTEENTH STREET, WATERVLIET, NY"
+        },
+        {
+          "s1_addr": "161 Wisconsin Avenue, Unit Suite 2G, Village Of Pewaukee, WI",
+          "other_addr": "161 WISCONSIN AVENUE, PO BOX 2081, VILLAGE OF PEWAUKEE, WI"
+        },
+        {
+          "s1_addr": "50 York Dr Drive, Unit STE 5, Marshfield, MO",
+          "other_addr": NaN
+        },
+        {
+          "s1_addr": "1985 Crompond Road, Unit Suite D, Cortlandt, NY",
+          "other_addr": "#1985 CROMPOND RD, CORTLANDT, NY"
+        },
+        {
+          "s1_addr": "Suite No- 560, Sharon Bliss, Tc 25- 1958-7, 3Rd Floor, Plamoodu- Charachira Road, Thiruvananthapuram, Thiruvananthapuram, Trivandrum, Kerala",
+          "other_addr": "HN 592 SUITE NO- 560, SHARON BLISS, TC 25- 1958-7, 3RD FLOOR, PLAMOODU- CHARACHIRA ROAD, THIRUVANANTHAPURAM, THIRUVANANTHAPURAM, Kerala"
+        }
+      ],
+      "exact": [
+        {
+          "s1_addr": "409 Jefferson Street, Irving, TX",
+          "other_addr": "409 Jefferson Street, Irving, TX"
+        },
+        {
+          "s1_addr": "11617 Alvarado Road, Avondale, AZ",
+          "other_addr": "11617 Alvarado Road, Avondale, AZ"
+        },
+        {
+          "s1_addr": "6223 Knollwest Drive, Houston, TX",
+          "other_addr": "6223 Knollwest Drive, Houston, TX"
+        },
+        {
+          "s1_addr": "2316 172nd Avenue, Omaha, NE",
+          "other_addr": "2316 172nd Avenue, Omaha, NE"
+        },
+        {
+          "s1_addr": "16521 153rd Avenue, Fl 1, Yelm, WA",
+          "other_addr": "16521 153rd Avenue, Fl 1, Yelm, WA"
+        },
+        {
+          "s1_addr": "507 Michigan Trail, Lakeville, IN",
+          "other_addr": "507 Michigan Trail, Lakeville, IN"
+        },
+        {
+          "s1_addr": "Shop Sf-239, Radhe Square, Nr Reliance Cr.Dholakuva, Gandhinagar, Gandhi Nagar, Gujarat",
+          "other_addr": "Shop Sf-239, Radhe Square, Nr Reliance Cr.Dholakuva, Gandhinagar, Gandhi Nagar, Gujarat"
+        },
+        {
+          "s1_addr": "Banjaria Krishna Nagar, Madhuban, East Champaran, Bihar",
+          "other_addr": "Banjaria Krishna Nagar, Madhuban, East Champaran, Bihar"
+        },
+        {
+          "s1_addr": "7590 State Rt 100, Jacks Creek, TN",
+          "other_addr": "7590 State Rt 100, Jacks Creek, TN"
+        },
+        {
+          "s1_addr": "37695 Jeanette Court, Spring Grove, IL",
+          "other_addr": "37695 Jeanette Court, Spring Grove, IL"
+        },
+        {
+          "s1_addr": "H. No. Gali No. 3 New Ratan Nagar, Ward No. 18, Jalandhar, Punjab",
+          "other_addr": "H. No. Gali No. 3 New Ratan Nagar, Ward No. 18, Jalandhar, Punjab"
+        },
+        {
+          "s1_addr": "2617 Mobile Avenue, Chicago, IL",
+          "other_addr": "2617 Mobile Avenue, Chicago, IL"
+        },
+        {
+          "s1_addr": "4638 Park Avenue, Minneapolis, MN",
+          "other_addr": "4638 Park Avenue, Minneapolis, MN"
+        },
+        {
+          "s1_addr": "912 Prestige Court, Newport News City, VA",
+          "other_addr": "912 Prestige Court, Newport News City, VA"
+        },
+        {
+          "s1_addr": "2529 Arlene Avenue, Dayton, OH",
+          "other_addr": "2529 Arlene Avenue, Dayton, OH"
+        }
+      ]
+    }
+  }
+}

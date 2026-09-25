@@ -1,0 +1,151 @@
+{
+  "ground_truth": {
+    "total_s1_entities": 2206821,
+    "match_count_distribution": [
+      {
+        "match_count": 0,
+        "s1_count": 123247
+      },
+      {
+        "match_count": 1,
+        "s1_count": 119157
+      },
+      {
+        "match_count": 2,
+        "s1_count": 375212
+      },
+      {
+        "match_count": 3,
+        "s1_count": 530841
+      },
+      {
+        "match_count": 4,
+        "s1_count": 484115
+      },
+      {
+        "match_count": 5,
+        "s1_count": 321957
+      },
+      {
+        "match_count": 6,
+        "s1_count": 164868
+      },
+      {
+        "match_count": 7,
+        "s1_count": 63968
+      },
+      {
+        "match_count": 8,
+        "s1_count": 18680
+      },
+      {
+        "match_count": 9,
+        "s1_count": 4205
+      },
+      {
+        "match_count": 10,
+        "s1_count": 534
+      },
+      {
+        "match_count": 11,
+        "s1_count": 37
+      }
+    ],
+    "buckets": {
+      "zero_matches": 123247.0,
+      "one_match": 119157.0,
+      "two_matches": 375212.0,
+      "three_matches": 530841.0,
+      "four_plus_matches": 1058364.0,
+      "avg_matches": 3.4612526344456573,
+      "max_matches": 11.0,
+      "median_matches": 3.0,
+      "total_s2_matches": 3693619.0,
+      "total_s3_matches": 3944746.0,
+      "s1_with_both_sources": 1776047.0,
+      "s1_s2_only": 143029.0,
+      "s1_s3_only": 164498.0,
+      "singleton_pct": 5.5848,
+      "one_match_pct": 5.3995,
+      "multi_match_pct": 94.4152
+    },
+    "s2_matches_per_s1_distribution": [
+      {
+        "s2_match_count": 0,
+        "cnt": 287745
+      },
+      {
+        "s2_match_count": 1,
+        "cnt": 789108
+      },
+      {
+        "s2_match_count": 2,
+        "cnt": 652779
+      },
+      {
+        "s2_match_count": 3,
+        "cnt": 333957
+      },
+      {
+        "s2_match_count": 4,
+        "cnt": 119078
+      },
+      {
+        "s2_match_count": 5,
+        "cnt": 24154
+      }
+    ],
+    "s3_matches_per_s1_distribution": [
+      {
+        "s3_match_count": 0,
+        "cnt": 266276
+      },
+      {
+        "s3_match_count": 1,
+        "cnt": 716417
+      },
+      {
+        "s3_match_count": 2,
+        "cnt": 668375
+      },
+      {
+        "s3_match_count": 3,
+        "cnt": 372443
+      },
+      {
+        "s3_match_count": 4,
+        "cnt": 145116
+      },
+      {
+        "s3_match_count": 5,
+        "cnt": 35378
+      },
+      {
+        "s3_match_count": 6,
+        "cnt": 2816
+      }
+    ],
+    "s2_entities_matched_to_multiple_s1": 0,
+    "s2_max_s1_per_entity": 0,
+    "s2_multi_s1_examples": [],
+    "s3_entities_matched_to_multiple_s1": 0,
+    "s3_max_s1_per_entity": 0,
+    "s3_multi_s1_examples": [],
+    "duplicate_ids_in_lists": {
+      "dup_pairs": 0,
+      "affected_s1": 0
+    },
+    "malformed_records": {
+      "missing_s1": 0.0,
+      "bad_s1_prefix": 0.0,
+      "s1_in_matches": 0.0,
+      "invalid_match_ids": 0.0
+    },
+    "s1_vs_gt_row_count": {
+      "s1_rows": 2206821,
+      "gt_rows": 2206821,
+      "match": true
+    },
+    "total_true_match_pairs": 7638365
+  }
+}

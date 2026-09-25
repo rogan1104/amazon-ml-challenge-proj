@@ -1,0 +1,156 @@
+{
+  "countries": {
+    "train_S1": [
+      {
+        "country": "US",
+        "cnt": 1323633,
+        "pct": 59.979173662023335
+      },
+      {
+        "country": "India",
+        "cnt": 883188,
+        "pct": 40.020826337976665
+      }
+    ],
+    "train_S2": [
+      {
+        "country": "US",
+        "cnt": 3016817,
+        "pct": 59.92149152984061
+      },
+      {
+        "country": "India",
+        "cnt": 2017799,
+        "pct": 40.07850847015939
+      }
+    ],
+    "train_S3": [
+      {
+        "country": "US",
+        "cnt": 3170056,
+        "pct": 59.97529515553855
+      },
+      {
+        "country": "India",
+        "cnt": 2115547,
+        "pct": 40.02470484446145
+      }
+    ],
+    "test_S1": [
+      {
+        "country": "India",
+        "cnt": 809986,
+        "pct": 46.75125133907133
+      },
+      {
+        "country": "US",
+        "cnt": 663106,
+        "pct": 38.273544567987884
+      },
+      {
+        "country": "France",
+        "cnt": 259452,
+        "pct": 14.975204092940785
+      }
+    ],
+    "test_S2": [
+      {
+        "country": "India",
+        "cnt": 2312565,
+        "pct": 47.318105618409284
+      },
+      {
+        "country": "US",
+        "cnt": 1871330,
+        "pct": 38.289860214479525
+      },
+      {
+        "country": "France",
+        "cnt": 703378,
+        "pct": 14.392034167111188
+      }
+    ],
+    "test_S3": [
+      {
+        "country": "India",
+        "cnt": 2405000,
+        "pct": 47.32094580502275
+      },
+      {
+        "country": "US",
+        "cnt": 1945701,
+        "pct": 38.283747016124146
+      },
+      {
+        "country": "France",
+        "cnt": 731615,
+        "pct": 14.395307178853106
+      }
+    ],
+    "train_countries": [
+      "India",
+      "US"
+    ],
+    "test_countries": [
+      "France",
+      "India",
+      "US"
+    ],
+    "test_only_countries": [
+      "France"
+    ],
+    "train_only_countries": [],
+    "france_test": {
+      "S1": {
+        "cnt": 259452.0,
+        "avg_name_len": 19.422914450457117,
+        "avg_addr_len": 50.07085703713982,
+        "pct_of_source": 14.9752
+      },
+      "S2": {
+        "cnt": 703378.0,
+        "avg_name_len": 21.103017154360813,
+        "avg_addr_len": 40.79684706551821,
+        "pct_of_source": 14.392
+      },
+      "S3": {
+        "cnt": 731615.0,
+        "avg_name_len": 21.140241793839657,
+        "avg_addr_len": 41.18106422710872,
+        "pct_of_source": 14.3953
+      }
+    },
+    "match_rates_by_country": [
+      {
+        "country": "US",
+        "s1_count": 1323633,
+        "singletons": 73896.0,
+        "with_matches": 1249737.0,
+        "avg_matches": 3.4590570044717834,
+        "singleton_pct": 5.582816384904275
+      },
+      {
+        "country": "India",
+        "s1_count": 883188,
+        "singletons": 49351.0,
+        "with_matches": 833837.0,
+        "avg_matches": 3.4645432229604567,
+        "singleton_pct": 5.587825015738439
+      }
+    ],
+    "source_country_crosstab": [
+      {
+        "country": "US",
+        "train_S1": 1323633.0,
+        "train_S2": 3016817.0,
+        "train_S3": 3170056.0
+      },
+      {
+        "country": "India",
+        "train_S1": 883188.0,
+        "train_S2": 2017799.0,
+        "train_S3": 2115547.0
+      }
+    ]
+  }
+}
