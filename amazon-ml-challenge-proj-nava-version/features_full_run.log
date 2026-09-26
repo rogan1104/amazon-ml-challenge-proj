@@ -1,0 +1,1445 @@
+[features] scanned 100,000 candidate rows; 100,000 unique S1 and 2,351,607 unique candidates (78,126 rows/sec)
+[features] scanned 200,000 candidate rows; 200,000 unique S1 and 3,688,529 unique candidates (76,864 rows/sec)
+[features] scanned 300,000 candidate rows; 300,000 unique S1 and 4,647,639 unique candidates (78,635 rows/sec)
+[features] scanned 400,000 candidate rows; 400,000 unique S1 and 5,390,228 unique candidates (78,428 rows/sec)
+[features] scanned 500,000 candidate rows; 500,000 unique S1 and 5,983,445 unique candidates (78,991 rows/sec)
+[features] scanned 600,000 candidate rows; 600,000 unique S1 and 6,473,535 unique candidates (78,606 rows/sec)
+[features] scanned 700,000 candidate rows; 700,000 unique S1 and 6,887,539 unique candidates (78,325 rows/sec)
+[features] scanned 800,000 candidate rows; 800,000 unique S1 and 7,240,416 unique candidates (78,565 rows/sec)
+[features] scanned 900,000 candidate rows; 900,000 unique S1 and 7,546,021 unique candidates (78,868 rows/sec)
+[features] scanned 1,000,000 candidate rows; 1,000,000 unique S1 and 7,815,100 unique candidates (79,196 rows/sec)
+[features] scanned 1,100,000 candidate rows; 1,100,000 unique S1 and 8,051,347 unique candidates (79,571 rows/sec)
+[features] scanned 1,200,000 candidate rows; 1,200,000 unique S1 and 8,262,291 unique candidates (79,911 rows/sec)
+[features] scanned 1,300,000 candidate rows; 1,300,000 unique S1 and 8,450,589 unique candidates (79,492 rows/sec)
+[features] scanned 1,400,000 candidate rows; 1,400,000 unique S1 and 8,619,519 unique candidates (79,422 rows/sec)
+[features] scanned 1,500,000 candidate rows; 1,500,000 unique S1 and 8,773,717 unique candidates (79,519 rows/sec)
+[features] scanned 1,600,000 candidate rows; 1,600,000 unique S1 and 8,912,842 unique candidates (79,735 rows/sec)
+[features] scanned 1,700,000 candidate rows; 1,700,000 unique S1 and 9,040,773 unique candidates (79,822 rows/sec)
+[features] scanned 1,800,000 candidate rows; 1,800,000 unique S1 and 9,158,362 unique candidates (79,691 rows/sec)
+[features] scanned 1,900,000 candidate rows; 1,900,000 unique S1 and 9,266,249 unique candidates (79,555 rows/sec)
+[features] scanned 2,000,000 candidate rows; 2,000,000 unique S1 and 9,365,014 unique candidates (79,577 rows/sec)
+[features] scanned 2,100,000 candidate rows; 2,100,000 unique S1 and 9,457,180 unique candidates (79,444 rows/sec)
+[features] scanned 2,200,000 candidate rows; 2,200,000 unique S1 and 9,541,897 unique candidates (79,534 rows/sec)
+[features] candidate scan complete: 2,206,821 rows, 2,206,821 unique S1, 9,547,527 unique candidates
+[features] selected 2,206,821 referenced S1 and 9,547,527 referenced candidate records for TF-IDF
+[features] loaded 2,206,821 S1 and 9,547,527 S2/S3 records
+[features] transforming each source record once (vocabulary=100,000)
+[features] S1: starting TF-IDF transform for 2,206,821 records
+[features] S1: building text for records 1-25,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 25,000/2,206,821 records (15,862/sec; chunk 1.6s; cached chunks 0.02 GiB)
+[features] S1: building text for records 25,001-50,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 50,000/2,206,821 records (16,191/sec; chunk 1.5s; cached chunks 0.04 GiB)
+[features] S1: building text for records 50,001-75,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 75,000/2,206,821 records (16,946/sec; chunk 1.3s; cached chunks 0.06 GiB)
+[features] S1: building text for records 75,001-100,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 100,000/2,206,821 records (16,907/sec; chunk 1.5s; cached chunks 0.08 GiB)
+[features] S1: building text for records 100,001-125,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 125,000/2,206,821 records (16,822/sec; chunk 1.5s; cached chunks 0.10 GiB)
+[features] S1: building text for records 125,001-150,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 150,000/2,206,821 records (16,856/sec; chunk 1.5s; cached chunks 0.12 GiB)
+[features] S1: building text for records 150,001-175,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 175,000/2,206,821 records (16,886/sec; chunk 1.5s; cached chunks 0.14 GiB)
+[features] S1: building text for records 175,001-200,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 200,000/2,206,821 records (17,047/sec; chunk 1.4s; cached chunks 0.16 GiB)
+[features] S1: building text for records 200,001-225,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 225,000/2,206,821 records (17,118/sec; chunk 1.4s; cached chunks 0.18 GiB)
+[features] S1: building text for records 225,001-250,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 250,000/2,206,821 records (17,161/sec; chunk 1.4s; cached chunks 0.21 GiB)
+[features] S1: building text for records 250,001-275,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 275,000/2,206,821 records (17,107/sec; chunk 1.5s; cached chunks 0.23 GiB)
+[features] S1: building text for records 275,001-300,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 300,000/2,206,821 records (16,939/sec; chunk 1.6s; cached chunks 0.25 GiB)
+[features] S1: building text for records 300,001-325,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 325,000/2,206,821 records (16,946/sec; chunk 1.5s; cached chunks 0.27 GiB)
+[features] S1: building text for records 325,001-350,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 350,000/2,206,821 records (16,820/sec; chunk 1.6s; cached chunks 0.29 GiB)
+[features] S1: building text for records 350,001-375,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 375,000/2,206,821 records (16,643/sec; chunk 1.7s; cached chunks 0.31 GiB)
+[features] S1: building text for records 375,001-400,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 400,000/2,206,821 records (16,680/sec; chunk 1.4s; cached chunks 0.33 GiB)
+[features] S1: building text for records 400,001-425,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 425,000/2,206,821 records (16,749/sec; chunk 1.4s; cached chunks 0.35 GiB)
+[features] S1: building text for records 425,001-450,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 450,000/2,206,821 records (16,768/sec; chunk 1.5s; cached chunks 0.37 GiB)
+[features] S1: building text for records 450,001-475,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 475,000/2,206,821 records (16,815/sec; chunk 1.4s; cached chunks 0.39 GiB)
+[features] S1: building text for records 475,001-500,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 500,000/2,206,821 records (16,907/sec; chunk 1.3s; cached chunks 0.41 GiB)
+[features] S1: building text for records 500,001-525,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 525,000/2,206,821 records (16,936/sec; chunk 1.4s; cached chunks 0.43 GiB)
+[features] S1: building text for records 525,001-550,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 550,000/2,206,821 records (16,952/sec; chunk 1.4s; cached chunks 0.45 GiB)
+[features] S1: building text for records 550,001-575,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 575,000/2,206,821 records (16,930/sec; chunk 1.5s; cached chunks 0.47 GiB)
+[features] S1: building text for records 575,001-600,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 600,000/2,206,821 records (16,933/sec; chunk 1.5s; cached chunks 0.49 GiB)
+[features] S1: building text for records 600,001-625,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 625,000/2,206,821 records (16,870/sec; chunk 1.6s; cached chunks 0.51 GiB)
+[features] S1: building text for records 625,001-650,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 650,000/2,206,821 records (16,874/sec; chunk 1.5s; cached chunks 0.53 GiB)
+[features] S1: building text for records 650,001-675,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 675,000/2,206,821 records (16,887/sec; chunk 1.5s; cached chunks 0.55 GiB)
+[features] S1: building text for records 675,001-700,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 700,000/2,206,821 records (16,920/sec; chunk 1.4s; cached chunks 0.57 GiB)
+[features] S1: building text for records 700,001-725,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 725,000/2,206,821 records (16,957/sec; chunk 1.4s; cached chunks 0.59 GiB)
+[features] S1: building text for records 725,001-750,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 750,000/2,206,821 records (16,985/sec; chunk 1.4s; cached chunks 0.62 GiB)
+[features] S1: building text for records 750,001-775,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 775,000/2,206,821 records (17,014/sec; chunk 1.4s; cached chunks 0.64 GiB)
+[features] S1: building text for records 775,001-800,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 800,000/2,206,821 records (17,046/sec; chunk 1.4s; cached chunks 0.66 GiB)
+[features] S1: building text for records 800,001-825,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 825,000/2,206,821 records (17,075/sec; chunk 1.4s; cached chunks 0.68 GiB)
+[features] S1: building text for records 825,001-850,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 850,000/2,206,821 records (17,099/sec; chunk 1.4s; cached chunks 0.70 GiB)
+[features] S1: building text for records 850,001-875,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 875,000/2,206,821 records (17,107/sec; chunk 1.4s; cached chunks 0.72 GiB)
+[features] S1: building text for records 875,001-900,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 900,000/2,206,821 records (17,126/sec; chunk 1.4s; cached chunks 0.74 GiB)
+[features] S1: building text for records 900,001-925,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 925,000/2,206,821 records (17,146/sec; chunk 1.4s; cached chunks 0.76 GiB)
+[features] S1: building text for records 925,001-950,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 950,000/2,206,821 records (17,162/sec; chunk 1.4s; cached chunks 0.78 GiB)
+[features] S1: building text for records 950,001-975,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 975,000/2,206,821 records (17,178/sec; chunk 1.4s; cached chunks 0.80 GiB)
+[features] S1: building text for records 975,001-1,000,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,000,000/2,206,821 records (17,137/sec; chunk 1.6s; cached chunks 0.82 GiB)
+[features] S1: building text for records 1,000,001-1,025,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,025,000/2,206,821 records (17,132/sec; chunk 1.5s; cached chunks 0.84 GiB)
+[features] S1: building text for records 1,025,001-1,050,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,050,000/2,206,821 records (17,141/sec; chunk 1.4s; cached chunks 0.86 GiB)
+[features] S1: building text for records 1,050,001-1,075,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,075,000/2,206,821 records (17,160/sec; chunk 1.4s; cached chunks 0.88 GiB)
+[features] S1: building text for records 1,075,001-1,100,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,100,000/2,206,821 records (17,150/sec; chunk 1.5s; cached chunks 0.90 GiB)
+[features] S1: building text for records 1,100,001-1,125,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,125,000/2,206,821 records (17,133/sec; chunk 1.5s; cached chunks 0.92 GiB)
+[features] S1: building text for records 1,125,001-1,150,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,150,000/2,206,821 records (17,144/sec; chunk 1.4s; cached chunks 0.94 GiB)
+[features] S1: building text for records 1,150,001-1,175,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,175,000/2,206,821 records (17,158/sec; chunk 1.4s; cached chunks 0.96 GiB)
+[features] S1: building text for records 1,175,001-1,200,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,200,000/2,206,821 records (17,176/sec; chunk 1.4s; cached chunks 0.98 GiB)
+[features] S1: building text for records 1,200,001-1,225,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,225,000/2,206,821 records (17,192/sec; chunk 1.4s; cached chunks 1.00 GiB)
+[features] S1: building text for records 1,225,001-1,250,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,250,000/2,206,821 records (17,205/sec; chunk 1.4s; cached chunks 1.03 GiB)
+[features] S1: building text for records 1,250,001-1,275,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,275,000/2,206,821 records (17,217/sec; chunk 1.4s; cached chunks 1.05 GiB)
+[features] S1: building text for records 1,275,001-1,300,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,300,000/2,206,821 records (17,231/sec; chunk 1.4s; cached chunks 1.07 GiB)
+[features] S1: building text for records 1,300,001-1,325,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,325,000/2,206,821 records (17,248/sec; chunk 1.4s; cached chunks 1.09 GiB)
+[features] S1: building text for records 1,325,001-1,350,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,350,000/2,206,821 records (17,260/sec; chunk 1.4s; cached chunks 1.11 GiB)
+[features] S1: building text for records 1,350,001-1,375,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,375,000/2,206,821 records (17,270/sec; chunk 1.4s; cached chunks 1.13 GiB)
+[features] S1: building text for records 1,375,001-1,400,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,400,000/2,206,821 records (17,280/sec; chunk 1.4s; cached chunks 1.15 GiB)
+[features] S1: building text for records 1,400,001-1,425,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,425,000/2,206,821 records (17,208/sec; chunk 1.8s; cached chunks 1.17 GiB)
+[features] S1: building text for records 1,425,001-1,450,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,450,000/2,206,821 records (17,189/sec; chunk 1.5s; cached chunks 1.19 GiB)
+[features] S1: building text for records 1,450,001-1,475,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,475,000/2,206,821 records (17,184/sec; chunk 1.5s; cached chunks 1.21 GiB)
+[features] S1: building text for records 1,475,001-1,500,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,500,000/2,206,821 records (17,163/sec; chunk 1.6s; cached chunks 1.23 GiB)
+[features] S1: building text for records 1,500,001-1,525,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,525,000/2,206,821 records (17,156/sec; chunk 1.5s; cached chunks 1.25 GiB)
+[features] S1: building text for records 1,525,001-1,550,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,550,000/2,206,821 records (17,138/sec; chunk 1.6s; cached chunks 1.27 GiB)
+[features] S1: building text for records 1,550,001-1,575,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,575,000/2,206,821 records (17,113/sec; chunk 1.6s; cached chunks 1.29 GiB)
+[features] S1: building text for records 1,575,001-1,600,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,600,000/2,206,821 records (17,101/sec; chunk 1.5s; cached chunks 1.31 GiB)
+[features] S1: building text for records 1,600,001-1,625,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,625,000/2,206,821 records (17,086/sec; chunk 1.5s; cached chunks 1.33 GiB)
+[features] S1: building text for records 1,625,001-1,650,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,650,000/2,206,821 records (17,080/sec; chunk 1.5s; cached chunks 1.35 GiB)
+[features] S1: building text for records 1,650,001-1,675,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,675,000/2,206,821 records (17,072/sec; chunk 1.5s; cached chunks 1.37 GiB)
+[features] S1: building text for records 1,675,001-1,700,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,700,000/2,206,821 records (17,076/sec; chunk 1.4s; cached chunks 1.39 GiB)
+[features] S1: building text for records 1,700,001-1,725,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,725,000/2,206,821 records (17,056/sec; chunk 1.6s; cached chunks 1.41 GiB)
+[features] S1: building text for records 1,725,001-1,750,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,750,000/2,206,821 records (17,013/sec; chunk 1.7s; cached chunks 1.44 GiB)
+[features] S1: building text for records 1,750,001-1,775,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,775,000/2,206,821 records (16,989/sec; chunk 1.6s; cached chunks 1.46 GiB)
+[features] S1: building text for records 1,775,001-1,800,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,800,000/2,206,821 records (16,988/sec; chunk 1.5s; cached chunks 1.48 GiB)
+[features] S1: building text for records 1,800,001-1,825,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,825,000/2,206,821 records (17,003/sec; chunk 1.4s; cached chunks 1.50 GiB)
+[features] S1: building text for records 1,825,001-1,850,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,850,000/2,206,821 records (17,010/sec; chunk 1.4s; cached chunks 1.52 GiB)
+[features] S1: building text for records 1,850,001-1,875,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,875,000/2,206,821 records (17,022/sec; chunk 1.4s; cached chunks 1.54 GiB)
+[features] S1: building text for records 1,875,001-1,900,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,900,000/2,206,821 records (17,025/sec; chunk 1.4s; cached chunks 1.56 GiB)
+[features] S1: building text for records 1,900,001-1,925,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,925,000/2,206,821 records (17,006/sec; chunk 1.6s; cached chunks 1.58 GiB)
+[features] S1: building text for records 1,925,001-1,950,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,950,000/2,206,821 records (16,997/sec; chunk 1.5s; cached chunks 1.60 GiB)
+[features] S1: building text for records 1,950,001-1,975,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 1,975,000/2,206,821 records (16,983/sec; chunk 1.6s; cached chunks 1.62 GiB)
+[features] S1: building text for records 1,975,001-2,000,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 2,000,000/2,206,821 records (16,975/sec; chunk 1.5s; cached chunks 1.64 GiB)
+[features] S1: building text for records 2,000,001-2,025,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 2,025,000/2,206,821 records (16,931/sec; chunk 1.8s; cached chunks 1.66 GiB)
+[features] S1: building text for records 2,025,001-2,050,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 2,050,000/2,206,821 records (16,902/sec; chunk 1.7s; cached chunks 1.68 GiB)
+[features] S1: building text for records 2,050,001-2,075,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 2,075,000/2,206,821 records (16,886/sec; chunk 1.6s; cached chunks 1.70 GiB)
+[features] S1: building text for records 2,075,001-2,100,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 2,100,000/2,206,821 records (16,870/sec; chunk 1.6s; cached chunks 1.72 GiB)
+[features] S1: building text for records 2,100,001-2,125,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 2,125,000/2,206,821 records (16,870/sec; chunk 1.5s; cached chunks 1.74 GiB)
+[features] S1: building text for records 2,125,001-2,150,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 2,150,000/2,206,821 records (16,870/sec; chunk 1.5s; cached chunks 1.76 GiB)
+[features] S1: building text for records 2,150,001-2,175,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 2,175,000/2,206,821 records (16,868/sec; chunk 1.5s; cached chunks 1.78 GiB)
+[features] S1: building text for records 2,175,001-2,200,000
+[features] S1: vectorizing 25,000 records
+[features] S1: 2,200,000/2,206,821 records (16,866/sec; chunk 1.5s; cached chunks 1.80 GiB)
+[features] S1: building text for records 2,200,001-2,206,821
+[features] S1: vectorizing 6,821 records
+[features] S1: 2,206,821/2,206,821 records (16,865/sec; chunk 0.4s; cached chunks 1.81 GiB)
+[features] S2+S3: starting TF-IDF transform for 9,547,527 records
+[features] S2+S3: building text for records 1-25,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 25,000/9,547,527 records (18,293/sec; chunk 1.4s; cached chunks 0.02 GiB)
+[features] S2+S3: building text for records 25,001-50,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 50,000/9,547,527 records (18,352/sec; chunk 1.4s; cached chunks 0.04 GiB)
+[features] S2+S3: building text for records 50,001-75,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 75,000/9,547,527 records (18,439/sec; chunk 1.3s; cached chunks 0.06 GiB)
+[features] S2+S3: building text for records 75,001-100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 100,000/9,547,527 records (18,603/sec; chunk 1.3s; cached chunks 0.07 GiB)
+[features] S2+S3: building text for records 100,001-125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 125,000/9,547,527 records (18,583/sec; chunk 1.4s; cached chunks 0.09 GiB)
+[features] S2+S3: building text for records 125,001-150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 150,000/9,547,527 records (18,459/sec; chunk 1.4s; cached chunks 0.11 GiB)
+[features] S2+S3: building text for records 150,001-175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 175,000/9,547,527 records (18,406/sec; chunk 1.4s; cached chunks 0.13 GiB)
+[features] S2+S3: building text for records 175,001-200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 200,000/9,547,527 records (18,426/sec; chunk 1.3s; cached chunks 0.15 GiB)
+[features] S2+S3: building text for records 200,001-225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 225,000/9,547,527 records (18,313/sec; chunk 1.4s; cached chunks 0.17 GiB)
+[features] S2+S3: building text for records 225,001-250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 250,000/9,547,527 records (18,239/sec; chunk 1.4s; cached chunks 0.19 GiB)
+[features] S2+S3: building text for records 250,001-275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 275,000/9,547,527 records (18,176/sec; chunk 1.4s; cached chunks 0.20 GiB)
+[features] S2+S3: building text for records 275,001-300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 300,000/9,547,527 records (18,130/sec; chunk 1.4s; cached chunks 0.22 GiB)
+[features] S2+S3: building text for records 300,001-325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 325,000/9,547,527 records (18,146/sec; chunk 1.4s; cached chunks 0.24 GiB)
+[features] S2+S3: building text for records 325,001-350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 350,000/9,547,527 records (18,172/sec; chunk 1.3s; cached chunks 0.26 GiB)
+[features] S2+S3: building text for records 350,001-375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 375,000/9,547,527 records (18,214/sec; chunk 1.3s; cached chunks 0.28 GiB)
+[features] S2+S3: building text for records 375,001-400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 400,000/9,547,527 records (18,194/sec; chunk 1.4s; cached chunks 0.30 GiB)
+[features] S2+S3: building text for records 400,001-425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 425,000/9,547,527 records (18,144/sec; chunk 1.4s; cached chunks 0.31 GiB)
+[features] S2+S3: building text for records 425,001-450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 450,000/9,547,527 records (18,103/sec; chunk 1.4s; cached chunks 0.33 GiB)
+[features] S2+S3: building text for records 450,001-475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 475,000/9,547,527 records (18,090/sec; chunk 1.4s; cached chunks 0.35 GiB)
+[features] S2+S3: building text for records 475,001-500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 500,000/9,547,527 records (18,068/sec; chunk 1.4s; cached chunks 0.37 GiB)
+[features] S2+S3: building text for records 500,001-525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 525,000/9,547,527 records (17,951/sec; chunk 1.6s; cached chunks 0.39 GiB)
+[features] S2+S3: building text for records 525,001-550,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 550,000/9,547,527 records (17,924/sec; chunk 1.4s; cached chunks 0.41 GiB)
+[features] S2+S3: building text for records 550,001-575,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 575,000/9,547,527 records (17,939/sec; chunk 1.4s; cached chunks 0.43 GiB)
+[features] S2+S3: building text for records 575,001-600,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 600,000/9,547,527 records (17,877/sec; chunk 1.5s; cached chunks 0.44 GiB)
+[features] S2+S3: building text for records 600,001-625,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 625,000/9,547,527 records (17,738/sec; chunk 1.7s; cached chunks 0.46 GiB)
+[features] S2+S3: building text for records 625,001-650,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 650,000/9,547,527 records (17,664/sec; chunk 1.6s; cached chunks 0.48 GiB)
+[features] S2+S3: building text for records 650,001-675,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 675,000/9,547,527 records (17,570/sec; chunk 1.6s; cached chunks 0.50 GiB)
+[features] S2+S3: building text for records 675,001-700,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 700,000/9,547,527 records (17,520/sec; chunk 1.5s; cached chunks 0.52 GiB)
+[features] S2+S3: building text for records 700,001-725,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 725,000/9,547,527 records (17,470/sec; chunk 1.5s; cached chunks 0.54 GiB)
+[features] S2+S3: building text for records 725,001-750,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 750,000/9,547,527 records (17,490/sec; chunk 1.4s; cached chunks 0.56 GiB)
+[features] S2+S3: building text for records 750,001-775,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 775,000/9,547,527 records (17,536/sec; chunk 1.3s; cached chunks 0.57 GiB)
+[features] S2+S3: building text for records 775,001-800,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 800,000/9,547,527 records (17,557/sec; chunk 1.4s; cached chunks 0.59 GiB)
+[features] S2+S3: building text for records 800,001-825,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 825,000/9,547,527 records (17,537/sec; chunk 1.5s; cached chunks 0.61 GiB)
+[features] S2+S3: building text for records 825,001-850,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 850,000/9,547,527 records (17,520/sec; chunk 1.5s; cached chunks 0.63 GiB)
+[features] S2+S3: building text for records 850,001-875,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 875,000/9,547,527 records (17,556/sec; chunk 1.3s; cached chunks 0.65 GiB)
+[features] S2+S3: building text for records 875,001-900,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 900,000/9,547,527 records (17,577/sec; chunk 1.4s; cached chunks 0.67 GiB)
+[features] S2+S3: building text for records 900,001-925,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 925,000/9,547,527 records (17,584/sec; chunk 1.4s; cached chunks 0.68 GiB)
+[features] S2+S3: building text for records 925,001-950,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 950,000/9,547,527 records (17,618/sec; chunk 1.3s; cached chunks 0.70 GiB)
+[features] S2+S3: building text for records 950,001-975,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 975,000/9,547,527 records (17,651/sec; chunk 1.3s; cached chunks 0.72 GiB)
+[features] S2+S3: building text for records 975,001-1,000,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,000,000/9,547,527 records (17,655/sec; chunk 1.4s; cached chunks 0.74 GiB)
+[features] S2+S3: building text for records 1,000,001-1,025,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,025,000/9,547,527 records (17,649/sec; chunk 1.4s; cached chunks 0.76 GiB)
+[features] S2+S3: building text for records 1,025,001-1,050,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,050,000/9,547,527 records (17,663/sec; chunk 1.4s; cached chunks 0.78 GiB)
+[features] S2+S3: building text for records 1,050,001-1,075,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,075,000/9,547,527 records (17,612/sec; chunk 1.6s; cached chunks 0.80 GiB)
+[features] S2+S3: building text for records 1,075,001-1,100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,100,000/9,547,527 records (17,582/sec; chunk 1.5s; cached chunks 0.81 GiB)
+[features] S2+S3: building text for records 1,100,001-1,125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,125,000/9,547,527 records (17,584/sec; chunk 1.4s; cached chunks 0.83 GiB)
+[features] S2+S3: building text for records 1,125,001-1,150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,150,000/9,547,527 records (17,591/sec; chunk 1.4s; cached chunks 0.85 GiB)
+[features] S2+S3: building text for records 1,150,001-1,175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,175,000/9,547,527 records (17,589/sec; chunk 1.4s; cached chunks 0.87 GiB)
+[features] S2+S3: building text for records 1,175,001-1,200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,200,000/9,547,527 records (17,593/sec; chunk 1.4s; cached chunks 0.89 GiB)
+[features] S2+S3: building text for records 1,200,001-1,225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,225,000/9,547,527 records (17,598/sec; chunk 1.4s; cached chunks 0.91 GiB)
+[features] S2+S3: building text for records 1,225,001-1,250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,250,000/9,547,527 records (17,607/sec; chunk 1.4s; cached chunks 0.93 GiB)
+[features] S2+S3: building text for records 1,250,001-1,275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,275,000/9,547,527 records (17,624/sec; chunk 1.3s; cached chunks 0.94 GiB)
+[features] S2+S3: building text for records 1,275,001-1,300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,300,000/9,547,527 records (17,635/sec; chunk 1.4s; cached chunks 0.96 GiB)
+[features] S2+S3: building text for records 1,300,001-1,325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,325,000/9,547,527 records (17,651/sec; chunk 1.3s; cached chunks 0.98 GiB)
+[features] S2+S3: building text for records 1,325,001-1,350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,350,000/9,547,527 records (17,654/sec; chunk 1.4s; cached chunks 1.00 GiB)
+[features] S2+S3: building text for records 1,350,001-1,375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,375,000/9,547,527 records (17,661/sec; chunk 1.4s; cached chunks 1.02 GiB)
+[features] S2+S3: building text for records 1,375,001-1,400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,400,000/9,547,527 records (17,663/sec; chunk 1.4s; cached chunks 1.04 GiB)
+[features] S2+S3: building text for records 1,400,001-1,425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,425,000/9,547,527 records (17,667/sec; chunk 1.4s; cached chunks 1.05 GiB)
+[features] S2+S3: building text for records 1,425,001-1,450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,450,000/9,547,527 records (17,670/sec; chunk 1.4s; cached chunks 1.07 GiB)
+[features] S2+S3: building text for records 1,450,001-1,475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,475,000/9,547,527 records (17,680/sec; chunk 1.4s; cached chunks 1.09 GiB)
+[features] S2+S3: building text for records 1,475,001-1,500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,500,000/9,547,527 records (17,690/sec; chunk 1.4s; cached chunks 1.11 GiB)
+[features] S2+S3: building text for records 1,500,001-1,525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,525,000/9,547,527 records (17,704/sec; chunk 1.3s; cached chunks 1.13 GiB)
+[features] S2+S3: building text for records 1,525,001-1,550,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,550,000/9,547,527 records (17,706/sec; chunk 1.4s; cached chunks 1.15 GiB)
+[features] S2+S3: building text for records 1,550,001-1,575,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,575,000/9,547,527 records (17,706/sec; chunk 1.4s; cached chunks 1.17 GiB)
+[features] S2+S3: building text for records 1,575,001-1,600,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,600,000/9,547,527 records (17,710/sec; chunk 1.4s; cached chunks 1.18 GiB)
+[features] S2+S3: building text for records 1,600,001-1,625,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,625,000/9,547,527 records (17,716/sec; chunk 1.4s; cached chunks 1.20 GiB)
+[features] S2+S3: building text for records 1,625,001-1,650,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,650,000/9,547,527 records (17,726/sec; chunk 1.4s; cached chunks 1.22 GiB)
+[features] S2+S3: building text for records 1,650,001-1,675,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,675,000/9,547,527 records (17,725/sec; chunk 1.4s; cached chunks 1.24 GiB)
+[features] S2+S3: building text for records 1,675,001-1,700,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,700,000/9,547,527 records (17,715/sec; chunk 1.5s; cached chunks 1.26 GiB)
+[features] S2+S3: building text for records 1,700,001-1,725,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,725,000/9,547,527 records (17,712/sec; chunk 1.4s; cached chunks 1.28 GiB)
+[features] S2+S3: building text for records 1,725,001-1,750,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,750,000/9,547,527 records (17,679/sec; chunk 1.6s; cached chunks 1.30 GiB)
+[features] S2+S3: building text for records 1,750,001-1,775,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,775,000/9,547,527 records (17,660/sec; chunk 1.5s; cached chunks 1.31 GiB)
+[features] S2+S3: building text for records 1,775,001-1,800,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,800,000/9,547,527 records (17,641/sec; chunk 1.5s; cached chunks 1.33 GiB)
+[features] S2+S3: building text for records 1,800,001-1,825,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,825,000/9,547,527 records (17,615/sec; chunk 1.6s; cached chunks 1.35 GiB)
+[features] S2+S3: building text for records 1,825,001-1,850,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,850,000/9,547,527 records (17,608/sec; chunk 1.5s; cached chunks 1.37 GiB)
+[features] S2+S3: building text for records 1,850,001-1,875,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,875,000/9,547,527 records (17,614/sec; chunk 1.4s; cached chunks 1.39 GiB)
+[features] S2+S3: building text for records 1,875,001-1,900,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,900,000/9,547,527 records (17,618/sec; chunk 1.4s; cached chunks 1.41 GiB)
+[features] S2+S3: building text for records 1,900,001-1,925,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,925,000/9,547,527 records (17,620/sec; chunk 1.4s; cached chunks 1.42 GiB)
+[features] S2+S3: building text for records 1,925,001-1,950,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,950,000/9,547,527 records (17,628/sec; chunk 1.4s; cached chunks 1.44 GiB)
+[features] S2+S3: building text for records 1,950,001-1,975,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 1,975,000/9,547,527 records (17,626/sec; chunk 1.4s; cached chunks 1.46 GiB)
+[features] S2+S3: building text for records 1,975,001-2,000,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,000,000/9,547,527 records (17,622/sec; chunk 1.4s; cached chunks 1.48 GiB)
+[features] S2+S3: building text for records 2,000,001-2,025,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,025,000/9,547,527 records (17,623/sec; chunk 1.4s; cached chunks 1.50 GiB)
+[features] S2+S3: building text for records 2,025,001-2,050,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,050,000/9,547,527 records (17,622/sec; chunk 1.4s; cached chunks 1.52 GiB)
+[features] S2+S3: building text for records 2,050,001-2,075,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,075,000/9,547,527 records (17,629/sec; chunk 1.4s; cached chunks 1.54 GiB)
+[features] S2+S3: building text for records 2,075,001-2,100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,100,000/9,547,527 records (17,628/sec; chunk 1.4s; cached chunks 1.55 GiB)
+[features] S2+S3: building text for records 2,100,001-2,125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,125,000/9,547,527 records (17,629/sec; chunk 1.4s; cached chunks 1.57 GiB)
+[features] S2+S3: building text for records 2,125,001-2,150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,150,000/9,547,527 records (17,623/sec; chunk 1.5s; cached chunks 1.59 GiB)
+[features] S2+S3: building text for records 2,150,001-2,175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,175,000/9,547,527 records (17,606/sec; chunk 1.5s; cached chunks 1.61 GiB)
+[features] S2+S3: building text for records 2,175,001-2,200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,200,000/9,547,527 records (17,597/sec; chunk 1.5s; cached chunks 1.63 GiB)
+[features] S2+S3: building text for records 2,200,001-2,225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,225,000/9,547,527 records (17,584/sec; chunk 1.5s; cached chunks 1.65 GiB)
+[features] S2+S3: building text for records 2,225,001-2,250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,250,000/9,547,527 records (17,570/sec; chunk 1.5s; cached chunks 1.66 GiB)
+[features] S2+S3: building text for records 2,250,001-2,275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,275,000/9,547,527 records (17,561/sec; chunk 1.5s; cached chunks 1.68 GiB)
+[features] S2+S3: building text for records 2,275,001-2,300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,300,000/9,547,527 records (17,557/sec; chunk 1.5s; cached chunks 1.70 GiB)
+[features] S2+S3: building text for records 2,300,001-2,325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,325,000/9,547,527 records (17,559/sec; chunk 1.4s; cached chunks 1.72 GiB)
+[features] S2+S3: building text for records 2,325,001-2,350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,350,000/9,547,527 records (17,554/sec; chunk 1.5s; cached chunks 1.74 GiB)
+[features] S2+S3: building text for records 2,350,001-2,375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,375,000/9,547,527 records (17,557/sec; chunk 1.4s; cached chunks 1.76 GiB)
+[features] S2+S3: building text for records 2,375,001-2,400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,400,000/9,547,527 records (17,563/sec; chunk 1.4s; cached chunks 1.78 GiB)
+[features] S2+S3: building text for records 2,400,001-2,425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,425,000/9,547,527 records (17,552/sec; chunk 1.5s; cached chunks 1.79 GiB)
+[features] S2+S3: building text for records 2,425,001-2,450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,450,000/9,547,527 records (17,549/sec; chunk 1.4s; cached chunks 1.81 GiB)
+[features] S2+S3: building text for records 2,450,001-2,475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,475,000/9,547,527 records (17,550/sec; chunk 1.4s; cached chunks 1.83 GiB)
+[features] S2+S3: building text for records 2,475,001-2,500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,500,000/9,547,527 records (17,537/sec; chunk 1.5s; cached chunks 1.85 GiB)
+[features] S2+S3: building text for records 2,500,001-2,525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,525,000/9,547,527 records (17,535/sec; chunk 1.4s; cached chunks 1.87 GiB)
+[features] S2+S3: building text for records 2,525,001-2,550,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,550,000/9,547,527 records (17,529/sec; chunk 1.5s; cached chunks 1.89 GiB)
+[features] S2+S3: building text for records 2,550,001-2,575,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,575,000/9,547,527 records (17,521/sec; chunk 1.5s; cached chunks 1.91 GiB)
+[features] S2+S3: building text for records 2,575,001-2,600,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,600,000/9,547,527 records (17,502/sec; chunk 1.6s; cached chunks 1.92 GiB)
+[features] S2+S3: building text for records 2,600,001-2,625,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,625,000/9,547,527 records (17,494/sec; chunk 1.5s; cached chunks 1.94 GiB)
+[features] S2+S3: building text for records 2,625,001-2,650,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,650,000/9,547,527 records (17,452/sec; chunk 1.8s; cached chunks 1.96 GiB)
+[features] S2+S3: building text for records 2,650,001-2,675,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,675,000/9,547,527 records (17,355/sec; chunk 2.3s; cached chunks 1.98 GiB)
+[features] S2+S3: building text for records 2,675,001-2,700,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,700,000/9,547,527 records (17,275/sec; chunk 2.2s; cached chunks 2.00 GiB)
+[features] S2+S3: building text for records 2,700,001-2,725,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,725,000/9,547,527 records (17,212/sec; chunk 2.0s; cached chunks 2.02 GiB)
+[features] S2+S3: building text for records 2,725,001-2,750,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,750,000/9,547,527 records (17,145/sec; chunk 2.1s; cached chunks 2.03 GiB)
+[features] S2+S3: building text for records 2,750,001-2,775,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,775,000/9,547,527 records (17,078/sec; chunk 2.1s; cached chunks 2.05 GiB)
+[features] S2+S3: building text for records 2,775,001-2,800,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,800,000/9,547,527 records (17,014/sec; chunk 2.1s; cached chunks 2.07 GiB)
+[features] S2+S3: building text for records 2,800,001-2,825,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,825,000/9,547,527 records (16,952/sec; chunk 2.1s; cached chunks 2.09 GiB)
+[features] S2+S3: building text for records 2,825,001-2,850,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,850,000/9,547,527 records (16,891/sec; chunk 2.1s; cached chunks 2.11 GiB)
+[features] S2+S3: building text for records 2,850,001-2,875,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,875,000/9,547,527 records (16,831/sec; chunk 2.1s; cached chunks 2.13 GiB)
+[features] S2+S3: building text for records 2,875,001-2,900,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,900,000/9,547,527 records (16,784/sec; chunk 2.0s; cached chunks 2.15 GiB)
+[features] S2+S3: building text for records 2,900,001-2,925,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,925,000/9,547,527 records (16,757/sec; chunk 1.8s; cached chunks 2.16 GiB)
+[features] S2+S3: building text for records 2,925,001-2,950,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,950,000/9,547,527 records (16,683/sec; chunk 2.3s; cached chunks 2.18 GiB)
+[features] S2+S3: building text for records 2,950,001-2,975,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 2,975,000/9,547,527 records (16,616/sec; chunk 2.2s; cached chunks 2.20 GiB)
+[features] S2+S3: building text for records 2,975,001-3,000,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,000,000/9,547,527 records (16,562/sec; chunk 2.1s; cached chunks 2.22 GiB)
+[features] S2+S3: building text for records 3,000,001-3,025,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,025,000/9,547,527 records (16,530/sec; chunk 1.9s; cached chunks 2.24 GiB)
+[features] S2+S3: building text for records 3,025,001-3,050,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,050,000/9,547,527 records (16,539/sec; chunk 1.4s; cached chunks 2.26 GiB)
+[features] S2+S3: building text for records 3,050,001-3,075,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,075,000/9,547,527 records (16,532/sec; chunk 1.6s; cached chunks 2.28 GiB)
+[features] S2+S3: building text for records 3,075,001-3,100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,100,000/9,547,527 records (16,542/sec; chunk 1.4s; cached chunks 2.29 GiB)
+[features] S2+S3: building text for records 3,100,001-3,125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,125,000/9,547,527 records (16,549/sec; chunk 1.4s; cached chunks 2.31 GiB)
+[features] S2+S3: building text for records 3,125,001-3,150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,150,000/9,547,527 records (16,536/sec; chunk 1.7s; cached chunks 2.33 GiB)
+[features] S2+S3: building text for records 3,150,001-3,175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,175,000/9,547,527 records (16,471/sec; chunk 2.3s; cached chunks 2.35 GiB)
+[features] S2+S3: building text for records 3,175,001-3,200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,200,000/9,547,527 records (16,402/sec; chunk 2.3s; cached chunks 2.37 GiB)
+[features] S2+S3: building text for records 3,200,001-3,225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,225,000/9,547,527 records (16,350/sec; chunk 2.2s; cached chunks 2.39 GiB)
+[features] S2+S3: building text for records 3,225,001-3,250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,250,000/9,547,527 records (16,301/sec; chunk 2.1s; cached chunks 2.41 GiB)
+[features] S2+S3: building text for records 3,250,001-3,275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,275,000/9,547,527 records (16,256/sec; chunk 2.1s; cached chunks 2.42 GiB)
+[features] S2+S3: building text for records 3,275,001-3,300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,300,000/9,547,527 records (16,184/sec; chunk 2.4s; cached chunks 2.44 GiB)
+[features] S2+S3: building text for records 3,300,001-3,325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,325,000/9,547,527 records (16,136/sec; chunk 2.1s; cached chunks 2.46 GiB)
+[features] S2+S3: building text for records 3,325,001-3,350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,350,000/9,547,527 records (16,095/sec; chunk 2.1s; cached chunks 2.48 GiB)
+[features] S2+S3: building text for records 3,350,001-3,375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,375,000/9,547,527 records (16,057/sec; chunk 2.0s; cached chunks 2.50 GiB)
+[features] S2+S3: building text for records 3,375,001-3,400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,400,000/9,547,527 records (16,044/sec; chunk 1.7s; cached chunks 2.52 GiB)
+[features] S2+S3: building text for records 3,400,001-3,425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,425,000/9,547,527 records (16,006/sec; chunk 2.1s; cached chunks 2.53 GiB)
+[features] S2+S3: building text for records 3,425,001-3,450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,450,000/9,547,527 records (15,975/sec; chunk 2.0s; cached chunks 2.55 GiB)
+[features] S2+S3: building text for records 3,450,001-3,475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,475,000/9,547,527 records (15,919/sec; chunk 2.3s; cached chunks 2.57 GiB)
+[features] S2+S3: building text for records 3,475,001-3,500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,500,000/9,547,527 records (15,881/sec; chunk 2.1s; cached chunks 2.59 GiB)
+[features] S2+S3: building text for records 3,500,001-3,525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,525,000/9,547,527 records (15,848/sec; chunk 2.0s; cached chunks 2.61 GiB)
+[features] S2+S3: building text for records 3,525,001-3,550,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,550,000/9,547,527 records (15,804/sec; chunk 2.2s; cached chunks 2.63 GiB)
+[features] S2+S3: building text for records 3,550,001-3,575,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,575,000/9,547,527 records (15,765/sec; chunk 2.1s; cached chunks 2.65 GiB)
+[features] S2+S3: building text for records 3,575,001-3,600,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,600,000/9,547,527 records (15,733/sec; chunk 2.0s; cached chunks 2.66 GiB)
+[features] S2+S3: building text for records 3,600,001-3,625,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,625,000/9,547,527 records (15,695/sec; chunk 2.1s; cached chunks 2.68 GiB)
+[features] S2+S3: building text for records 3,625,001-3,650,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,650,000/9,547,527 records (15,659/sec; chunk 2.1s; cached chunks 2.70 GiB)
+[features] S2+S3: building text for records 3,650,001-3,675,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,675,000/9,547,527 records (15,624/sec; chunk 2.1s; cached chunks 2.72 GiB)
+[features] S2+S3: building text for records 3,675,001-3,700,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,700,000/9,547,527 records (15,588/sec; chunk 2.1s; cached chunks 2.74 GiB)
+[features] S2+S3: building text for records 3,700,001-3,725,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,725,000/9,547,527 records (15,559/sec; chunk 2.1s; cached chunks 2.76 GiB)
+[features] S2+S3: building text for records 3,725,001-3,750,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,750,000/9,547,527 records (15,530/sec; chunk 2.0s; cached chunks 2.78 GiB)
+[features] S2+S3: building text for records 3,750,001-3,775,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,775,000/9,547,527 records (15,496/sec; chunk 2.2s; cached chunks 2.79 GiB)
+[features] S2+S3: building text for records 3,775,001-3,800,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,800,000/9,547,527 records (15,481/sec; chunk 1.8s; cached chunks 2.81 GiB)
+[features] S2+S3: building text for records 3,800,001-3,825,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,825,000/9,547,527 records (15,475/sec; chunk 1.7s; cached chunks 2.83 GiB)
+[features] S2+S3: building text for records 3,825,001-3,850,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,850,000/9,547,527 records (15,443/sec; chunk 2.1s; cached chunks 2.85 GiB)
+[features] S2+S3: building text for records 3,850,001-3,875,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,875,000/9,547,527 records (15,406/sec; chunk 2.2s; cached chunks 2.87 GiB)
+[features] S2+S3: building text for records 3,875,001-3,900,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,900,000/9,547,527 records (15,382/sec; chunk 2.0s; cached chunks 2.89 GiB)
+[features] S2+S3: building text for records 3,900,001-3,925,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,925,000/9,547,527 records (15,329/sec; chunk 2.5s; cached chunks 2.90 GiB)
+[features] S2+S3: building text for records 3,925,001-3,950,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,950,000/9,547,527 records (15,287/sec; chunk 2.3s; cached chunks 2.92 GiB)
+[features] S2+S3: building text for records 3,950,001-3,975,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 3,975,000/9,547,527 records (15,258/sec; chunk 2.1s; cached chunks 2.94 GiB)
+[features] S2+S3: building text for records 3,975,001-4,000,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,000,000/9,547,527 records (15,225/sec; chunk 2.2s; cached chunks 2.96 GiB)
+[features] S2+S3: building text for records 4,000,001-4,025,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,025,000/9,547,527 records (15,190/sec; chunk 2.3s; cached chunks 2.98 GiB)
+[features] S2+S3: building text for records 4,025,001-4,050,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,050,000/9,547,527 records (15,156/sec; chunk 2.3s; cached chunks 3.00 GiB)
+[features] S2+S3: building text for records 4,050,001-4,075,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,075,000/9,547,527 records (15,130/sec; chunk 2.1s; cached chunks 3.02 GiB)
+[features] S2+S3: building text for records 4,075,001-4,100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,100,000/9,547,527 records (15,101/sec; chunk 2.2s; cached chunks 3.03 GiB)
+[features] S2+S3: building text for records 4,100,001-4,125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,125,000/9,547,527 records (15,077/sec; chunk 2.1s; cached chunks 3.05 GiB)
+[features] S2+S3: building text for records 4,125,001-4,150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,150,000/9,547,527 records (15,049/sec; chunk 2.2s; cached chunks 3.07 GiB)
+[features] S2+S3: building text for records 4,150,001-4,175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,175,000/9,547,527 records (15,031/sec; chunk 2.0s; cached chunks 3.09 GiB)
+[features] S2+S3: building text for records 4,175,001-4,200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,200,000/9,547,527 records (15,004/sec; chunk 2.2s; cached chunks 3.11 GiB)
+[features] S2+S3: building text for records 4,200,001-4,225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,225,000/9,547,527 records (14,974/sec; chunk 2.2s; cached chunks 3.13 GiB)
+[features] S2+S3: building text for records 4,225,001-4,250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,250,000/9,547,527 records (14,940/sec; chunk 2.3s; cached chunks 3.14 GiB)
+[features] S2+S3: building text for records 4,250,001-4,275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,275,000/9,547,527 records (14,912/sec; chunk 2.2s; cached chunks 3.16 GiB)
+[features] S2+S3: building text for records 4,275,001-4,300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,300,000/9,547,527 records (14,881/sec; chunk 2.3s; cached chunks 3.18 GiB)
+[features] S2+S3: building text for records 4,300,001-4,325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,325,000/9,547,527 records (14,850/sec; chunk 2.3s; cached chunks 3.20 GiB)
+[features] S2+S3: building text for records 4,325,001-4,350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,350,000/9,547,527 records (14,823/sec; chunk 2.2s; cached chunks 3.22 GiB)
+[features] S2+S3: building text for records 4,350,001-4,375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,375,000/9,547,527 records (14,795/sec; chunk 2.2s; cached chunks 3.24 GiB)
+[features] S2+S3: building text for records 4,375,001-4,400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,400,000/9,547,527 records (14,767/sec; chunk 2.3s; cached chunks 3.26 GiB)
+[features] S2+S3: building text for records 4,400,001-4,425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,425,000/9,547,527 records (14,739/sec; chunk 2.3s; cached chunks 3.27 GiB)
+[features] S2+S3: building text for records 4,425,001-4,450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,450,000/9,547,527 records (14,715/sec; chunk 2.2s; cached chunks 3.29 GiB)
+[features] S2+S3: building text for records 4,450,001-4,475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,475,000/9,547,527 records (14,690/sec; chunk 2.2s; cached chunks 3.31 GiB)
+[features] S2+S3: building text for records 4,475,001-4,500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,500,000/9,547,527 records (14,659/sec; chunk 2.4s; cached chunks 3.33 GiB)
+[features] S2+S3: building text for records 4,500,001-4,525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,525,000/9,547,527 records (14,630/sec; chunk 2.3s; cached chunks 3.35 GiB)
+[features] S2+S3: building text for records 4,525,001-4,550,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,550,000/9,547,527 records (14,596/sec; chunk 2.4s; cached chunks 3.37 GiB)
+[features] S2+S3: building text for records 4,550,001-4,575,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,575,000/9,547,527 records (14,566/sec; chunk 2.4s; cached chunks 3.39 GiB)
+[features] S2+S3: building text for records 4,575,001-4,600,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,600,000/9,547,527 records (14,539/sec; chunk 2.3s; cached chunks 3.40 GiB)
+[features] S2+S3: building text for records 4,600,001-4,625,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,625,000/9,547,527 records (14,516/sec; chunk 2.2s; cached chunks 3.42 GiB)
+[features] S2+S3: building text for records 4,625,001-4,650,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,650,000/9,547,527 records (14,489/sec; chunk 2.3s; cached chunks 3.44 GiB)
+[features] S2+S3: building text for records 4,650,001-4,675,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,675,000/9,547,527 records (14,463/sec; chunk 2.3s; cached chunks 3.46 GiB)
+[features] S2+S3: building text for records 4,675,001-4,700,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,700,000/9,547,527 records (14,436/sec; chunk 2.3s; cached chunks 3.48 GiB)
+[features] S2+S3: building text for records 4,700,001-4,725,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,725,000/9,547,527 records (14,409/sec; chunk 2.3s; cached chunks 3.50 GiB)
+[features] S2+S3: building text for records 4,725,001-4,750,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,750,000/9,547,527 records (14,386/sec; chunk 2.3s; cached chunks 3.52 GiB)
+[features] S2+S3: building text for records 4,750,001-4,775,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,775,000/9,547,527 records (14,362/sec; chunk 2.3s; cached chunks 3.54 GiB)
+[features] S2+S3: building text for records 4,775,001-4,800,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,800,000/9,547,527 records (14,336/sec; chunk 2.3s; cached chunks 3.56 GiB)
+[features] S2+S3: building text for records 4,800,001-4,825,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,825,000/9,547,527 records (14,315/sec; chunk 2.2s; cached chunks 3.58 GiB)
+[features] S2+S3: building text for records 4,825,001-4,850,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,850,000/9,547,527 records (14,295/sec; chunk 2.2s; cached chunks 3.59 GiB)
+[features] S2+S3: building text for records 4,850,001-4,875,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,875,000/9,547,527 records (14,284/sec; chunk 2.0s; cached chunks 3.61 GiB)
+[features] S2+S3: building text for records 4,875,001-4,900,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,900,000/9,547,527 records (14,265/sec; chunk 2.2s; cached chunks 3.63 GiB)
+[features] S2+S3: building text for records 4,900,001-4,925,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,925,000/9,547,527 records (14,243/sec; chunk 2.3s; cached chunks 3.65 GiB)
+[features] S2+S3: building text for records 4,925,001-4,950,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,950,000/9,547,527 records (14,217/sec; chunk 2.4s; cached chunks 3.67 GiB)
+[features] S2+S3: building text for records 4,950,001-4,975,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 4,975,000/9,547,527 records (14,193/sec; chunk 2.3s; cached chunks 3.69 GiB)
+[features] S2+S3: building text for records 4,975,001-5,000,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,000,000/9,547,527 records (14,171/sec; chunk 2.3s; cached chunks 3.71 GiB)
+[features] S2+S3: building text for records 5,000,001-5,025,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,025,000/9,547,527 records (14,148/sec; chunk 2.3s; cached chunks 3.73 GiB)
+[features] S2+S3: building text for records 5,025,001-5,050,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,050,000/9,547,527 records (14,128/sec; chunk 2.3s; cached chunks 3.75 GiB)
+[features] S2+S3: building text for records 5,050,001-5,075,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,075,000/9,547,527 records (14,107/sec; chunk 2.3s; cached chunks 3.77 GiB)
+[features] S2+S3: building text for records 5,075,001-5,100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,100,000/9,547,527 records (14,083/sec; chunk 2.4s; cached chunks 3.79 GiB)
+[features] S2+S3: building text for records 5,100,001-5,125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,125,000/9,547,527 records (14,067/sec; chunk 2.2s; cached chunks 3.81 GiB)
+[features] S2+S3: building text for records 5,125,001-5,150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,150,000/9,547,527 records (14,044/sec; chunk 2.4s; cached chunks 3.82 GiB)
+[features] S2+S3: building text for records 5,150,001-5,175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,175,000/9,547,527 records (14,025/sec; chunk 2.3s; cached chunks 3.84 GiB)
+[features] S2+S3: building text for records 5,175,001-5,200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,200,000/9,547,527 records (14,005/sec; chunk 2.3s; cached chunks 3.86 GiB)
+[features] S2+S3: building text for records 5,200,001-5,225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,225,000/9,547,527 records (13,986/sec; chunk 2.3s; cached chunks 3.88 GiB)
+[features] S2+S3: building text for records 5,225,001-5,250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,250,000/9,547,527 records (13,967/sec; chunk 2.3s; cached chunks 3.90 GiB)
+[features] S2+S3: building text for records 5,250,001-5,275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,275,000/9,547,527 records (13,953/sec; chunk 2.2s; cached chunks 3.92 GiB)
+[features] S2+S3: building text for records 5,275,001-5,300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,300,000/9,547,527 records (13,939/sec; chunk 2.2s; cached chunks 3.94 GiB)
+[features] S2+S3: building text for records 5,300,001-5,325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,325,000/9,547,527 records (13,921/sec; chunk 2.3s; cached chunks 3.96 GiB)
+[features] S2+S3: building text for records 5,325,001-5,350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,350,000/9,547,527 records (13,903/sec; chunk 2.3s; cached chunks 3.98 GiB)
+[features] S2+S3: building text for records 5,350,001-5,375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,375,000/9,547,527 records (13,885/sec; chunk 2.3s; cached chunks 4.00 GiB)
+[features] S2+S3: building text for records 5,375,001-5,400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,400,000/9,547,527 records (13,871/sec; chunk 2.2s; cached chunks 4.02 GiB)
+[features] S2+S3: building text for records 5,400,001-5,425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,425,000/9,547,527 records (13,850/sec; chunk 2.4s; cached chunks 4.04 GiB)
+[features] S2+S3: building text for records 5,425,001-5,450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,450,000/9,547,527 records (13,837/sec; chunk 2.2s; cached chunks 4.05 GiB)
+[features] S2+S3: building text for records 5,450,001-5,475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,475,000/9,547,527 records (13,820/sec; chunk 2.3s; cached chunks 4.07 GiB)
+[features] S2+S3: building text for records 5,475,001-5,500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,500,000/9,547,527 records (13,808/sec; chunk 2.1s; cached chunks 4.09 GiB)
+[features] S2+S3: building text for records 5,500,001-5,525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,525,000/9,547,527 records (13,789/sec; chunk 2.4s; cached chunks 4.11 GiB)
+[features] S2+S3: building text for records 5,525,001-5,550,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,550,000/9,547,527 records (13,773/sec; chunk 2.3s; cached chunks 4.13 GiB)
+[features] S2+S3: building text for records 5,550,001-5,575,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,575,000/9,547,527 records (13,756/sec; chunk 2.3s; cached chunks 4.15 GiB)
+[features] S2+S3: building text for records 5,575,001-5,600,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,600,000/9,547,527 records (13,742/sec; chunk 2.2s; cached chunks 4.17 GiB)
+[features] S2+S3: building text for records 5,600,001-5,625,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,625,000/9,547,527 records (13,726/sec; chunk 2.3s; cached chunks 4.19 GiB)
+[features] S2+S3: building text for records 5,625,001-5,650,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,650,000/9,547,527 records (13,713/sec; chunk 2.2s; cached chunks 4.21 GiB)
+[features] S2+S3: building text for records 5,650,001-5,675,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,675,000/9,547,527 records (13,701/sec; chunk 2.2s; cached chunks 4.23 GiB)
+[features] S2+S3: building text for records 5,675,001-5,700,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,700,000/9,547,527 records (13,688/sec; chunk 2.2s; cached chunks 4.25 GiB)
+[features] S2+S3: building text for records 5,700,001-5,725,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,725,000/9,547,527 records (13,672/sec; chunk 2.3s; cached chunks 4.27 GiB)
+[features] S2+S3: building text for records 5,725,001-5,750,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,750,000/9,547,527 records (13,647/sec; chunk 2.6s; cached chunks 4.28 GiB)
+[features] S2+S3: building text for records 5,750,001-5,775,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,775,000/9,547,527 records (13,630/sec; chunk 2.4s; cached chunks 4.30 GiB)
+[features] S2+S3: building text for records 5,775,001-5,800,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,800,000/9,547,527 records (13,636/sec; chunk 1.6s; cached chunks 4.32 GiB)
+[features] S2+S3: building text for records 5,800,001-5,825,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,825,000/9,547,527 records (13,647/sec; chunk 1.5s; cached chunks 4.34 GiB)
+[features] S2+S3: building text for records 5,825,001-5,850,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,850,000/9,547,527 records (13,651/sec; chunk 1.7s; cached chunks 4.36 GiB)
+[features] S2+S3: building text for records 5,850,001-5,875,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,875,000/9,547,527 records (13,648/sec; chunk 1.9s; cached chunks 4.38 GiB)
+[features] S2+S3: building text for records 5,875,001-5,900,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,900,000/9,547,527 records (13,661/sec; chunk 1.4s; cached chunks 4.40 GiB)
+[features] S2+S3: building text for records 5,900,001-5,925,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,925,000/9,547,527 records (13,653/sec; chunk 2.1s; cached chunks 4.42 GiB)
+[features] S2+S3: building text for records 5,925,001-5,950,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,950,000/9,547,527 records (13,635/sec; chunk 2.4s; cached chunks 4.44 GiB)
+[features] S2+S3: building text for records 5,950,001-5,975,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 5,975,000/9,547,527 records (13,614/sec; chunk 2.5s; cached chunks 4.46 GiB)
+[features] S2+S3: building text for records 5,975,001-6,000,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,000,000/9,547,527 records (13,590/sec; chunk 2.6s; cached chunks 4.48 GiB)
+[features] S2+S3: building text for records 6,000,001-6,025,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,025,000/9,547,527 records (13,573/sec; chunk 2.4s; cached chunks 4.50 GiB)
+[features] S2+S3: building text for records 6,025,001-6,050,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,050,000/9,547,527 records (13,566/sec; chunk 2.1s; cached chunks 4.51 GiB)
+[features] S2+S3: building text for records 6,050,001-6,075,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,075,000/9,547,527 records (13,576/sec; chunk 1.5s; cached chunks 4.53 GiB)
+[features] S2+S3: building text for records 6,075,001-6,100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,100,000/9,547,527 records (13,589/sec; chunk 1.4s; cached chunks 4.55 GiB)
+[features] S2+S3: building text for records 6,100,001-6,125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,125,000/9,547,527 records (13,602/sec; chunk 1.4s; cached chunks 4.57 GiB)
+[features] S2+S3: building text for records 6,125,001-6,150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,150,000/9,547,527 records (13,603/sec; chunk 1.8s; cached chunks 4.59 GiB)
+[features] S2+S3: building text for records 6,150,001-6,175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,175,000/9,547,527 records (13,601/sec; chunk 1.9s; cached chunks 4.61 GiB)
+[features] S2+S3: building text for records 6,175,001-6,200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,200,000/9,547,527 records (13,610/sec; chunk 1.5s; cached chunks 4.63 GiB)
+[features] S2+S3: building text for records 6,200,001-6,225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,225,000/9,547,527 records (13,623/sec; chunk 1.4s; cached chunks 4.65 GiB)
+[features] S2+S3: building text for records 6,225,001-6,250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,250,000/9,547,527 records (13,635/sec; chunk 1.4s; cached chunks 4.67 GiB)
+[features] S2+S3: building text for records 6,250,001-6,275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,275,000/9,547,527 records (13,648/sec; chunk 1.4s; cached chunks 4.69 GiB)
+[features] S2+S3: building text for records 6,275,001-6,300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,300,000/9,547,527 records (13,661/sec; chunk 1.4s; cached chunks 4.71 GiB)
+[features] S2+S3: building text for records 6,300,001-6,325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,325,000/9,547,527 records (13,672/sec; chunk 1.5s; cached chunks 4.72 GiB)
+[features] S2+S3: building text for records 6,325,001-6,350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,350,000/9,547,527 records (13,685/sec; chunk 1.4s; cached chunks 4.74 GiB)
+[features] S2+S3: building text for records 6,350,001-6,375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,375,000/9,547,527 records (13,697/sec; chunk 1.4s; cached chunks 4.76 GiB)
+[features] S2+S3: building text for records 6,375,001-6,400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,400,000/9,547,527 records (13,708/sec; chunk 1.5s; cached chunks 4.78 GiB)
+[features] S2+S3: building text for records 6,400,001-6,425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,425,000/9,547,527 records (13,717/sec; chunk 1.5s; cached chunks 4.80 GiB)
+[features] S2+S3: building text for records 6,425,001-6,450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,450,000/9,547,527 records (13,725/sec; chunk 1.5s; cached chunks 4.82 GiB)
+[features] S2+S3: building text for records 6,450,001-6,475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,475,000/9,547,527 records (13,737/sec; chunk 1.4s; cached chunks 4.84 GiB)
+[features] S2+S3: building text for records 6,475,001-6,500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,500,000/9,547,527 records (13,750/sec; chunk 1.4s; cached chunks 4.86 GiB)
+[features] S2+S3: building text for records 6,500,001-6,525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,525,000/9,547,527 records (13,762/sec; chunk 1.4s; cached chunks 4.88 GiB)
+[features] S2+S3: building text for records 6,525,001-6,550,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,550,000/9,547,527 records (13,774/sec; chunk 1.4s; cached chunks 4.90 GiB)
+[features] S2+S3: building text for records 6,550,001-6,575,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,575,000/9,547,527 records (13,785/sec; chunk 1.4s; cached chunks 4.92 GiB)
+[features] S2+S3: building text for records 6,575,001-6,600,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,600,000/9,547,527 records (13,797/sec; chunk 1.4s; cached chunks 4.94 GiB)
+[features] S2+S3: building text for records 6,600,001-6,625,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,625,000/9,547,527 records (13,808/sec; chunk 1.4s; cached chunks 4.95 GiB)
+[features] S2+S3: building text for records 6,625,001-6,650,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,650,000/9,547,527 records (13,820/sec; chunk 1.4s; cached chunks 4.97 GiB)
+[features] S2+S3: building text for records 6,650,001-6,675,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,675,000/9,547,527 records (13,831/sec; chunk 1.4s; cached chunks 4.99 GiB)
+[features] S2+S3: building text for records 6,675,001-6,700,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,700,000/9,547,527 records (13,843/sec; chunk 1.4s; cached chunks 5.01 GiB)
+[features] S2+S3: building text for records 6,700,001-6,725,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,725,000/9,547,527 records (13,855/sec; chunk 1.4s; cached chunks 5.03 GiB)
+[features] S2+S3: building text for records 6,725,001-6,750,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,750,000/9,547,527 records (13,866/sec; chunk 1.4s; cached chunks 5.05 GiB)
+[features] S2+S3: building text for records 6,750,001-6,775,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,775,000/9,547,527 records (13,875/sec; chunk 1.5s; cached chunks 5.07 GiB)
+[features] S2+S3: building text for records 6,775,001-6,800,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,800,000/9,547,527 records (13,883/sec; chunk 1.5s; cached chunks 5.09 GiB)
+[features] S2+S3: building text for records 6,800,001-6,825,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,825,000/9,547,527 records (13,891/sec; chunk 1.5s; cached chunks 5.11 GiB)
+[features] S2+S3: building text for records 6,825,001-6,850,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,850,000/9,547,527 records (13,898/sec; chunk 1.6s; cached chunks 5.13 GiB)
+[features] S2+S3: building text for records 6,850,001-6,875,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,875,000/9,547,527 records (13,909/sec; chunk 1.4s; cached chunks 5.15 GiB)
+[features] S2+S3: building text for records 6,875,001-6,900,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,900,000/9,547,527 records (13,920/sec; chunk 1.4s; cached chunks 5.17 GiB)
+[features] S2+S3: building text for records 6,900,001-6,925,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,925,000/9,547,527 records (13,931/sec; chunk 1.4s; cached chunks 5.18 GiB)
+[features] S2+S3: building text for records 6,925,001-6,950,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,950,000/9,547,527 records (13,941/sec; chunk 1.4s; cached chunks 5.20 GiB)
+[features] S2+S3: building text for records 6,950,001-6,975,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 6,975,000/9,547,527 records (13,952/sec; chunk 1.4s; cached chunks 5.22 GiB)
+[features] S2+S3: building text for records 6,975,001-7,000,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,000,000/9,547,527 records (13,963/sec; chunk 1.4s; cached chunks 5.24 GiB)
+[features] S2+S3: building text for records 7,000,001-7,025,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,025,000/9,547,527 records (13,973/sec; chunk 1.4s; cached chunks 5.26 GiB)
+[features] S2+S3: building text for records 7,025,001-7,050,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,050,000/9,547,527 records (13,985/sec; chunk 1.4s; cached chunks 5.28 GiB)
+[features] S2+S3: building text for records 7,050,001-7,075,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,075,000/9,547,527 records (13,995/sec; chunk 1.4s; cached chunks 5.30 GiB)
+[features] S2+S3: building text for records 7,075,001-7,100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,100,000/9,547,527 records (14,005/sec; chunk 1.4s; cached chunks 5.32 GiB)
+[features] S2+S3: building text for records 7,100,001-7,125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,125,000/9,547,527 records (14,016/sec; chunk 1.4s; cached chunks 5.34 GiB)
+[features] S2+S3: building text for records 7,125,001-7,150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,150,000/9,547,527 records (14,027/sec; chunk 1.4s; cached chunks 5.36 GiB)
+[features] S2+S3: building text for records 7,150,001-7,175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,175,000/9,547,527 records (14,037/sec; chunk 1.4s; cached chunks 5.38 GiB)
+[features] S2+S3: building text for records 7,175,001-7,200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,200,000/9,547,527 records (14,044/sec; chunk 1.5s; cached chunks 5.40 GiB)
+[features] S2+S3: building text for records 7,200,001-7,225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,225,000/9,547,527 records (14,035/sec; chunk 2.1s; cached chunks 5.41 GiB)
+[features] S2+S3: building text for records 7,225,001-7,250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,250,000/9,547,527 records (14,016/sec; chunk 2.5s; cached chunks 5.43 GiB)
+[features] S2+S3: building text for records 7,250,001-7,275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,275,000/9,547,527 records (13,998/sec; chunk 2.4s; cached chunks 5.45 GiB)
+[features] S2+S3: building text for records 7,275,001-7,300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,300,000/9,547,527 records (13,984/sec; chunk 2.3s; cached chunks 5.47 GiB)
+[features] S2+S3: building text for records 7,300,001-7,325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,325,000/9,547,527 records (13,969/sec; chunk 2.3s; cached chunks 5.49 GiB)
+[features] S2+S3: building text for records 7,325,001-7,350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,350,000/9,547,527 records (13,957/sec; chunk 2.2s; cached chunks 5.51 GiB)
+[features] S2+S3: building text for records 7,350,001-7,375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,375,000/9,547,527 records (13,946/sec; chunk 2.2s; cached chunks 5.53 GiB)
+[features] S2+S3: building text for records 7,375,001-7,400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,400,000/9,547,527 records (13,932/sec; chunk 2.3s; cached chunks 5.55 GiB)
+[features] S2+S3: building text for records 7,400,001-7,425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,425,000/9,547,527 records (13,918/sec; chunk 2.3s; cached chunks 5.57 GiB)
+[features] S2+S3: building text for records 7,425,001-7,450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,450,000/9,547,527 records (13,908/sec; chunk 2.2s; cached chunks 5.59 GiB)
+[features] S2+S3: building text for records 7,450,001-7,475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,475,000/9,547,527 records (13,900/sec; chunk 2.1s; cached chunks 5.61 GiB)
+[features] S2+S3: building text for records 7,475,001-7,500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,500,000/9,547,527 records (13,890/sec; chunk 2.2s; cached chunks 5.63 GiB)
+[features] S2+S3: building text for records 7,500,001-7,525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,525,000/9,547,527 records (13,881/sec; chunk 2.2s; cached chunks 5.64 GiB)
+[features] S2+S3: building text for records 7,525,001-7,550,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,550,000/9,547,527 records (13,878/sec; chunk 1.9s; cached chunks 5.66 GiB)
+[features] S2+S3: building text for records 7,550,001-7,575,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,575,000/9,547,527 records (13,874/sec; chunk 2.0s; cached chunks 5.68 GiB)
+[features] S2+S3: building text for records 7,575,001-7,600,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,600,000/9,547,527 records (13,866/sec; chunk 2.1s; cached chunks 5.70 GiB)
+[features] S2+S3: building text for records 7,600,001-7,625,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,625,000/9,547,527 records (13,868/sec; chunk 1.7s; cached chunks 5.72 GiB)
+[features] S2+S3: building text for records 7,625,001-7,650,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,650,000/9,547,527 records (13,862/sec; chunk 2.0s; cached chunks 5.74 GiB)
+[features] S2+S3: building text for records 7,650,001-7,675,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,675,000/9,547,527 records (13,850/sec; chunk 2.3s; cached chunks 5.76 GiB)
+[features] S2+S3: building text for records 7,675,001-7,700,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,700,000/9,547,527 records (13,843/sec; chunk 2.1s; cached chunks 5.78 GiB)
+[features] S2+S3: building text for records 7,700,001-7,725,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,725,000/9,547,527 records (13,833/sec; chunk 2.2s; cached chunks 5.80 GiB)
+[features] S2+S3: building text for records 7,725,001-7,750,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,750,000/9,547,527 records (13,827/sec; chunk 2.0s; cached chunks 5.82 GiB)
+[features] S2+S3: building text for records 7,750,001-7,775,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,775,000/9,547,527 records (13,827/sec; chunk 1.8s; cached chunks 5.84 GiB)
+[features] S2+S3: building text for records 7,775,001-7,800,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,800,000/9,547,527 records (13,816/sec; chunk 2.2s; cached chunks 5.85 GiB)
+[features] S2+S3: building text for records 7,800,001-7,825,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,825,000/9,547,527 records (13,807/sec; chunk 2.2s; cached chunks 5.87 GiB)
+[features] S2+S3: building text for records 7,825,001-7,850,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,850,000/9,547,527 records (13,795/sec; chunk 2.3s; cached chunks 5.89 GiB)
+[features] S2+S3: building text for records 7,850,001-7,875,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,875,000/9,547,527 records (13,783/sec; chunk 2.3s; cached chunks 5.91 GiB)
+[features] S2+S3: building text for records 7,875,001-7,900,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,900,000/9,547,527 records (13,774/sec; chunk 2.2s; cached chunks 5.93 GiB)
+[features] S2+S3: building text for records 7,900,001-7,925,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,925,000/9,547,527 records (13,765/sec; chunk 2.2s; cached chunks 5.95 GiB)
+[features] S2+S3: building text for records 7,925,001-7,950,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,950,000/9,547,527 records (13,760/sec; chunk 2.0s; cached chunks 5.97 GiB)
+[features] S2+S3: building text for records 7,950,001-7,975,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 7,975,000/9,547,527 records (13,756/sec; chunk 2.0s; cached chunks 5.99 GiB)
+[features] S2+S3: building text for records 7,975,001-8,000,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,000,000/9,547,527 records (13,747/sec; chunk 2.2s; cached chunks 6.01 GiB)
+[features] S2+S3: building text for records 8,000,001-8,025,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,025,000/9,547,527 records (13,740/sec; chunk 2.1s; cached chunks 6.03 GiB)
+[features] S2+S3: building text for records 8,025,001-8,050,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,050,000/9,547,527 records (13,731/sec; chunk 2.2s; cached chunks 6.05 GiB)
+[features] S2+S3: building text for records 8,050,001-8,075,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,075,000/9,547,527 records (13,729/sec; chunk 1.9s; cached chunks 6.07 GiB)
+[features] S2+S3: building text for records 8,075,001-8,100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,100,000/9,547,527 records (13,723/sec; chunk 2.1s; cached chunks 6.08 GiB)
+[features] S2+S3: building text for records 8,100,001-8,125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,125,000/9,547,527 records (13,716/sec; chunk 2.1s; cached chunks 6.10 GiB)
+[features] S2+S3: building text for records 8,125,001-8,150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,150,000/9,547,527 records (13,710/sec; chunk 2.1s; cached chunks 6.12 GiB)
+[features] S2+S3: building text for records 8,150,001-8,175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,175,000/9,547,527 records (13,711/sec; chunk 1.8s; cached chunks 6.14 GiB)
+[features] S2+S3: building text for records 8,175,001-8,200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,200,000/9,547,527 records (13,705/sec; chunk 2.1s; cached chunks 6.16 GiB)
+[features] S2+S3: building text for records 8,200,001-8,225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,225,000/9,547,527 records (13,700/sec; chunk 2.1s; cached chunks 6.18 GiB)
+[features] S2+S3: building text for records 8,225,001-8,250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,250,000/9,547,527 records (13,697/sec; chunk 2.0s; cached chunks 6.20 GiB)
+[features] S2+S3: building text for records 8,250,001-8,275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,275,000/9,547,527 records (13,695/sec; chunk 1.9s; cached chunks 6.22 GiB)
+[features] S2+S3: building text for records 8,275,001-8,300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,300,000/9,547,527 records (13,693/sec; chunk 1.9s; cached chunks 6.24 GiB)
+[features] S2+S3: building text for records 8,300,001-8,325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,325,000/9,547,527 records (13,686/sec; chunk 2.1s; cached chunks 6.26 GiB)
+[features] S2+S3: building text for records 8,325,001-8,350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,350,000/9,547,527 records (13,681/sec; chunk 2.0s; cached chunks 6.28 GiB)
+[features] S2+S3: building text for records 8,350,001-8,375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,375,000/9,547,527 records (13,677/sec; chunk 2.0s; cached chunks 6.30 GiB)
+[features] S2+S3: building text for records 8,375,001-8,400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,400,000/9,547,527 records (13,664/sec; chunk 2.4s; cached chunks 6.31 GiB)
+[features] S2+S3: building text for records 8,400,001-8,425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,425,000/9,547,527 records (13,652/sec; chunk 2.4s; cached chunks 6.33 GiB)
+[features] S2+S3: building text for records 8,425,001-8,450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,450,000/9,547,527 records (13,653/sec; chunk 1.8s; cached chunks 6.35 GiB)
+[features] S2+S3: building text for records 8,450,001-8,475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,475,000/9,547,527 records (13,647/sec; chunk 2.1s; cached chunks 6.37 GiB)
+[features] S2+S3: building text for records 8,475,001-8,500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,500,000/9,547,527 records (13,643/sec; chunk 2.0s; cached chunks 6.39 GiB)
+[features] S2+S3: building text for records 8,500,001-8,525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,525,000/9,547,527 records (13,635/sec; chunk 2.2s; cached chunks 6.41 GiB)
+[features] S2+S3: building text for records 8,525,001-8,550,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,550,000/9,547,527 records (13,626/sec; chunk 2.2s; cached chunks 6.43 GiB)
+[features] S2+S3: building text for records 8,550,001-8,575,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,575,000/9,547,527 records (13,621/sec; chunk 2.1s; cached chunks 6.45 GiB)
+[features] S2+S3: building text for records 8,575,001-8,600,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,600,000/9,547,527 records (13,618/sec; chunk 2.0s; cached chunks 6.47 GiB)
+[features] S2+S3: building text for records 8,600,001-8,625,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,625,000/9,547,527 records (13,609/sec; chunk 2.2s; cached chunks 6.49 GiB)
+[features] S2+S3: building text for records 8,625,001-8,650,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,650,000/9,547,527 records (13,606/sec; chunk 2.0s; cached chunks 6.51 GiB)
+[features] S2+S3: building text for records 8,650,001-8,675,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,675,000/9,547,527 records (13,603/sec; chunk 2.0s; cached chunks 6.53 GiB)
+[features] S2+S3: building text for records 8,675,001-8,700,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,700,000/9,547,527 records (13,597/sec; chunk 2.1s; cached chunks 6.54 GiB)
+[features] S2+S3: building text for records 8,700,001-8,725,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,725,000/9,547,527 records (13,591/sec; chunk 2.1s; cached chunks 6.56 GiB)
+[features] S2+S3: building text for records 8,725,001-8,750,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,750,000/9,547,527 records (13,585/sec; chunk 2.1s; cached chunks 6.58 GiB)
+[features] S2+S3: building text for records 8,750,001-8,775,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,775,000/9,547,527 records (13,589/sec; chunk 1.6s; cached chunks 6.60 GiB)
+[features] S2+S3: building text for records 8,775,001-8,800,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,800,000/9,547,527 records (13,585/sec; chunk 2.0s; cached chunks 6.62 GiB)
+[features] S2+S3: building text for records 8,800,001-8,825,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,825,000/9,547,527 records (13,581/sec; chunk 2.1s; cached chunks 6.64 GiB)
+[features] S2+S3: building text for records 8,825,001-8,850,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,850,000/9,547,527 records (13,576/sec; chunk 2.1s; cached chunks 6.66 GiB)
+[features] S2+S3: building text for records 8,850,001-8,875,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,875,000/9,547,527 records (13,571/sec; chunk 2.1s; cached chunks 6.68 GiB)
+[features] S2+S3: building text for records 8,875,001-8,900,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,900,000/9,547,527 records (13,573/sec; chunk 1.7s; cached chunks 6.70 GiB)
+[features] S2+S3: building text for records 8,900,001-8,925,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,925,000/9,547,527 records (13,571/sec; chunk 1.9s; cached chunks 6.72 GiB)
+[features] S2+S3: building text for records 8,925,001-8,950,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,950,000/9,547,527 records (13,567/sec; chunk 2.0s; cached chunks 6.74 GiB)
+[features] S2+S3: building text for records 8,950,001-8,975,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 8,975,000/9,547,527 records (13,565/sec; chunk 2.0s; cached chunks 6.76 GiB)
+[features] S2+S3: building text for records 8,975,001-9,000,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,000,000/9,547,527 records (13,557/sec; chunk 2.2s; cached chunks 6.77 GiB)
+[features] S2+S3: building text for records 9,000,001-9,025,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,025,000/9,547,527 records (13,548/sec; chunk 2.3s; cached chunks 6.79 GiB)
+[features] S2+S3: building text for records 9,025,001-9,050,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,050,000/9,547,527 records (13,538/sec; chunk 2.3s; cached chunks 6.81 GiB)
+[features] S2+S3: building text for records 9,050,001-9,075,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,075,000/9,547,527 records (13,528/sec; chunk 2.4s; cached chunks 6.83 GiB)
+[features] S2+S3: building text for records 9,075,001-9,100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,100,000/9,547,527 records (13,512/sec; chunk 2.6s; cached chunks 6.85 GiB)
+[features] S2+S3: building text for records 9,100,001-9,125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,125,000/9,547,527 records (13,501/sec; chunk 2.4s; cached chunks 6.87 GiB)
+[features] S2+S3: building text for records 9,125,001-9,150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,150,000/9,547,527 records (13,491/sec; chunk 2.4s; cached chunks 6.89 GiB)
+[features] S2+S3: building text for records 9,150,001-9,175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,175,000/9,547,527 records (13,478/sec; chunk 2.5s; cached chunks 6.91 GiB)
+[features] S2+S3: building text for records 9,175,001-9,200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,200,000/9,547,527 records (13,467/sec; chunk 2.4s; cached chunks 6.93 GiB)
+[features] S2+S3: building text for records 9,200,001-9,225,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,225,000/9,547,527 records (13,459/sec; chunk 2.3s; cached chunks 6.95 GiB)
+[features] S2+S3: building text for records 9,225,001-9,250,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,250,000/9,547,527 records (13,452/sec; chunk 2.2s; cached chunks 6.97 GiB)
+[features] S2+S3: building text for records 9,250,001-9,275,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,275,000/9,547,527 records (13,449/sec; chunk 2.0s; cached chunks 6.99 GiB)
+[features] S2+S3: building text for records 9,275,001-9,300,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,300,000/9,547,527 records (13,444/sec; chunk 2.1s; cached chunks 7.00 GiB)
+[features] S2+S3: building text for records 9,300,001-9,325,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,325,000/9,547,527 records (13,438/sec; chunk 2.1s; cached chunks 7.02 GiB)
+[features] S2+S3: building text for records 9,325,001-9,350,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,350,000/9,547,527 records (13,433/sec; chunk 2.2s; cached chunks 7.04 GiB)
+[features] S2+S3: building text for records 9,350,001-9,375,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,375,000/9,547,527 records (13,427/sec; chunk 2.1s; cached chunks 7.06 GiB)
+[features] S2+S3: building text for records 9,375,001-9,400,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,400,000/9,547,527 records (13,422/sec; chunk 2.1s; cached chunks 7.08 GiB)
+[features] S2+S3: building text for records 9,400,001-9,425,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,425,000/9,547,527 records (13,419/sec; chunk 2.0s; cached chunks 7.10 GiB)
+[features] S2+S3: building text for records 9,425,001-9,450,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,450,000/9,547,527 records (13,410/sec; chunk 2.3s; cached chunks 7.12 GiB)
+[features] S2+S3: building text for records 9,450,001-9,475,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,475,000/9,547,527 records (13,401/sec; chunk 2.3s; cached chunks 7.14 GiB)
+[features] S2+S3: building text for records 9,475,001-9,500,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,500,000/9,547,527 records (13,392/sec; chunk 2.3s; cached chunks 7.16 GiB)
+[features] S2+S3: building text for records 9,500,001-9,525,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 9,525,000/9,547,527 records (13,389/sec; chunk 2.1s; cached chunks 7.18 GiB)
+[features] S2+S3: building text for records 9,525,001-9,547,527
+[features] S2+S3: vectorizing 22,527 records
+[features] S2+S3: 9,547,527/9,547,527 records (13,394/sec; chunk 1.4s; cached chunks 7.19 GiB)
+[features] S2+S3: largest pair-batch CSR gather so far needs about 12.2 MiB for 20,000 rows; estimate reported before allocation
+[features] S2+S3: largest pair-batch CSR gather so far needs about 12.3 MiB for 20,000 rows; estimate reported before allocation
+[features] S2+S3: largest pair-batch CSR gather so far needs about 12.4 MiB for 20,000 rows; estimate reported before allocation
+[features] S2+S3: largest pair-batch CSR gather so far needs about 12.6 MiB for 20,000 rows; estimate reported before allocation

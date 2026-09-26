@@ -1,0 +1,80 @@
+[features] candidate scan complete: 5,000 rows, 5,000 unique S1, 211,535 unique candidates
+[features] selected 5,000 referenced S1 and 211,535 referenced candidate records for TF-IDF
+[features] loaded 5,000 S1 and 211,535 S2/S3 records
+[features] transforming each source record once (vocabulary=100,000)
+[features] S1: starting TF-IDF transform for 5,000 records
+[features] S1: building text for records 1-5,000
+[features] S1: vectorizing 5,000 records
+[features] S1: 5,000/5,000 records (18,229/sec; chunk 0.3s; cached chunks 0.00 GiB)
+[features] S2+S3: starting TF-IDF transform for 211,535 records
+[features] S2+S3: building text for records 1-25,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 25,000/211,535 records (21,331/sec; chunk 1.2s; cached chunks 0.02 GiB)
+[features] S2+S3: building text for records 25,001-50,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 50,000/211,535 records (21,537/sec; chunk 1.1s; cached chunks 0.03 GiB)
+[features] S2+S3: building text for records 50,001-75,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 75,000/211,535 records (21,689/sec; chunk 1.1s; cached chunks 0.05 GiB)
+[features] S2+S3: building text for records 75,001-100,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 100,000/211,535 records (21,745/sec; chunk 1.1s; cached chunks 0.07 GiB)
+[features] S2+S3: building text for records 100,001-125,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 125,000/211,535 records (21,872/sec; chunk 1.1s; cached chunks 0.08 GiB)
+[features] S2+S3: building text for records 125,001-150,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 150,000/211,535 records (21,930/sec; chunk 1.1s; cached chunks 0.10 GiB)
+[features] S2+S3: building text for records 150,001-175,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 175,000/211,535 records (21,986/sec; chunk 1.1s; cached chunks 0.11 GiB)
+[features] S2+S3: building text for records 175,001-200,000
+[features] S2+S3: vectorizing 25,000 records
+[features] S2+S3: 200,000/211,535 records (22,085/sec; chunk 1.1s; cached chunks 0.13 GiB)
+[features] S2+S3: building text for records 200,001-211,535
+[features] S2+S3: vectorizing 11,535 records
+[features] S2+S3: 211,535/211,535 records (22,096/sec; chunk 0.5s; cached chunks 0.14 GiB)
+[features] starting feature batch 1 (20,000 pairs; 0 already written)
+[features] S2+S3: largest pair-batch CSR gather so far needs about 12.2 MiB for 20,000 rows; estimate reported before allocation
+[features] finished feature batch: 20,000 pairs in 0.7s (29,854 pairs/sec)
+[features] wrote 20,000 pairs
+[features] starting feature batch 2 (20,000 pairs; 20,000 already written)
+[features] S2+S3: largest pair-batch CSR gather so far needs about 12.3 MiB for 20,000 rows; estimate reported before allocation
+[features] finished feature batch: 20,000 pairs in 0.6s (32,701 pairs/sec)
+[features] wrote 40,000 pairs
+[features] starting feature batch 3 (20,000 pairs; 40,000 already written)
+[features] finished feature batch: 20,000 pairs in 0.6s (32,001 pairs/sec)
+[features] wrote 60,000 pairs
+[features] starting feature batch 4 (20,000 pairs; 60,000 already written)
+[features] S2+S3: largest pair-batch CSR gather so far needs about 12.4 MiB for 20,000 rows; estimate reported before allocation
+[features] finished feature batch: 20,000 pairs in 0.6s (32,779 pairs/sec)
+[features] wrote 80,000 pairs
+[features] starting feature batch 5 (20,000 pairs; 80,000 already written)
+[features] S2+S3: largest pair-batch CSR gather so far needs about 12.7 MiB for 20,000 rows; estimate reported before allocation
+[features] finished feature batch: 20,000 pairs in 0.6s (32,387 pairs/sec)
+[features] wrote 100,000 pairs
+[features] starting feature batch 6 (20,000 pairs; 100,000 already written)
+[features] finished feature batch: 20,000 pairs in 0.6s (32,033 pairs/sec)
+[features] wrote 120,000 pairs
+[features] starting feature batch 7 (20,000 pairs; 120,000 already written)
+[features] finished feature batch: 20,000 pairs in 0.6s (32,052 pairs/sec)
+[features] wrote 140,000 pairs
+[features] starting feature batch 8 (20,000 pairs; 140,000 already written)
+[features] finished feature batch: 20,000 pairs in 0.6s (33,448 pairs/sec)
+[features] wrote 160,000 pairs
+[features] starting feature batch 9 (20,000 pairs; 160,000 already written)
+[features] finished feature batch: 20,000 pairs in 0.6s (33,050 pairs/sec)
+[features] wrote 180,000 pairs
+[features] starting feature batch 10 (20,000 pairs; 180,000 already written)
+[features] finished feature batch: 20,000 pairs in 0.6s (32,431 pairs/sec)
+[features] wrote 200,000 pairs
+[features] starting feature batch 11 (20,000 pairs; 200,000 already written)
+[features] finished feature batch: 20,000 pairs in 0.6s (32,115 pairs/sec)
+[features] wrote 220,000 pairs
+[features] starting feature batch 12 (20,000 pairs; 220,000 already written)
+[features] finished feature batch: 20,000 pairs in 0.7s (30,354 pairs/sec)
+[features] wrote 240,000 pairs
+[features] starting feature batch 13 (9,408 pairs; 240,000 already written)
+[features] finished feature batch: 9,408 pairs in 0.3s (29,787 pairs/sec)
+[features] wrote 249,408 pairs
+[features] wrote 249,408 rows to ..\..\output\train_features_lookup_test.parquet
