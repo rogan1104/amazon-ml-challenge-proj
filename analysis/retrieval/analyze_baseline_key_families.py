@@ -12,7 +12,6 @@ import argparse
 import csv
 import json
 import statistics
-import sys
 import time
 from pathlib import Path
 from typing import Literal
@@ -25,14 +24,17 @@ from analysis.retrieval.keys import baseline_keys
 
 Target = Literal["S2", "S3"]
 
-CONDITIONS: dict[str, frozenset[str]] = {
-    "bn": frozenset({"bn"}),
-    "ba": frozenset({"ba"}),
-    "cp": frozenset({"cp"}),
-    "bn_ba": frozenset({"bn", "ba"}),
-    "bn_cp": frozenset({"bn", "cp"}),
-    "ba_cp": frozenset({"ba", "cp"}),
-    "bn_ba_cp": frozenset({"bn", "ba", "cp"}),
+PRIMITIVE_FAMILIES = ("bn", "ba", "cp")
+
+# Derived conditions = union of primitive candidate maps (no extra SQLite).
+CONDITION_UNIONS: dict[str, tuple[str, ...]] = {
+    "bn": ("bn",),
+    "ba": ("ba",),
+    "cp": ("cp",),
+    "bn_ba": ("bn", "ba"),
+    "bn_cp": ("bn", "cp"),
+    "ba_cp": ("ba", "cp"),
+    "bn_ba_cp": ("bn", "ba", "cp"),
 }
 
 _FAMILY_PREFIX = {"bn": "bn:", "ba": "ba:", "cp": "cp:"}
@@ -101,14 +103,97 @@ def _percentile(sorted_vals: list[int], p: float) -> float:
     return sorted_vals[f] + (k - f) * (sorted_vals[c] - sorted_vals[f])
 
 
-def retrieve_condition(
+def retrieve_primitive(
     index: InvertedIndex,
-    queries: list[tuple[str, list[str]]],
+    precomputed: list[tuple[str, list[str]]],
+    family: str,
     target: Target,
 ) -> dict[str, set[str]]:
+    fam = frozenset({family})
+    queries = [(s1, _filter_keys(keys, fam)) for s1, keys in precomputed]
     return index.lookup_keys_exact_batch(
         ChannelName.BASELINE, target, queries  # type: ignore[arg-type]
     )
+
+
+def union_candidate_maps(
+    sample_ids: list[str],
+    *maps: dict[str, set[str]],
+) -> dict[str, set[str]]:
+    out: dict[str, set[str]] = {}
+    for s1 in sample_ids:
+        acc: set[str] = set()
+        for m in maps:
+            acc |= m.get(s1, set())
+        out[s1] = acc
+    return out
+
+
+def _combined_candidate_stats(
+    cands_s2: dict[str, set[str]],
+    cands_s3: dict[str, set[str]],
+    sample_ids: list[str],
+) -> dict:
+    combined_counts = [
+        len(cands_s2.get(s1, set()) | cands_s3.get(s1, set()))
+        for s1 in sample_ids
+    ]
+    combined_sorted = sorted(combined_counts)
+    return {
+        "avg": round(statistics.mean(combined_counts), 4) if combined_counts else 0,
+        "median": statistics.median(combined_counts) if combined_counts else 0,
+        "p95": round(_percentile(combined_sorted, 95), 2),
+        "p99": round(_percentile(combined_sorted, 99), 2),
+        "max": max(combined_counts) if combined_counts else 0,
+        "total": sum(combined_counts),
+    }
+
+
+def _build_condition_report(
+    cands_s2: dict[str, set[str]],
+    cands_s3: dict[str, set[str]],
+    gt: dict[str, dict],
+    sample_ids: list[str],
+    us_ids: list[str],
+    in_ids: list[str],
+    singleton_ids: list[str],
+    nonsingleton_ids: list[str],
+    runtime_sec: float,
+    runtime_detail: dict,
+) -> dict:
+    by_target = {
+        "S2": evaluate_target(cands_s2, gt, sample_ids, "S2"),
+        "S3": evaluate_target(cands_s3, gt, sample_ids, "S3"),
+    }
+    return {
+        "runtime_sec": runtime_sec,
+        "runtime_detail": runtime_detail,
+        "S2": by_target["S2"],
+        "S3": by_target["S3"],
+        "combined_candidates_per_s1": _combined_candidate_stats(
+            cands_s2, cands_s3, sample_ids,
+        ),
+        "recall_by_country": {
+            "US": {
+                "S2": evaluate_subset(cands_s2, gt, us_ids, "S2"),
+                "S3": evaluate_subset(cands_s3, gt, us_ids, "S3"),
+            },
+            "IN": {
+                "S2": evaluate_subset(cands_s2, gt, in_ids, "S2"),
+                "S3": evaluate_subset(cands_s3, gt, in_ids, "S3"),
+            },
+        },
+        "recall_by_singleton": {
+            "singleton": {
+                "S2": evaluate_subset(cands_s2, gt, singleton_ids, "S2"),
+                "S3": evaluate_subset(cands_s3, gt, singleton_ids, "S3"),
+            },
+            "non_singleton": {
+                "S2": evaluate_subset(cands_s2, gt, nonsingleton_ids, "S2"),
+                "S3": evaluate_subset(cands_s3, gt, nonsingleton_ids, "S3"),
+            },
+        },
+    }
 
 
 def evaluate_target(
@@ -206,84 +291,87 @@ def run_analysis(sample: int, index_dir: Path, output_dir: Path) -> dict:
         "sample_s1_count": len(sample_ids),
         "load_sec": load_sec,
         "index_path": str(index_path),
+        "primitive_sqlite_sec": {"S2": {}, "S3": {}},
         "conditions": {},
         "summary_table": [],
         "interpretation_questions": {},
     }
 
     with InvertedIndex(index_path, read_only=True) as index:
-        for cond_name, families in CONDITIONS.items():
-            print(f"[key-family] condition={cond_name} ...", flush=True)
+        primitive: dict[str, dict[str, dict[str, set[str]]]] = {"S2": {}, "S3": {}}
+
+        for target in ("S2", "S3"):
+            for family in PRIMITIVE_FAMILIES:
+                print(f"[key-family] sqlite primitive {family} target={target} ...", flush=True)
+                t0 = time.perf_counter()
+                primitive[target][family] = retrieve_primitive(
+                    index, precomputed, family, target,  # type: ignore[arg-type]
+                )
+                sql_sec = round(time.perf_counter() - t0, 3)
+                report["primitive_sqlite_sec"][target][family] = sql_sec
+                print(f"  sqlite {family}/{target}={sql_sec}s", flush=True)
+
+        for cond_name, parts in CONDITION_UNIONS.items():
+            print(f"[key-family] condition={cond_name} (derived={len(parts) > 1}) ...", flush=True)
             t0 = time.perf_counter()
-            queries = [(s1, _filter_keys(keys, families)) for s1, keys in precomputed]
+            cands_s2 = union_candidate_maps(
+                sample_ids, *(primitive["S2"][p] for p in parts),
+            )
+            cands_s3 = union_candidate_maps(
+                sample_ids, *(primitive["S3"][p] for p in parts),
+            )
+            python_sec = round(time.perf_counter() - t0, 3)
 
-            by_target: dict[str, dict] = {}
-            cands_s2: dict[str, set[str]] = {}
-            cands_s3: dict[str, set[str]] = {}
+            if len(parts) == 1:
+                fam = parts[0]
+                sqlite_sec = (
+                    report["primitive_sqlite_sec"]["S2"][fam]
+                    + report["primitive_sqlite_sec"]["S3"][fam]
+                )
+                runtime_sec = sqlite_sec
+                runtime_detail = {
+                    "source": "sqlite_primitive",
+                    "primitive_family": fam,
+                    "sqlite_sec_S2": report["primitive_sqlite_sec"]["S2"][fam],
+                    "sqlite_sec_S3": report["primitive_sqlite_sec"]["S3"][fam],
+                    "python_derived_sec": 0.0,
+                }
+            else:
+                runtime_sec = python_sec
+                runtime_detail = {
+                    "source": "derived_python_union",
+                    "union_of": list(parts),
+                    "sqlite_sec": 0.0,
+                    "python_derived_sec": python_sec,
+                }
 
-            for target in ("S2", "S3"):
-                cands = retrieve_condition(index, queries, target)  # type: ignore[arg-type]
-                if target == "S2":
-                    cands_s2 = cands
-                else:
-                    cands_s3 = cands
-                by_target[target] = evaluate_target(cands, gt, sample_ids, target)  # type: ignore[arg-type]
-
-            runtime_sec = round(time.perf_counter() - t0, 3)
-
-            combined_counts = [
-                len(cands_s2.get(s1, set()) | cands_s3.get(s1, set()))
-                for s1 in sample_ids
-            ]
-            combined_sorted = sorted(combined_counts)
-
-            cond_report = {
-                "runtime_sec": runtime_sec,
-                "S2": by_target["S2"],
-                "S3": by_target["S3"],
-                "combined_candidates_per_s1": {
-                    "avg": round(statistics.mean(combined_counts), 4) if combined_counts else 0,
-                    "median": statistics.median(combined_counts) if combined_counts else 0,
-                    "p95": round(_percentile(combined_sorted, 95), 2),
-                    "p99": round(_percentile(combined_sorted, 99), 2),
-                    "max": max(combined_counts) if combined_counts else 0,
-                    "total": sum(combined_counts),
-                },
-                "recall_by_country": {
-                    "US": {
-                        "S2": evaluate_subset(cands_s2, gt, us_ids, "S2"),
-                        "S3": evaluate_subset(cands_s3, gt, us_ids, "S3"),
-                    },
-                    "IN": {
-                        "S2": evaluate_subset(cands_s2, gt, in_ids, "S2"),
-                        "S3": evaluate_subset(cands_s3, gt, in_ids, "S3"),
-                    },
-                },
-                "recall_by_singleton": {
-                    "singleton": {
-                        "S2": evaluate_subset(cands_s2, gt, singleton_ids, "S2"),
-                        "S3": evaluate_subset(cands_s3, gt, singleton_ids, "S3"),
-                    },
-                    "non_singleton": {
-                        "S2": evaluate_subset(cands_s2, gt, nonsingleton_ids, "S2"),
-                        "S3": evaluate_subset(cands_s3, gt, nonsingleton_ids, "S3"),
-                    },
-                },
-            }
+            cond_report = _build_condition_report(
+                cands_s2,
+                cands_s3,
+                gt,
+                sample_ids,
+                us_ids,
+                in_ids,
+                singleton_ids,
+                nonsingleton_ids,
+                runtime_sec,
+                runtime_detail,
+            )
             report["conditions"][cond_name] = cond_report
             report["summary_table"].append({
                 "condition": cond_name,
-                "S2_recall": by_target["S2"]["pair_recall"],
-                "S3_recall": by_target["S3"]["pair_recall"],
+                "S2_recall": cond_report["S2"]["pair_recall"],
+                "S3_recall": cond_report["S3"]["pair_recall"],
                 "avg_candidates_combined": cond_report["combined_candidates_per_s1"]["avg"],
                 "p95_candidates_combined": cond_report["combined_candidates_per_s1"]["p95"],
                 "runtime_sec": runtime_sec,
+                "derived": len(parts) > 1,
             })
             print(
-                f"  S2 recall={by_target['S2']['pair_recall']:.4f} "
-                f"S3={by_target['S3']['pair_recall']:.4f} "
+                f"  S2 recall={cond_report['S2']['pair_recall']:.4f} "
+                f"S3={cond_report['S3']['pair_recall']:.4f} "
                 f"avg_cand={cond_report['combined_candidates_per_s1']['avg']:.1f} "
-                f"runtime={runtime_sec}s",
+                f"runtime={runtime_sec}s ({runtime_detail['source']})",
                 flush=True,
             )
 
