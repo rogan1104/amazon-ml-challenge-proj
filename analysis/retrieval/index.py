@@ -8,32 +8,6 @@ from typing import Iterable, Sequence
 
 from analysis.retrieval.config import ChannelName, Target
 
-
-def readonly_sqlite_uri(db_path: Path) -> str:
-    """
-    Build a SQLite read-only URI (Windows-safe).
-
-    Uses Path.as_uri() so drive letters become file:///D:/... per SQLite URI rules,
-    then appends mode=ro for uri=True / ATTACH DATABASE.
-    """
-    resolved = db_path.resolve()
-    uri = resolved.as_uri()
-    return f"{uri}?mode=ro" if "?" not in uri else f"{uri}&mode=ro"
-
-
-def _attach_readonly_database(conn: sqlite3.Connection, db_path: Path, alias: str) -> None:
-    """ATTACH on-disk index read-only to a writable (e.g. :memory:) connection."""
-    disk_uri = readonly_sqlite_uri(db_path)
-    # Validate URI opens read-only before ATTACH (clearer errors than ATTACH alone).
-    probe = sqlite3.connect(disk_uri, uri=True)
-    try:
-        probe.execute("SELECT 1 FROM sqlite_schema LIMIT 1")
-    finally:
-        probe.close()
-
-    quoted = disk_uri.replace('"', '""')
-    conn.execute(f'ATTACH DATABASE "{quoted}" AS {alias}')
-
 # Reused SQL strings (stable object identity helps SQLite statement cache).
 _SQL_EXACT_IN = """
     SELECT DISTINCT entity_id FROM postings
@@ -73,57 +47,52 @@ _SQL_BATCH_SCORED_MAXDF = """
 """
 
 
+def open_index_connection(db_path: Path, *, read_only: bool) -> sqlite3.Connection:
+    """
+    Open the on-disk index.
+
+    read_only=True is retrieval mode: only SELECT on index tables, but the
+    connection must allow TEMP tables (batch_query). SQLite mode=ro forbids
+    TEMP DDL, so we use a normal file connection and never write index tables.
+    """
+    resolved = db_path.resolve()
+    if read_only and not resolved.is_file():
+        raise FileNotFoundError(resolved)
+
+    # Plain path string — reliable on Windows (no ATTACH / URI edge cases).
+    conn = sqlite3.connect(str(resolved))
+
+    conn.execute("PRAGMA temp_store=MEMORY")
+    conn.execute("PRAGMA mmap_size=268435456")
+    conn.execute("PRAGMA cache_size=-256000")
+
+    if not read_only:
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA synchronous=NORMAL")
+
+    return conn
+
+
 class InvertedIndex:
     """
     SQLite inverted index: (channel, target, key) -> entity_id postings.
 
     Stored on disk so indexes for millions of rows fit in bounded RAM during build.
-
-    Read-only retrieval uses an in-memory connection with the on-disk index ATTACHed
-    read-only, so TEMP batch_query tables never write to index_train.sqlite.
     """
-
-    _ATTACH_ALIAS = "idx"
 
     def __init__(self, db_path: Path, *, read_only: bool = False):
         self.db_path = Path(db_path)
         self._read_only = read_only
-        if read_only and self.db_path.exists():
-            self._conn = sqlite3.connect(":memory:")
-            _attach_readonly_database(self._conn, self.db_path, self._ATTACH_ALIAS)
-            pfx = f"{self._ATTACH_ALIAS}."
-            self._postings = f"{pfx}postings"
-            self._key_df = f"{pfx}key_df"
-            self._meta = f"{pfx}meta"
-            self._conn.execute("PRAGMA temp_store=MEMORY")
-            self._conn.execute(f"PRAGMA {self._ATTACH_ALIAS}.mmap_size=268435456")
-            self._conn.execute(f"PRAGMA {self._ATTACH_ALIAS}.cache_size=-256000")
-        else:
+        if not read_only:
             self.db_path.parent.mkdir(parents=True, exist_ok=True)
-            self._conn = sqlite3.connect(str(self.db_path))
-            self._conn.execute("PRAGMA journal_mode=WAL")
-            self._conn.execute("PRAGMA synchronous=NORMAL")
-            self._postings = "postings"
-            self._key_df = "key_df"
-            self._meta = "meta"
-            self._conn.execute("PRAGMA temp_store=MEMORY")
-            self._conn.execute("PRAGMA mmap_size=268435456")
-            self._conn.execute("PRAGMA cache_size=-256000")
+        self._conn = open_index_connection(self.db_path, read_only=read_only)
+        if not read_only:
             self._create_schema()
-
         self._batch_table_ready = False
 
-    def _sql(self, template: str) -> str:
-        """Qualify index tables (postings/key_df/meta) for attached read-only DB."""
-        return (
-            template.replace(" postings ", f" {self._postings} ")
-            .replace(" postings\n", f" {self._postings}\n")
-            .replace("FROM postings", f"FROM {self._postings}")
-            .replace("JOIN postings", f"JOIN {self._postings}")
-            .replace(" key_df ", f" {self._key_df} ")
-            .replace("JOIN key_df", f"JOIN {self._key_df}")
-            .replace("FROM meta", f"FROM {self._meta}")
-        )
+    def _assert_writable(self) -> None:
+        if self._read_only:
+            raise RuntimeError("Index is open read_only for retrieval; cannot modify index tables.")
 
     def _create_schema(self) -> None:
         self._conn.executescript("""
@@ -166,6 +135,7 @@ class InvertedIndex:
         self._batch_table_ready = True
 
     def clear_channel(self, channel: ChannelName, target: Target) -> None:
+        self._assert_writable()
         ch, tg = channel.value, target
         self._conn.execute("DELETE FROM postings WHERE channel=? AND target=?", (ch, tg))
         self._conn.execute("DELETE FROM key_df WHERE channel=? AND target=?", (ch, tg))
@@ -178,6 +148,7 @@ class InvertedIndex:
         rows: Iterable[tuple[str, str]],
     ) -> int:
         """Insert (key, entity_id) pairs. Returns rows inserted."""
+        self._assert_writable()
         ch, tg = channel.value, target
         data = [(ch, tg, k, eid) for k, eid in rows if k and eid]
         if not data:
@@ -191,6 +162,7 @@ class InvertedIndex:
 
     def finalize_df(self, channel: ChannelName, target: Target) -> None:
         """Compute document frequency per key (for stop-key filtering)."""
+        self._assert_writable()
         ch, tg = channel.value, target
         self._conn.execute("DELETE FROM key_df WHERE channel=? AND target=?", (ch, tg))
         self._conn.execute("""
@@ -210,9 +182,7 @@ class InvertedIndex:
     ) -> list[str]:
         ch, tg = channel.value, target
         cur = self._conn.execute(
-            self._sql(
-                "SELECT key FROM postings WHERE channel=? AND target=? AND entity_id=?",
-            ),
+            "SELECT key FROM postings WHERE channel=? AND target=? AND entity_id=?",
             (ch, tg, entity_id),
         )
         return [r[0] for r in cur.fetchall()]
@@ -241,10 +211,10 @@ class InvertedIndex:
             params: list = [ch, tg, *batch]
 
             if max_df is not None:
-                sql = self._sql(_SQL_SCORED_MAXDF.format(placeholders=placeholders))
+                sql = _SQL_SCORED_MAXDF.format(placeholders=placeholders)
                 params.append(max_df)
             else:
-                sql = self._sql(_SQL_SCORED_IN.format(placeholders=placeholders))
+                sql = _SQL_SCORED_IN.format(placeholders=placeholders)
 
             for (eid,) in self._conn.execute(sql, params):
                 scores[eid] += 1
@@ -268,7 +238,7 @@ class InvertedIndex:
             batch = key_list[i : i + chunk]
             placeholders = ",".join("?" * len(batch))
             params = [ch, tg, *batch]
-            sql = self._sql(_SQL_EXACT_IN.format(placeholders=placeholders))
+            sql = _SQL_EXACT_IN.format(placeholders=placeholders)
             for (eid,) in self._conn.execute(sql, params):
                 found.add(eid)
         return found
@@ -307,9 +277,7 @@ class InvertedIndex:
                     "INSERT INTO batch_query (qid, key) VALUES (?, ?)",
                     pairs,
                 )
-                for qid, eid in self._conn.execute(
-                    self._sql(_SQL_BATCH_EXACT), (ch, tg),
-                ):
+                for qid, eid in self._conn.execute(_SQL_BATCH_EXACT, (ch, tg)):
                     out[qid].add(eid)
 
         return out
@@ -346,10 +314,10 @@ class InvertedIndex:
                     pairs,
                 )
                 if max_df is not None:
-                    sql = self._sql(_SQL_BATCH_SCORED_MAXDF)
+                    sql = _SQL_BATCH_SCORED_MAXDF
                     params = (ch, tg, max_df)
                 else:
-                    sql = self._sql(_SQL_BATCH_SCORED)
+                    sql = _SQL_BATCH_SCORED
                     params = (ch, tg)
                 for qid, eid in self._conn.execute(sql, params):
                     out[qid][eid] += 1
@@ -357,6 +325,7 @@ class InvertedIndex:
         return out
 
     def set_meta(self, key: str, value: str) -> None:
+        self._assert_writable()
         self._conn.execute(
             "INSERT OR REPLACE INTO meta (k, v) VALUES (?, ?)",
             (key, value),
@@ -364,26 +333,21 @@ class InvertedIndex:
         self._conn.commit()
 
     def get_meta(self, key: str) -> str | None:
-        row = self._conn.execute(
-            self._sql("SELECT v FROM meta WHERE k=?"),
-            (key,),
-        ).fetchone()
+        row = self._conn.execute("SELECT v FROM meta WHERE k=?", (key,)).fetchone()
         return row[0] if row else None
 
     def stats(self, channel: ChannelName, target: Target) -> dict:
         ch, tg = channel.value, target
         keys = self._conn.execute(
-            self._sql("SELECT COUNT(*) FROM key_df WHERE channel=? AND target=?"),
+            "SELECT COUNT(*) FROM key_df WHERE channel=? AND target=?",
             (ch, tg),
         ).fetchone()[0]
         postings = self._conn.execute(
-            self._sql("SELECT COUNT(*) FROM postings WHERE channel=? AND target=?"),
+            "SELECT COUNT(*) FROM postings WHERE channel=? AND target=?",
             (ch, tg),
         ).fetchone()[0]
         entities = self._conn.execute(
-            self._sql(
-                "SELECT COUNT(DISTINCT entity_id) FROM postings WHERE channel=? AND target=?",
-            ),
+            "SELECT COUNT(DISTINCT entity_id) FROM postings WHERE channel=? AND target=?",
             (ch, tg),
         ).fetchone()[0]
         return {"keys": keys, "postings": postings, "entities": entities}
