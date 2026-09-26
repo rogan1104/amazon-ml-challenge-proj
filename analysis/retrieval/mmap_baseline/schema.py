@@ -51,17 +51,46 @@ class BaselineMmapManifest:
     complete: bool = False
 
     @staticmethod
-    def baseline_config_dict(cfg: BaselineConfig) -> dict[str, Any]:
+    def baseline_cp_max_df(cfg: BaselineConfig) -> int | None:
+        """Optional on main BaselineConfig; mmap uses unlimited CP when absent/null."""
+        return getattr(cfg, "cp_max_df", None)
+
+    @classmethod
+    def normalize_baseline_config(cls, raw: dict[str, Any]) -> dict[str, Any]:
+        """Canonical manifest fields for compare (cp_max_df null = unlimited CP)."""
         return {
+            "name_prefix_len": int(raw.get("name_prefix_len", 5)),
+            "min_prefix_len": int(raw.get("min_prefix_len", 3)),
+            "max_candidates_per_s1": int(raw.get("max_candidates_per_s1", 10_000)),
+            "cp_max_df": raw.get("cp_max_df"),
+        }
+
+    @staticmethod
+    def baseline_config_dict(cfg: BaselineConfig) -> dict[str, Any]:
+        data = {
             "name_prefix_len": cfg.name_prefix_len,
             "min_prefix_len": cfg.min_prefix_len,
             "max_candidates_per_s1": cfg.max_candidates_per_s1,
-            "cp_max_df": cfg.cp_max_df,
         }
+        # Record CP df cap when present on cfg; null documents unlimited CP for mmap.
+        data["cp_max_df"] = BaselineMmapManifest.baseline_cp_max_df(cfg)
+        return data
+
+    @classmethod
+    def baseline_config_from_manifest(cls, raw: dict[str, Any]) -> BaselineConfig:
+        """Construct BaselineConfig from manifest (main dataclass has no cp_max_df field)."""
+        norm = cls.normalize_baseline_config(raw)
+        return BaselineConfig(
+            name_prefix_len=norm["name_prefix_len"],
+            min_prefix_len=norm["min_prefix_len"],
+            max_candidates_per_s1=norm["max_candidates_per_s1"],
+        )
 
     @classmethod
     def matches_config(cls, manifest: BaselineMmapManifest, cfg: BaselineConfig) -> bool:
-        return manifest.baseline_config == cls.baseline_config_dict(cfg)
+        return cls.normalize_baseline_config(manifest.baseline_config) == cls.normalize_baseline_config(
+            cls.baseline_config_dict(cfg),
+        )
 
     def to_dict(self) -> dict[str, Any]:
         return {

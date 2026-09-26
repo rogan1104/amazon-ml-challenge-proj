@@ -13,6 +13,7 @@ from analysis.retrieval.mmap_baseline.build import build_baseline_mmap_index
 from analysis.retrieval.mmap_baseline.cli import verify_mmap_vs_sqlite
 from analysis.retrieval.mmap_baseline.lookup import BaselineMmapStore
 from analysis.retrieval.mmap_baseline.retrieve import MmapBaselineRetriever
+from analysis.retrieval.mmap_baseline.schema import BaselineMmapManifest
 def _write_tsv(path: Path, rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     cols = ["entity_id", "business_name", "business_address", "country"]
@@ -24,6 +25,31 @@ def _write_tsv(path: Path, rows: list[dict]) -> None:
 
 
 class TestMmapBaselineSynthetic(unittest.TestCase):
+    def test_baseline_config_dict_without_cp_max_df_on_main(self) -> None:
+        """Regression: main BaselineConfig has no cp_max_df; manifest must still serialize."""
+        cfg = BaselineConfig()
+        self.assertFalse(hasattr(cfg, "cp_max_df"))
+        blob = BaselineMmapManifest.baseline_config_dict(cfg)
+        self.assertIsNone(blob["cp_max_df"])
+        self.assertEqual(
+            BaselineMmapManifest.normalize_baseline_config(blob),
+            BaselineMmapManifest.normalize_baseline_config(
+                {"name_prefix_len": 5, "min_prefix_len": 3, "max_candidates_per_s1": 10_000},
+            ),
+        )
+        roundtrip = BaselineMmapManifest.baseline_config_from_manifest(blob)
+        self.assertEqual(roundtrip.name_prefix_len, cfg.name_prefix_len)
+        self.assertEqual(roundtrip.max_candidates_per_s1, cfg.max_candidates_per_s1)
+
+        manifest = BaselineMmapManifest(
+            schema_version=1,
+            split="train",
+            baseline_config=blob,
+            targets={},
+            complete=False,
+        )
+        self.assertTrue(BaselineMmapManifest.matches_config(manifest, cfg))
+
     def test_keygen_build_lookup_exact_sets(self) -> None:
         cfg = BaselineConfig(name_prefix_len=5, min_prefix_len=3)
         s2_rows = [

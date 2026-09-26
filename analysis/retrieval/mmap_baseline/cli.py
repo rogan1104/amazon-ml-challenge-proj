@@ -16,7 +16,7 @@ from analysis.retrieval.config import BaselineConfig, RetrievalConfig
 from analysis.retrieval.index import InvertedIndex
 from analysis.retrieval.mmap_baseline.build import build_baseline_mmap_index
 from analysis.retrieval.mmap_baseline.retrieve import MmapBaselineRetriever
-from analysis.retrieval.mmap_baseline.schema import read_manifest
+from analysis.retrieval.mmap_baseline.schema import BaselineMmapManifest, read_manifest
 
 
 def _split_paths(split: str) -> dict[str, Path]:
@@ -97,12 +97,7 @@ def cmd_verify(args: argparse.Namespace) -> None:
     if manifest is None or not manifest.complete:
         raise SystemExit(f"Incomplete or missing mmap index: {index_root}")
 
-    cfg = BaselineConfig(
-        name_prefix_len=manifest.baseline_config.get("name_prefix_len", 5),
-        min_prefix_len=manifest.baseline_config.get("min_prefix_len", 3),
-        max_candidates_per_s1=manifest.baseline_config.get("max_candidates_per_s1", 10_000),
-        cp_max_df=manifest.baseline_config.get("cp_max_df"),
-    )
+    cfg = BaselineMmapManifest.baseline_config_from_manifest(manifest.baseline_config)
 
     sqlite_path = Path(args.sqlite) if args.sqlite else _index_path(
         RetrievalConfig(split=args.split, mode="baseline"),
