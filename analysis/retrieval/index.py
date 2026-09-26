@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import sqlite3
+import time
 from collections import Counter, defaultdict
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Iterable, Sequence
 
@@ -55,6 +57,40 @@ _SQL_BATCH_SCORED_MAXDF = """
 """
 
 
+def _blocking_key_family(key: str) -> str:
+    if key.startswith("bn:"):
+        return "bn"
+    if key.startswith("ba:"):
+        return "ba"
+    if key.startswith("cp:"):
+        return "cp"
+    return "other"
+
+
+@dataclass
+class FanoutProfileStats:
+    """Optional instrumentation for key-centric batch fan-out (default off)."""
+
+    temp_table_sec: float = 0.0
+    sql_fetch_sec: float = 0.0
+    python_fanout_sec: float = 0.0
+    unique_keys_queried: int = 0
+    posting_rows_returned: int = 0
+    fanout_add_operations: int = 0
+    max_qids_sharing_one_key: int = 0
+    fanout_ops_bn: int = 0
+    fanout_ops_ba: int = 0
+    fanout_ops_cp: int = 0
+    fanout_ops_other: int = 0
+    cp_unique_keys: int = 0
+    cp_posting_rows: int = 0
+    cp_qids_associated: int = 0
+    cp_fanout_add_operations: int = 0
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+
 def open_index_connection(db_path: Path, *, read_only: bool) -> sqlite3.Connection:
     """
     Open the on-disk index.
@@ -97,6 +133,18 @@ class InvertedIndex:
         if not read_only:
             self._create_schema()
         self._batch_table_ready = False
+        self._fanout_profile: FanoutProfileStats | None = None
+
+    def enable_fanout_profiling(self) -> None:
+        """Turn on timing/stats inside _fanout_keycentric_postings (no semantic change)."""
+        self._fanout_profile = FanoutProfileStats()
+
+    def reset_fanout_profiling(self) -> None:
+        if self._fanout_profile is not None:
+            self._fanout_profile = FanoutProfileStats()
+
+    def get_fanout_profile(self) -> FanoutProfileStats | None:
+        return self._fanout_profile
 
     def _assert_writable(self) -> None:
         if self._read_only:
@@ -161,20 +209,68 @@ class InvertedIndex:
         unique_keys = list(key_to_qids.keys())
         key_chunk = 2000
 
+        prof = self._fanout_profile
         for i in range(0, len(unique_keys), key_chunk):
             keys_slice = unique_keys[i : i + key_chunk]
             slice_map = {k: key_to_qids[k] for k in keys_slice}
-            with self._conn:
-                self._conn.execute("DELETE FROM batch_unique_key")
-                self._conn.executemany(
-                    "INSERT OR IGNORE INTO batch_unique_key (key) VALUES (?)",
-                    [(k,) for k in keys_slice],
+            if prof is not None:
+                if slice_map:
+                    prof.max_qids_sharing_one_key = max(
+                        prof.max_qids_sharing_one_key,
+                        max(len(qs) for qs in slice_map.values()),
+                    )
+                cp_keys = [k for k in slice_map if k.startswith("cp:")]
+                prof.cp_unique_keys += len(cp_keys)
+                prof.cp_qids_associated += sum(len(slice_map[k]) for k in cp_keys)
+                prof.unique_keys_queried += len(keys_slice)
+
+                t_temp0 = time.perf_counter()
+                with self._conn:
+                    self._conn.execute("DELETE FROM batch_unique_key")
+                    self._conn.executemany(
+                        "INSERT OR IGNORE INTO batch_unique_key (key) VALUES (?)",
+                        [(k,) for k in keys_slice],
+                    )
+                prof.temp_table_sec += time.perf_counter() - t_temp0
+
+                t_fetch0 = time.perf_counter()
+                rows = list(
+                    self._conn.execute(_SQL_KEYCENTRIC_POSTINGS, (ch, tg)),
                 )
-                for key, eid in self._conn.execute(
-                    _SQL_KEYCENTRIC_POSTINGS, (ch, tg),
-                ):
-                    for qid in slice_map.get(key, ()):
+                prof.sql_fetch_sec += time.perf_counter() - t_fetch0
+                prof.posting_rows_returned += len(rows)
+
+                t_fan0 = time.perf_counter()
+                for key, eid in rows:
+                    qids = slice_map.get(key, ())
+                    n_q = len(qids)
+                    prof.fanout_add_operations += n_q
+                    fam = _blocking_key_family(key)
+                    if fam == "bn":
+                        prof.fanout_ops_bn += n_q
+                    elif fam == "ba":
+                        prof.fanout_ops_ba += n_q
+                    elif fam == "cp":
+                        prof.fanout_ops_cp += n_q
+                        prof.cp_posting_rows += 1
+                        prof.cp_fanout_add_operations += n_q
+                    else:
+                        prof.fanout_ops_other += n_q
+                    for qid in qids:
                         out[qid].add(eid)
+                prof.python_fanout_sec += time.perf_counter() - t_fan0
+            else:
+                with self._conn:
+                    self._conn.execute("DELETE FROM batch_unique_key")
+                    self._conn.executemany(
+                        "INSERT OR IGNORE INTO batch_unique_key (key) VALUES (?)",
+                        [(k,) for k in keys_slice],
+                    )
+                    for key, eid in self._conn.execute(
+                        _SQL_KEYCENTRIC_POSTINGS, (ch, tg),
+                    ):
+                        for qid in slice_map.get(key, ()):
+                            out[qid].add(eid)
 
     def clear_channel(self, channel: ChannelName, target: Target) -> None:
         self._assert_writable()
