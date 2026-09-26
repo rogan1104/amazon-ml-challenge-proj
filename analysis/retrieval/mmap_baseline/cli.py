@@ -20,6 +20,11 @@ from analysis.retrieval.mmap_baseline.benchmark import (
 )
 from analysis.retrieval.mmap_baseline.build import build_baseline_mmap_index
 from analysis.retrieval.mmap_baseline.retrieve import MmapBaselineRetriever
+from analysis.retrieval.mmap_baseline.validate_output import validate_candidate_pairs_tsv
+from analysis.retrieval.mmap_baseline.writer import (
+    default_candidate_pairs_path,
+    write_candidate_pairs_mmap,
+)
 from analysis.retrieval.mmap_baseline.schema import (
     BaselineMmapManifest,
     load_mmap_entity_universe,
@@ -157,6 +162,37 @@ def verify_mmap_vs_sqlite(
     }
 
 
+def cmd_run(args: argparse.Namespace) -> None:
+    """Production candidate generation via mmap baseline (parallel to SQLite CLI run)."""
+    index_root = Path(args.index)
+    output = Path(args.output) if args.output else default_candidate_pairs_path(args.split)
+
+    summary = write_candidate_pairs_mmap(
+        index_root,
+        output,
+        split=args.split,
+        batch_size=args.batch_size,
+        max_s1_rows=args.limit,
+        progress_every=args.progress_every,
+    )
+    print(
+        f"run: S1={summary['total_s1']:,} avg_cand={summary['avg_candidates_per_s1']} "
+        f"zero_s1={summary['s1_zero_candidate_pct']}% elapsed={summary['elapsed_sec']}s"
+    )
+    print(f"  output: {summary['output_tsv']}")
+    print(f"  metrics: {summary['metrics_json']}")
+
+    if args.validate:
+        expected = None
+        if args.limit is not None:
+            expected = [
+                r["entity_id"].strip()
+                for r in _load_first_n_s1(_split_paths(args.split)["S1"], args.limit)
+            ]
+        report = validate_candidate_pairs_tsv(output, expected_s1_ids=expected)
+        print(f"  validate: ok s1_rows={report['s1_rows']}")
+
+
 def cmd_benchmark(args: argparse.Namespace) -> None:
     index_root = Path(args.index)
     manifest = read_manifest(index_root)
@@ -241,7 +277,16 @@ def cmd_verify(args: argparse.Namespace) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Mmap CSR baseline index (experimental)")
+    parser = argparse.ArgumentParser(
+        description="Mmap CSR baseline retrieval (build, verify, benchmark, production run)",
+        epilog=(
+            "Production full train run (after index at reports/cache/baseline_mmap/train):\n"
+            "  python -m analysis.retrieval.mmap_baseline.cli run --split train\n"
+            "Smoke (100 S1 rows + validate):\n"
+            "  python -m analysis.retrieval.mmap_baseline.cli run --split train --limit 100 --validate"
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     sub = parser.add_subparsers(dest="command", required=True)
 
     p_build = sub.add_parser("build", help="Build mmap index from S2/S3 TSV")
@@ -303,6 +348,36 @@ def main() -> None:
         help="Write benchmark JSON here (set empty to skip)",
     )
     p_bench.set_defaults(func=cmd_benchmark)
+
+    p_run = sub.add_parser(
+        "run",
+        help="Generate candidate_pairs TSV via mmap baseline (does not use SQLite)",
+    )
+    p_run.add_argument("--split", choices=("train", "test"), default="train")
+    p_run.add_argument(
+        "--index",
+        default="reports/cache/baseline_mmap/train",
+        help="Mmap index root (full build)",
+    )
+    p_run.add_argument(
+        "--output",
+        default=None,
+        help="Output TSV (default: reports/retrieval/candidate_pairs_{split}_mmap.tsv)",
+    )
+    p_run.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Process only first N S1 rows (smoke tests; omit for full split)",
+    )
+    p_run.add_argument("--batch-size", type=int, default=50_000)
+    p_run.add_argument("--progress-every", type=int, default=25_000)
+    p_run.add_argument(
+        "--validate",
+        action="store_true",
+        help="After write, validate TSV schema and S2/S3 ids (recommended with --limit)",
+    )
+    p_run.set_defaults(func=cmd_run)
 
     args = parser.parse_args()
     args.func(args)
