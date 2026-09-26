@@ -21,25 +21,39 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from analysis.retrieval.build import build_indexes
 from analysis.retrieval.channels import active_channels
-from analysis.retrieval.config import MODES, RetrievalConfig
+from analysis.retrieval.config import BaselineConfig, MODES, RetrievalConfig
 from analysis.retrieval.evaluate import evaluate_recall, merge_eval_into_metrics
 from analysis.retrieval.benchmark import run_benchmark
 from analysis.retrieval.runner import write_candidate_pairs
 
 
+def _parse_baseline_cp_max_df(value: str | None) -> int | None:
+    if value is None or str(value).strip().lower() in ("none", ""):
+        return None
+    return int(value)
+
+
+def _retrieval_config_from_args(args: argparse.Namespace) -> RetrievalConfig:
+    baseline = BaselineConfig(
+        cp_max_df=_parse_baseline_cp_max_df(getattr(args, "baseline_cp_max_df", None)),
+    )
+    return RetrievalConfig(
+        split=args.split,
+        mode=args.mode,
+        index_dir=Path(args.index_dir),
+        output_dir=Path(getattr(args, "output_dir", "reports/retrieval")),
+        baseline=baseline,
+    )
+
+
 def cmd_build_index(args: argparse.Namespace) -> None:
-    cfg = RetrievalConfig(split=args.split, mode=args.mode, index_dir=Path(args.index_dir))
+    cfg = _retrieval_config_from_args(args)
     print(f"Building index: split={cfg.split} mode={cfg.mode} channels={[c.name.value for c in active_channels(cfg)]}")
     build_indexes(cfg)
 
 
 def cmd_run(args: argparse.Namespace) -> None:
-    cfg = RetrievalConfig(
-        split=args.split,
-        mode=args.mode,
-        index_dir=Path(args.index_dir),
-        output_dir=Path(args.output_dir),
-    )
+    cfg = _retrieval_config_from_args(args)
     out = args.output or str(cfg.output_tsv())
     print(f"Retrieval run: mode={cfg.mode} split={cfg.split} -> {out}")
     summary = write_candidate_pairs(
@@ -59,12 +73,7 @@ def cmd_run(args: argparse.Namespace) -> None:
 
 
 def cmd_benchmark(args: argparse.Namespace) -> None:
-    cfg = RetrievalConfig(
-        split=args.split,
-        mode=args.mode,
-        index_dir=Path(args.index_dir),
-        output_dir=Path(args.output_dir),
-    )
+    cfg = _retrieval_config_from_args(args)
     print(f"Benchmark retrieval: mode={cfg.mode} split={cfg.split} limit={args.limit} S1 rows")
     report = run_benchmark(
         cfg,
@@ -114,6 +123,15 @@ def main() -> None:
             "--output-dir",
             default="reports/retrieval",
             help="Directory for candidate_pairs.tsv and metrics JSON",
+        )
+        p.add_argument(
+            "--baseline-cp-max-df",
+            default=None,
+            metavar="N|none",
+            help=(
+                "Baseline only: skip cp: keys with key_df.df > N (100, 500, 1000, 2500). "
+                "Omit or 'none' for current behavior."
+            ),
         )
 
     p_build = sub.add_parser("build-index", help="Build inverted indexes from S2/S3 TSV")

@@ -80,7 +80,12 @@ class BaselineChannel(RetrievalChannel):
 
     def retrieve(self, index: InvertedIndex, target: Target, query_row: dict) -> set[str]:
         keys = list(self.extract_query_keys(query_row))
-        hits = index.lookup_keys_exact(self.name, target, keys)
+        if self.cfg.cp_max_df is not None:
+            hits = index.lookup_keys_exact_with_cp_max_df(
+                self.name, target, keys, self.cfg.cp_max_df,
+            )
+        else:
+            hits = index.lookup_keys_exact(self.name, target, keys)
         return apply_candidate_cap(hits, self.cfg.max_candidates_per_s1)
 
     def retrieve_batch(
@@ -96,7 +101,12 @@ class BaselineChannel(RetrievalChannel):
                 continue
             queries.append((s1_id, list(self.extract_query_keys(row))))
 
-        raw = index.lookup_keys_exact_batch(self.name, target, queries)
+        if self.cfg.cp_max_df is not None:
+            raw = index.lookup_keys_exact_batch_with_cp_max_df(
+                self.name, target, queries, self.cfg.cp_max_df,
+            )
+        else:
+            raw = index.lookup_keys_exact_batch(self.name, target, queries)
         cap = self.cfg.max_candidates_per_s1
         return {qid: apply_candidate_cap(hits, cap) for qid, hits in raw.items()}
 

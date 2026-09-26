@@ -40,6 +40,15 @@ _SQL_KEYCENTRIC_POSTINGS = """
     INNER JOIN postings p
         ON p.channel = ? AND p.target = ? AND p.key = u.key
 """
+_SQL_KEYCENTRIC_POSTINGS_CP_MAXDF = """
+    SELECT u.key, p.entity_id
+    FROM batch_unique_key u
+    INNER JOIN postings p
+        ON p.channel = ? AND p.target = ? AND p.key = u.key
+    INNER JOIN key_df d
+        ON d.channel = p.channel AND d.target = p.target AND d.key = p.key
+    WHERE d.df <= ?
+"""
 _SQL_BATCH_SCORED = """
     SELECT b.qid, p.entity_id
     FROM batch_query b
@@ -272,6 +281,52 @@ class InvertedIndex:
                         for qid in slice_map.get(key, ()):
                             out[qid].add(eid)
 
+    def _fanout_keycentric_postings_cp_maxdf(
+        self,
+        channel: ChannelName,
+        target: Target,
+        key_to_qids: dict[str, set[str]],
+        out: dict[str, set[str]],
+        cp_max_df: int,
+    ) -> None:
+        """Key-centric postings fetch for cp: keys with key_df.df cap."""
+        if not key_to_qids:
+            return
+
+        ch, tg = channel.value, target
+        unique_keys = list(key_to_qids.keys())
+        key_chunk = 2000
+
+        for i in range(0, len(unique_keys), key_chunk):
+            keys_slice = unique_keys[i : i + key_chunk]
+            slice_map = {k: key_to_qids[k] for k in keys_slice}
+            with self._conn:
+                self._conn.execute("DELETE FROM batch_unique_key")
+                self._conn.executemany(
+                    "INSERT OR IGNORE INTO batch_unique_key (key) VALUES (?)",
+                    [(k,) for k in keys_slice],
+                )
+                for key, eid in self._conn.execute(
+                    _SQL_KEYCENTRIC_POSTINGS_CP_MAXDF,
+                    (ch, tg, cp_max_df),
+                ):
+                    for qid in slice_map.get(key, ()):
+                        out[qid].add(eid)
+
+    def _fanout_baseline_with_cp_maxdf(
+        self,
+        channel: ChannelName,
+        target: Target,
+        key_to_qids: dict[str, set[str]],
+        out: dict[str, set[str]],
+        cp_max_df: int,
+    ) -> None:
+        """bn:/ba: exact fan-out; cp: fan-out with df filter."""
+        non_cp = {k: v for k, v in key_to_qids.items() if not k.startswith("cp:")}
+        cp_only = {k: v for k, v in key_to_qids.items() if k.startswith("cp:")}
+        self._fanout_keycentric_postings(channel, target, non_cp, out)
+        self._fanout_keycentric_postings_cp_maxdf(channel, target, cp_only, out, cp_max_df)
+
     def clear_channel(self, channel: ChannelName, target: Target) -> None:
         self._assert_writable()
         ch, tg = channel.value, target
@@ -411,6 +466,71 @@ class InvertedIndex:
             self._fanout_keycentric_postings(channel, target, key_to_qids, out)
 
         return out
+
+    def lookup_keys_exact_batch_with_cp_max_df(
+        self,
+        channel: ChannelName,
+        target: Target,
+        queries: Sequence[tuple[str, Sequence[str]]],
+        cp_max_df: int,
+    ) -> dict[str, set[str]]:
+        """
+        Batch exact lookup with optional CP stop-key filtering via key_df.df.
+
+        bn:/ba: keys behave like lookup_keys_exact_batch().
+        cp: keys only return postings when key_df.df <= cp_max_df.
+        """
+        if not queries:
+            return {}
+
+        self._ensure_batch_table()
+        out: dict[str, set[str]] = {qid: set() for qid, _ in queries}
+
+        sub_batch = 2500
+        for start in range(0, len(queries), sub_batch):
+            chunk = queries[start : start + sub_batch]
+            key_to_qids: dict[str, set[str]] = defaultdict(set)
+            for qid, keys in chunk:
+                for k in {k for k in keys if k}:
+                    key_to_qids[k].add(qid)
+            if not key_to_qids:
+                continue
+
+            self._fanout_baseline_with_cp_maxdf(
+                channel, target, key_to_qids, out, cp_max_df,
+            )
+
+        return out
+
+    def lookup_keys_exact_with_cp_max_df(
+        self,
+        channel: ChannelName,
+        target: Target,
+        keys: Iterable[str],
+        cp_max_df: int,
+    ) -> set[str]:
+        """Single-query exact lookup with CP df cap; bn/ba unchanged."""
+        key_list = list({k for k in keys if k})
+        if not key_list:
+            return set()
+
+        bn_ba = [k for k in key_list if not k.startswith("cp:")]
+        cp_keys = [k for k in key_list if k.startswith("cp:")]
+
+        found = self.lookup_keys_exact(channel, target, bn_ba) if bn_ba else set()
+
+        if cp_keys:
+            ch, tg = channel.value, target
+            chunk = 500
+            for i in range(0, len(cp_keys), chunk):
+                batch = cp_keys[i : i + chunk]
+                placeholders = ",".join("?" * len(batch))
+                sql = _SQL_SCORED_MAXDF.format(placeholders=placeholders)
+                params: list = [ch, tg, *batch, cp_max_df]
+                for (eid,) in self._conn.execute(sql, params):
+                    found.add(eid)
+
+        return found
 
     def lookup_keys_exact_batch_qid_join(
         self,

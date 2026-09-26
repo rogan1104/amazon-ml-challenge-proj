@@ -60,6 +60,7 @@ class BaselineConfig:
     name_prefix_len: int = 5
     min_prefix_len: int = 3
     max_candidates_per_s1: int = 10_000
+    cp_max_df: int | None = None
 
 
 @dataclass
