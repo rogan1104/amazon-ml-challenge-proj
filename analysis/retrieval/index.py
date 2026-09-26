@@ -8,6 +8,32 @@ from typing import Iterable, Sequence
 
 from analysis.retrieval.config import ChannelName, Target
 
+
+def readonly_sqlite_uri(db_path: Path) -> str:
+    """
+    Build a SQLite read-only URI (Windows-safe).
+
+    Uses Path.as_uri() so drive letters become file:///D:/... per SQLite URI rules,
+    then appends mode=ro for uri=True / ATTACH DATABASE.
+    """
+    resolved = db_path.resolve()
+    uri = resolved.as_uri()
+    return f"{uri}?mode=ro" if "?" not in uri else f"{uri}&mode=ro"
+
+
+def _attach_readonly_database(conn: sqlite3.Connection, db_path: Path, alias: str) -> None:
+    """ATTACH on-disk index read-only to a writable (e.g. :memory:) connection."""
+    disk_uri = readonly_sqlite_uri(db_path)
+    # Validate URI opens read-only before ATTACH (clearer errors than ATTACH alone).
+    probe = sqlite3.connect(disk_uri, uri=True)
+    try:
+        probe.execute("SELECT 1 FROM sqlite_schema LIMIT 1")
+    finally:
+        probe.close()
+
+    quoted = disk_uri.replace('"', '""')
+    conn.execute(f'ATTACH DATABASE "{quoted}" AS {alias}')
+
 # Reused SQL strings (stable object identity helps SQLite statement cache).
 _SQL_EXACT_IN = """
     SELECT DISTINCT entity_id FROM postings
@@ -64,10 +90,7 @@ class InvertedIndex:
         self._read_only = read_only
         if read_only and self.db_path.exists():
             self._conn = sqlite3.connect(":memory:")
-            disk_uri = f"file:{self.db_path.resolve().as_posix()}?mode=ro"
-            self._conn.execute(
-                f"ATTACH DATABASE '{disk_uri}' AS {self._ATTACH_ALIAS}",
-            )
+            _attach_readonly_database(self._conn, self.db_path, self._ATTACH_ALIAS)
             pfx = f"{self._ATTACH_ALIAS}."
             self._postings = f"{pfx}postings"
             self._key_df = f"{pfx}key_df"
