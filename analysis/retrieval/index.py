@@ -52,27 +52,55 @@ class InvertedIndex:
     SQLite inverted index: (channel, target, key) -> entity_id postings.
 
     Stored on disk so indexes for millions of rows fit in bounded RAM during build.
+
+    Read-only retrieval uses an in-memory connection with the on-disk index ATTACHed
+    read-only, so TEMP batch_query tables never write to index_train.sqlite.
     """
+
+    _ATTACH_ALIAS = "idx"
 
     def __init__(self, db_path: Path, *, read_only: bool = False):
         self.db_path = Path(db_path)
         self._read_only = read_only
         if read_only and self.db_path.exists():
-            uri = f"file:{self.db_path.resolve()}?mode=ro"
-            self._conn = sqlite3.connect(uri, uri=True)
-            self._conn.execute("PRAGMA query_only=ON")
+            self._conn = sqlite3.connect(":memory:")
+            disk_uri = f"file:{self.db_path.resolve().as_posix()}?mode=ro"
+            self._conn.execute(
+                f"ATTACH DATABASE '{disk_uri}' AS {self._ATTACH_ALIAS}",
+            )
+            pfx = f"{self._ATTACH_ALIAS}."
+            self._postings = f"{pfx}postings"
+            self._key_df = f"{pfx}key_df"
+            self._meta = f"{pfx}meta"
+            self._conn.execute("PRAGMA temp_store=MEMORY")
+            self._conn.execute(f"PRAGMA {self._ATTACH_ALIAS}.mmap_size=268435456")
+            self._conn.execute(f"PRAGMA {self._ATTACH_ALIAS}.cache_size=-256000")
         else:
             self.db_path.parent.mkdir(parents=True, exist_ok=True)
             self._conn = sqlite3.connect(str(self.db_path))
             self._conn.execute("PRAGMA journal_mode=WAL")
             self._conn.execute("PRAGMA synchronous=NORMAL")
-
-        self._conn.execute("PRAGMA temp_store=MEMORY")
-        self._conn.execute("PRAGMA mmap_size=268435456")
-        self._conn.execute("PRAGMA cache_size=-256000")
-        if not read_only:
+            self._postings = "postings"
+            self._key_df = "key_df"
+            self._meta = "meta"
+            self._conn.execute("PRAGMA temp_store=MEMORY")
+            self._conn.execute("PRAGMA mmap_size=268435456")
+            self._conn.execute("PRAGMA cache_size=-256000")
             self._create_schema()
+
         self._batch_table_ready = False
+
+    def _sql(self, template: str) -> str:
+        """Qualify index tables (postings/key_df/meta) for attached read-only DB."""
+        return (
+            template.replace(" postings ", f" {self._postings} ")
+            .replace(" postings\n", f" {self._postings}\n")
+            .replace("FROM postings", f"FROM {self._postings}")
+            .replace("JOIN postings", f"JOIN {self._postings}")
+            .replace(" key_df ", f" {self._key_df} ")
+            .replace("JOIN key_df", f"JOIN {self._key_df}")
+            .replace("FROM meta", f"FROM {self._meta}")
+        )
 
     def _create_schema(self) -> None:
         self._conn.executescript("""
@@ -159,7 +187,9 @@ class InvertedIndex:
     ) -> list[str]:
         ch, tg = channel.value, target
         cur = self._conn.execute(
-            "SELECT key FROM postings WHERE channel=? AND target=? AND entity_id=?",
+            self._sql(
+                "SELECT key FROM postings WHERE channel=? AND target=? AND entity_id=?",
+            ),
             (ch, tg, entity_id),
         )
         return [r[0] for r in cur.fetchall()]
@@ -188,10 +218,10 @@ class InvertedIndex:
             params: list = [ch, tg, *batch]
 
             if max_df is not None:
-                sql = _SQL_SCORED_MAXDF.format(placeholders=placeholders)
+                sql = self._sql(_SQL_SCORED_MAXDF.format(placeholders=placeholders))
                 params.append(max_df)
             else:
-                sql = _SQL_SCORED_IN.format(placeholders=placeholders)
+                sql = self._sql(_SQL_SCORED_IN.format(placeholders=placeholders))
 
             for (eid,) in self._conn.execute(sql, params):
                 scores[eid] += 1
@@ -215,7 +245,7 @@ class InvertedIndex:
             batch = key_list[i : i + chunk]
             placeholders = ",".join("?" * len(batch))
             params = [ch, tg, *batch]
-            sql = _SQL_EXACT_IN.format(placeholders=placeholders)
+            sql = self._sql(_SQL_EXACT_IN.format(placeholders=placeholders))
             for (eid,) in self._conn.execute(sql, params):
                 found.add(eid)
         return found
@@ -254,7 +284,9 @@ class InvertedIndex:
                     "INSERT INTO batch_query (qid, key) VALUES (?, ?)",
                     pairs,
                 )
-                for qid, eid in self._conn.execute(_SQL_BATCH_EXACT, (ch, tg)):
+                for qid, eid in self._conn.execute(
+                    self._sql(_SQL_BATCH_EXACT), (ch, tg),
+                ):
                     out[qid].add(eid)
 
         return out
@@ -291,10 +323,10 @@ class InvertedIndex:
                     pairs,
                 )
                 if max_df is not None:
-                    sql = _SQL_BATCH_SCORED_MAXDF
+                    sql = self._sql(_SQL_BATCH_SCORED_MAXDF)
                     params = (ch, tg, max_df)
                 else:
-                    sql = _SQL_BATCH_SCORED
+                    sql = self._sql(_SQL_BATCH_SCORED)
                     params = (ch, tg)
                 for qid, eid in self._conn.execute(sql, params):
                     out[qid][eid] += 1
@@ -309,21 +341,26 @@ class InvertedIndex:
         self._conn.commit()
 
     def get_meta(self, key: str) -> str | None:
-        row = self._conn.execute("SELECT v FROM meta WHERE k=?", (key,)).fetchone()
+        row = self._conn.execute(
+            self._sql("SELECT v FROM meta WHERE k=?"),
+            (key,),
+        ).fetchone()
         return row[0] if row else None
 
     def stats(self, channel: ChannelName, target: Target) -> dict:
         ch, tg = channel.value, target
         keys = self._conn.execute(
-            "SELECT COUNT(*) FROM key_df WHERE channel=? AND target=?",
+            self._sql("SELECT COUNT(*) FROM key_df WHERE channel=? AND target=?"),
             (ch, tg),
         ).fetchone()[0]
         postings = self._conn.execute(
-            "SELECT COUNT(*) FROM postings WHERE channel=? AND target=?",
+            self._sql("SELECT COUNT(*) FROM postings WHERE channel=? AND target=?"),
             (ch, tg),
         ).fetchone()[0]
         entities = self._conn.execute(
-            "SELECT COUNT(DISTINCT entity_id) FROM postings WHERE channel=? AND target=?",
+            self._sql(
+                "SELECT COUNT(DISTINCT entity_id) FROM postings WHERE channel=? AND target=?",
+            ),
             (ch, tg),
         ).fetchone()[0]
         return {"keys": keys, "postings": postings, "entities": entities}
