@@ -14,7 +14,7 @@ from analysis.retrieval.config import (
     Target,
     TransliterationConfig,
 )
-from analysis.retrieval.index import InvertedIndex, select_top_candidates
+from analysis.retrieval.index import InvertedIndex, apply_candidate_cap, select_top_candidates
 from analysis.retrieval.keys import (
     address_numeric_keys,
     baseline_keys,
@@ -43,6 +43,21 @@ class RetrievalChannel(ABC):
     ) -> set[str]:
         """Return candidate entity_ids from target source for one S1 row."""
 
+    def retrieve_batch(
+        self,
+        index: InvertedIndex,
+        target: Target,
+        query_rows: list[dict],
+    ) -> dict[str, set[str]]:
+        """Default: per-row retrieve (channels override with batched SQLite)."""
+        out: dict[str, set[str]] = {}
+        for row in query_rows:
+            s1_id = row.get("entity_id", "").strip()
+            if not s1_id:
+                continue
+            out[s1_id] = self.retrieve(index, target, row)
+        return out
+
 
 class BaselineChannel(RetrievalChannel):
     """Reference baseline E keys (norm name, norm addr, country+prefix5)."""
@@ -66,9 +81,24 @@ class BaselineChannel(RetrievalChannel):
     def retrieve(self, index: InvertedIndex, target: Target, query_row: dict) -> set[str]:
         keys = list(self.extract_query_keys(query_row))
         hits = index.lookup_keys_exact(self.name, target, keys)
-        if len(hits) > self.cfg.max_candidates_per_s1:
-            return set(list(hits)[: self.cfg.max_candidates_per_s1])
-        return hits
+        return apply_candidate_cap(hits, self.cfg.max_candidates_per_s1)
+
+    def retrieve_batch(
+        self,
+        index: InvertedIndex,
+        target: Target,
+        query_rows: list[dict],
+    ) -> dict[str, set[str]]:
+        queries: list[tuple[str, list[str]]] = []
+        for row in query_rows:
+            s1_id = row.get("entity_id", "").strip()
+            if not s1_id:
+                continue
+            queries.append((s1_id, list(self.extract_query_keys(row))))
+
+        raw = index.lookup_keys_exact_batch(self.name, target, queries)
+        cap = self.cfg.max_candidates_per_s1
+        return {qid: apply_candidate_cap(hits, cap) for qid, hits in raw.items()}
 
 
 class CharNgramChannel(RetrievalChannel):
@@ -84,16 +114,37 @@ class CharNgramChannel(RetrievalChannel):
 
     extract_query_keys = extract_index_keys
 
-    def retrieve(self, index: InvertedIndex, target: Target, query_row: dict) -> set[str]:
-        keys = list(self.extract_query_keys(query_row))
-        scores = index.lookup_keys(
-            self.name, target, keys, max_df=self.cfg.max_df,
-        )
+    def _select(self, scores: Counter) -> set[str]:
         return select_top_candidates(
             scores,
             min_overlap=self.cfg.min_overlap,
             max_candidates=self.cfg.max_candidates_per_s1,
         )
+
+    def retrieve(self, index: InvertedIndex, target: Target, query_row: dict) -> set[str]:
+        keys = list(self.extract_query_keys(query_row))
+        scores = index.lookup_keys(
+            self.name, target, keys, max_df=self.cfg.max_df,
+        )
+        return self._select(scores)
+
+    def retrieve_batch(
+        self,
+        index: InvertedIndex,
+        target: Target,
+        query_rows: list[dict],
+    ) -> dict[str, set[str]]:
+        queries: list[tuple[str, list[str]]] = []
+        for row in query_rows:
+            s1_id = row.get("entity_id", "").strip()
+            if not s1_id:
+                continue
+            queries.append((s1_id, list(self.extract_query_keys(row))))
+
+        scored = index.lookup_keys_batch(
+            self.name, target, queries, max_df=self.cfg.max_df,
+        )
+        return {qid: self._select(scores) for qid, scores in scored.items()}
 
 
 class AddressNumericChannel(RetrievalChannel):
@@ -115,16 +166,37 @@ class AddressNumericChannel(RetrievalChannel):
 
     extract_query_keys = extract_index_keys
 
-    def retrieve(self, index: InvertedIndex, target: Target, query_row: dict) -> set[str]:
-        keys = list(self.extract_query_keys(query_row))
-        scores = index.lookup_keys(
-            self.name, target, keys, max_df=self.cfg.max_df,
-        )
+    def _select(self, scores: Counter) -> set[str]:
         return select_top_candidates(
             scores,
             min_overlap=1,
             max_candidates=self.cfg.max_candidates_per_s1,
         )
+
+    def retrieve(self, index: InvertedIndex, target: Target, query_row: dict) -> set[str]:
+        keys = list(self.extract_query_keys(query_row))
+        scores = index.lookup_keys(
+            self.name, target, keys, max_df=self.cfg.max_df,
+        )
+        return self._select(scores)
+
+    def retrieve_batch(
+        self,
+        index: InvertedIndex,
+        target: Target,
+        query_rows: list[dict],
+    ) -> dict[str, set[str]]:
+        queries: list[tuple[str, list[str]]] = []
+        for row in query_rows:
+            s1_id = row.get("entity_id", "").strip()
+            if not s1_id:
+                continue
+            queries.append((s1_id, list(self.extract_query_keys(row))))
+
+        scored = index.lookup_keys_batch(
+            self.name, target, queries, max_df=self.cfg.max_df,
+        )
+        return {qid: self._select(scores) for qid, scores in scored.items()}
 
 
 class TransliterationChannel(RetrievalChannel):
@@ -140,6 +212,16 @@ class TransliterationChannel(RetrievalChannel):
         return keys
 
     extract_query_keys = extract_index_keys
+
+    def _merge_hits(self, exact: set[str], ngram_scores: Counter) -> set[str]:
+        found = set(exact)
+        if self.cfg.use_ngram_fallback and ngram_scores:
+            found |= select_top_candidates(
+                ngram_scores,
+                min_overlap=self.cfg.min_ngram_overlap,
+                max_candidates=self.cfg.max_candidates_per_s1,
+            )
+        return apply_candidate_cap(found, self.cfg.max_candidates_per_s1)
 
     def retrieve(self, index: InvertedIndex, target: Target, query_row: dict) -> set[str]:
         keys = list(self.extract_query_keys(query_row))
@@ -159,9 +241,48 @@ class TransliterationChannel(RetrievalChannel):
                 max_candidates=self.cfg.max_candidates_per_s1,
             )
 
-        if len(found) > self.cfg.max_candidates_per_s1:
-            return set(list(found)[: self.cfg.max_candidates_per_s1])
-        return found
+        return apply_candidate_cap(found, self.cfg.max_candidates_per_s1)
+
+    def retrieve_batch(
+        self,
+        index: InvertedIndex,
+        target: Target,
+        query_rows: list[dict],
+    ) -> dict[str, set[str]]:
+        exact_queries: list[tuple[str, list[str]]] = []
+        ngram_queries: list[tuple[str, list[str]]] = []
+        empty: dict[str, set[str]] = {}
+
+        for row in query_rows:
+            s1_id = row.get("entity_id", "").strip()
+            if not s1_id:
+                continue
+            keys = list(self.extract_query_keys(row))
+            if not keys:
+                empty[s1_id] = set()
+                continue
+            exact_keys = [k for k in keys if k.startswith("tl:")]
+            ngram_keys = [k for k in keys if k.startswith("tng:")]
+            if exact_keys:
+                exact_queries.append((s1_id, exact_keys))
+            if ngram_keys:
+                ngram_queries.append((s1_id, ngram_keys))
+
+        exact_hits = index.lookup_keys_exact_batch(self.name, target, exact_queries)
+        ngram_scores = (
+            index.lookup_keys_batch(self.name, target, ngram_queries)
+            if self.cfg.use_ngram_fallback
+            else {}
+        )
+
+        out: dict[str, set[str]] = dict(empty)
+        all_ids = {qid for qid, _ in exact_queries} | {qid for qid, _ in ngram_queries}
+        for s1_id in all_ids:
+            out[s1_id] = self._merge_hits(
+                exact_hits.get(s1_id, set()),
+                ngram_scores.get(s1_id, Counter()),
+            )
+        return out
 
 
 def build_channel_registry(cfg: RetrievalConfig) -> dict[ChannelName, RetrievalChannel]:
