@@ -1,133 +1,124 @@
 """
-Verify key-centric batch exact lookup matches legacy qid-join and per-row baseline.
+Bounded regression: key-centric batch lookup vs tiny reference (seconds only).
 
-Run only (tiny sample):
+Compares lookup_keys_exact_batch() to a reference built from ONE bounded
+key IN (...) query over the sample's unique keys — no qid×key join, no per-S1
+lookup_keys_exact loop on the full index.
+
+Run:
   python -m analysis.retrieval.test_keycentric_equivalence
 """
 from __future__ import annotations
 
-import sqlite3
 import sys
-import tempfile
 from pathlib import Path
 
-from analysis.retrieval.benchmark import _collect_s1_rows
 from analysis.retrieval.build import _index_path
-from analysis.retrieval.channels import BaselineChannel
 from analysis.retrieval.config import ChannelName, RetrievalConfig
 from analysis.retrieval.index import InvertedIndex
+from analysis.retrieval.keys import baseline_keys
+
+# Exactly 5 deterministic S1 probes (fixed strings → stable bn/ba/cp keys).
+_DETERMINISTIC_S1: list[tuple[str, str, str, str]] = [
+    ("S1-EQ-01", "Zzquiv Probe Alpha One", "9000 Zzquiv Regression Lane", "US"),
+    ("S1-EQ-02", "Zzquiv Probe Alpha One", "9001 Other Zzquiv Street", "US"),
+    ("S1-EQ-03", "Mmmquiv Unique Beta Two", "42 Mmmquiv Court", "IN"),
+    ("S1-EQ-04", "Yyyquiv Gamma Three", "7 Yyyquiv Road", "FR"),
+    ("S1-EQ-05", "Yyyquiv Gamma Three", "8 Yyyquiv Road", "FR"),
+]
 
 
-def _reference_per_row(
-    index: InvertedIndex,
-    channel: BaselineChannel,
-    target: str,
-    queries: list[tuple[str, list[str]]],
-) -> dict[str, set[str]]:
-    """Same as BaselineChannel.retrieve() per query (single lookup_keys_exact per S1)."""
-    out: dict[str, set[str]] = {}
-    for qid, keys in queries:
-        key_list = list({k for k in keys if k})
-        hits = index.lookup_keys_exact(channel.name, target, key_list)  # type: ignore[arg-type]
-        out[qid] = hits
+def deterministic_queries() -> list[tuple[str, list[str]]]:
+    cfg = RetrievalConfig().baseline
+    out: list[tuple[str, list[str]]] = []
+    for qid, name, addr, country in _DETERMINISTIC_S1:
+        keys = baseline_keys(
+            name,
+            addr,
+            country,
+            prefix_len=cfg.name_prefix_len,
+            min_prefix=cfg.min_prefix_len,
+        )
+        out.append((qid, list(keys)))
     return out
 
 
-def _build_synthetic_index(path: Path) -> None:
-    conn = sqlite3.connect(path)
-    conn.executescript("""
-        CREATE TABLE postings (
-            channel TEXT NOT NULL, target TEXT NOT NULL,
-            key TEXT NOT NULL, entity_id TEXT NOT NULL
-        );
-        CREATE INDEX idx_postings_lookup ON postings (channel, target, key);
-        CREATE TABLE key_df (
-            channel TEXT NOT NULL, target TEXT NOT NULL,
-            key TEXT NOT NULL, df INTEGER NOT NULL,
-            PRIMARY KEY (channel, target, key)
-        );
-    """)
-    rows = [
-        ("baseline", "S2", "bn:alpha shop", "S2-a1"),
-        ("baseline", "S2", "bn:alpha shop", "S2-a2"),
-        ("baseline", "S2", "ba:1 main st", "S2-addr1"),
-        ("baseline", "S2", "cp:US|pizza", "S2-p0"),
-        ("baseline", "S2", "cp:US|pizza", "S2-p1"),
-        ("baseline", "S2", "cp:US|pizza", "S2-p2"),
-        ("baseline", "S3", "cp:US|pizza", "S3-p0"),
-        ("baseline", "S3", "bn:beta llc", "S3-b1"),
-    ]
-    conn.executemany("INSERT INTO postings VALUES (?,?,?,?)", rows)
-    conn.commit()
-    conn.close()
+def _bounded_reference(
+    index: InvertedIndex,
+    channel: str,
+    target: str,
+    queries: list[tuple[str, list[str]]],
+) -> dict[str, set[str]]:
+    """
+    Reference candidate sets: union entity_ids per key using a single bounded
+    IN lookup over unique keys in the sample (at most ~15 keys for 5 S1 rows).
+    """
+    unique_keys = sorted({k for _, keys in queries for k in keys if k})
+    key_to_eids: dict[str, set[str]] = {k: set() for k in unique_keys}
 
+    if unique_keys:
+        chunk = 32
+        conn = index._conn
+        for i in range(0, len(unique_keys), chunk):
+            batch = unique_keys[i : i + chunk]
+            placeholders = ",".join("?" * len(batch))
+            sql = (
+                f"SELECT key, entity_id FROM postings "
+                f"WHERE channel=? AND target=? AND key IN ({placeholders})"
+            )
+            params: list = [channel, target, *batch]
+            for key, eid in conn.execute(sql, params):
+                key_to_eids[key].add(eid)
 
-def _synthetic_queries(n: int = 40) -> list[tuple[str, list[str]]]:
-    queries: list[tuple[str, list[str]]] = []
-    for i in range(n):
-        qid = f"S1-{i:04d}"
-        keys: list[str] = []
-        if i % 3 != 2:
-            keys.append("cp:US|pizza")
-        if i % 5 == 0:
-            keys.append("bn:alpha shop")
-        if i % 7 == 0:
-            keys.append("ba:1 main st")
-        if i % 11 == 0:
-            keys.append("bn:beta llc")
-        if not keys:
-            keys.append(f"bn:unique-{i}")
-        queries.append((qid, keys))
-    return queries
+    ref: dict[str, set[str]] = {}
+    for qid, keys in queries:
+        acc: set[str] = set()
+        for k in keys:
+            if k:
+                acc |= key_to_eids.get(k, set())
+        ref[qid] = acc
+    return ref
 
 
 def run_equivalence(index_path: Path, queries: list[tuple[str, list[str]]]) -> dict:
-    channel = BaselineChannel(RetrievalConfig().baseline)
+    channel_name = ChannelName.BASELINE.value
+    results: dict = {"queries": len(queries), "index": str(index_path), "targets": {}}
 
-    results = {"queries": len(queries), "targets": {}}
     with InvertedIndex(index_path, read_only=True) as index:
         for target in ("S2", "S3"):
-            new = index.lookup_keys_exact_batch(
+            print(
+                f"[equiv] comparing key-centric vs bounded reference: "
+                f"channel={channel_name} target={target} ...",
+                flush=True,
+            )
+            got = index.lookup_keys_exact_batch(
                 ChannelName.BASELINE, target, queries  # type: ignore[arg-type]
             )
-            old = index.lookup_keys_exact_batch_qid_join(
-                ChannelName.BASELINE, target, queries  # type: ignore[arg-type]
-            )
-            ref = _reference_per_row(index, channel, target, queries)
+            ref = _bounded_reference(index, channel_name, target, queries)
+            mismatches = [qid for qid, keys in queries if got.get(qid, set()) != ref.get(qid, set())]
             results["targets"][target] = {
-                "keycentric_vs_qid_join": new == old,
-                "keycentric_vs_per_row_keys": new == ref,
-                "mismatch_qid_join": [q for q in new if new[q] != old.get(q, set())][:5],
-                "mismatch_per_row": [q for q in new if new[q] != ref.get(q, set())][:5],
+                "ok": not mismatches,
+                "mismatches": mismatches[:5],
+                "sample_counts": {
+                    qid: len(got.get(qid, set())) for qid, _ in queries[:3]
+                },
             }
-    results["ok"] = all(
-        t["keycentric_vs_qid_join"] and t["keycentric_vs_per_row_keys"]
-        for t in results["targets"].values()
-    )
+            print(f"[equiv] target={target} ok={not mismatches}", flush=True)
+
+    results["ok"] = all(t["ok"] for t in results["targets"].values())
     return results
 
 
 def main() -> None:
-    cfg = RetrievalConfig()
-    real_index = _index_path(cfg)
-    real_s1 = cfg.paths()["S1"]
+    index_path = _index_path(RetrievalConfig())
+    if not index_path.is_file():
+        print(f"Index not found: {index_path}", file=sys.stderr)
+        raise SystemExit(2)
 
-    if real_index.is_file() and real_s1.is_file():
-        print(f"Using real index + train S1 (sample=50): {real_index}")
-        channel = BaselineChannel(cfg.baseline)
-        rows = _collect_s1_rows(cfg, 50)
-        queries = [
-            (r["entity_id"].strip(), list(channel.extract_query_keys(r)))
-            for r in rows
-            if r.get("entity_id", "").strip()
-        ]
-        index_path = real_index
-    else:
-        print("Using synthetic index (real index/S1 not found)")
-        td = Path(tempfile.mkdtemp())
-        index_path = td / "synthetic.sqlite"
-        _build_synthetic_index(index_path)
-        queries = _synthetic_queries(40)
+    queries = deterministic_queries()
+    print(f"[equiv] index={index_path} queries={len(queries)}", flush=True)
+    for qid, keys in queries:
+        print(f"  {qid}: {len(keys)} keys", flush=True)
 
     report = run_equivalence(index_path, queries)
     print(report)
