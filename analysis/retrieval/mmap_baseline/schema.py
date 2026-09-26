@@ -49,6 +49,7 @@ class BaselineMmapManifest:
     baseline_config: dict[str, Any]
     targets: dict[str, TargetStats]
     complete: bool = False
+    entity_limit: int | None = None
 
     @staticmethod
     def baseline_cp_max_df(cfg: BaselineConfig) -> int | None:
@@ -92,6 +93,10 @@ class BaselineMmapManifest:
             cls.baseline_config_dict(cfg),
         )
 
+    def is_partial_build(self) -> bool:
+        """True when index was built on a capped prefix of each target TSV."""
+        return self.entity_limit is not None
+
     def to_dict(self) -> dict[str, Any]:
         return {
             "schema_version": self.schema_version,
@@ -99,6 +104,7 @@ class BaselineMmapManifest:
             "baseline_config": self.baseline_config,
             "targets": {t: ts.to_dict() for t, ts in self.targets.items()},
             "complete": self.complete,
+            "entity_limit": self.entity_limit,
         }
 
     @classmethod
@@ -115,12 +121,15 @@ class BaselineMmapManifest:
                 entity_count=int(tdata.get("entity_count", 0)),
                 families=fam,
             )
+        raw_limit = data.get("entity_limit")
+        entity_limit = int(raw_limit) if raw_limit is not None else None
         return cls(
             schema_version=int(data["schema_version"]),
             split=str(data["split"]),
             baseline_config=dict(data["baseline_config"]),
             targets=targets,
             complete=bool(data.get("complete", False)),
+            entity_limit=entity_limit,
         )
 
 
@@ -142,6 +151,21 @@ def write_manifest(index_root: Path, manifest: BaselineMmapManifest) -> None:
         json.dumps(manifest.to_dict(), indent=2),
         encoding="utf-8",
     )
+
+
+def load_target_entity_id_set(index_root: Path, target: Target) -> set[str]:
+    """Entity ids indexed for this target (TSV file order prefix for partial builds)."""
+    path = target_dir(index_root, target) / ENTITY_IDS
+    if not path.is_file():
+        return set()
+    return {line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()}
+
+
+def load_mmap_entity_universe(index_root: Path) -> dict[str, set[str]]:
+    return {
+        "S2": load_target_entity_id_set(index_root, "S2"),
+        "S3": load_target_entity_id_set(index_root, "S3"),
+    }
 
 
 def read_manifest(index_root: Path) -> BaselineMmapManifest | None:

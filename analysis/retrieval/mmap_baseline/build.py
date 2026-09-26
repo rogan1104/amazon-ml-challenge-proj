@@ -258,6 +258,7 @@ def build_baseline_mmap_index(
         and existing.schema_version == SCHEMA_VERSION
         and BaselineMmapManifest.matches_config(existing, cfg)
         and existing.split == split
+        and existing.entity_limit == entity_limit
     ):
         return existing
 
@@ -267,6 +268,7 @@ def build_baseline_mmap_index(
         baseline_config=BaselineMmapManifest.baseline_config_dict(cfg),
         targets={},
         complete=False,
+        entity_limit=entity_limit,
     )
     write_manifest(index_root, manifest)
 

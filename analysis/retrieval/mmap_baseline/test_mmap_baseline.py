@@ -189,6 +189,83 @@ class TestMmapBaselineSynthetic(unittest.TestCase):
             report = verify_mmap_vs_sqlite(idx_root, sqlite_path, s1_rows, cfg)
             self.assertTrue(report["ok"], msg=report.get("mismatch_examples"))
 
+    def test_partial_verify_matches_restricted_sqlite_subset(self) -> None:
+        """Smoke build: SQLite full index vs mmap first-N — partial verify must agree."""
+        cfg = BaselineConfig()
+        s2_rows = [
+            {
+                "entity_id": "S2-1",
+                "business_name": "Acme Alpha",
+                "business_address": "1 Road",
+                "country": "US",
+            },
+            {
+                "entity_id": "S2-2",
+                "business_name": "Acme Beta",
+                "business_address": "2 Road",
+                "country": "US",
+            },
+            {
+                "entity_id": "S2-3",
+                "business_name": "Acme Gamma",
+                "business_address": "3 Road",
+                "country": "US",
+            },
+        ]
+        s1_rows = [
+            {
+                "entity_id": "S1-1",
+                "business_name": "Acme Alpha",
+                "business_address": "1 Road",
+                "country": "US",
+            },
+        ]
+
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            s2_path = root / "s2.tsv"
+            s3_path = root / "s3.tsv"
+            _write_tsv(s2_path, s2_rows)
+            _write_tsv(s3_path, [])
+
+            idx_root = root / "mmap"
+            build_baseline_mmap_index(
+                idx_root,
+                split="train",
+                paths={"S2": s2_path, "S3": s3_path},
+                cfg=cfg,
+                entity_limit=2,
+            )
+
+            sqlite_path = root / "test.sqlite"
+            with InvertedIndex(sqlite_path) as index:
+                for target, rows in (("S2", s2_rows), ("S3", [])):
+                    batch: list[tuple[str, str]] = []
+                    for row in rows:
+                        eid = row["entity_id"]
+                        for key in baseline_keys(
+                            row["business_name"],
+                            row["business_address"],
+                            row["country"],
+                            prefix_len=cfg.name_prefix_len,
+                            min_prefix=cfg.min_prefix_len,
+                        ):
+                            batch.append((key, eid))
+                    if batch:
+                        index.add_postings_batch(ChannelName.BASELINE, target, batch)  # type: ignore[arg-type]
+                        index.finalize_df(ChannelName.BASELINE, target)  # type: ignore[arg-type]
+
+            full_report = verify_mmap_vs_sqlite(
+                idx_root, sqlite_path, s1_rows, cfg, partial_build=False,
+            )
+            self.assertFalse(full_report["ok"])
+
+            partial_report = verify_mmap_vs_sqlite(
+                idx_root, sqlite_path, s1_rows, cfg, partial_build=True,
+            )
+            self.assertTrue(partial_report["ok"], msg=partial_report.get("mismatch_examples"))
+            self.assertEqual(partial_report["mmap_entity_counts"], {"S2": 2, "S3": 0})
+
 
 if __name__ == "__main__":
     unittest.main()
