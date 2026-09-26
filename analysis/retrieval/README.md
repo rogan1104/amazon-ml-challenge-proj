@@ -80,7 +80,18 @@ python -m analysis.retrieval.cli full --mode all --split test \
 python -m analysis.retrieval.cli build-index --mode all --split train
 python -m analysis.retrieval.cli run --mode char_ngram --split train --evaluate
 python -m analysis.retrieval.cli run --mode transliteration --split train --evaluate
+
+# Profile optimized retrieval on 10K S1 rows (existing index; no rebuild)
+python -m analysis.retrieval.cli benchmark --mode baseline --split train --limit 10000
+
+# Smoke test write path on 10K rows
+python -m analysis.retrieval.cli run --mode baseline --split train --limit 10000 \
+  --output reports/retrieval/candidate_pairs_train_baseline_10k.tsv
 ```
+
+### Retrieval performance
+
+S1 lookup uses **batched SQLite joins** (`batch_query` temp table + single join per S2/S3/channel sub-batch) instead of one query per S1 row. Progress logs every 25K rows by default.
 
 ## Tuning (analysis/retrieval/config.py)
 

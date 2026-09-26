@@ -4,9 +4,47 @@ from __future__ import annotations
 import sqlite3
 from collections import Counter
 from pathlib import Path
-from typing import Iterable, Iterator
+from typing import Iterable, Sequence
 
 from analysis.retrieval.config import ChannelName, Target
+
+# Reused SQL strings (stable object identity helps SQLite statement cache).
+_SQL_EXACT_IN = """
+    SELECT DISTINCT entity_id FROM postings
+    WHERE channel=? AND target=? AND key IN ({placeholders})
+"""
+_SQL_SCORED_IN = """
+    SELECT entity_id FROM postings
+    WHERE channel=? AND target=? AND key IN ({placeholders})
+"""
+_SQL_SCORED_MAXDF = """
+    SELECT p.entity_id
+    FROM postings p
+    JOIN key_df d ON p.channel=d.channel AND p.target=d.target AND p.key=d.key
+    WHERE p.channel=? AND p.target=? AND p.key IN ({placeholders})
+      AND d.df <= ?
+"""
+_SQL_BATCH_EXACT = """
+    SELECT b.qid, p.entity_id
+    FROM batch_query b
+    INNER JOIN postings p
+        ON p.channel = ? AND p.target = ? AND p.key = b.key
+"""
+_SQL_BATCH_SCORED = """
+    SELECT b.qid, p.entity_id
+    FROM batch_query b
+    INNER JOIN postings p
+        ON p.channel = ? AND p.target = ? AND p.key = b.key
+"""
+_SQL_BATCH_SCORED_MAXDF = """
+    SELECT b.qid, p.entity_id
+    FROM batch_query b
+    INNER JOIN postings p
+        ON p.channel = ? AND p.target = ? AND p.key = b.key
+    INNER JOIN key_df d
+        ON d.channel = p.channel AND d.target = p.target AND d.key = p.key
+    WHERE d.df <= ?
+"""
 
 
 class InvertedIndex:
@@ -16,14 +54,25 @@ class InvertedIndex:
     Stored on disk so indexes for millions of rows fit in bounded RAM during build.
     """
 
-    def __init__(self, db_path: Path):
+    def __init__(self, db_path: Path, *, read_only: bool = False):
         self.db_path = Path(db_path)
-        self.db_path.parent.mkdir(parents=True, exist_ok=True)
-        self._conn = sqlite3.connect(str(self.db_path))
-        self._conn.execute("PRAGMA journal_mode=WAL")
-        self._conn.execute("PRAGMA synchronous=NORMAL")
+        self._read_only = read_only
+        if read_only and self.db_path.exists():
+            uri = f"file:{self.db_path.resolve()}?mode=ro"
+            self._conn = sqlite3.connect(uri, uri=True)
+            self._conn.execute("PRAGMA query_only=ON")
+        else:
+            self.db_path.parent.mkdir(parents=True, exist_ok=True)
+            self._conn = sqlite3.connect(str(self.db_path))
+            self._conn.execute("PRAGMA journal_mode=WAL")
+            self._conn.execute("PRAGMA synchronous=NORMAL")
+
         self._conn.execute("PRAGMA temp_store=MEMORY")
-        self._create_schema()
+        self._conn.execute("PRAGMA mmap_size=268435456")
+        self._conn.execute("PRAGMA cache_size=-256000")
+        if not read_only:
+            self._create_schema()
+        self._batch_table_ready = False
 
     def _create_schema(self) -> None:
         self._conn.executescript("""
@@ -52,6 +101,18 @@ class InvertedIndex:
             );
         """)
         self._conn.commit()
+
+    def _ensure_batch_table(self) -> None:
+        if self._batch_table_ready:
+            return
+        self._conn.executescript("""
+            CREATE TEMP TABLE IF NOT EXISTS batch_query (
+                qid TEXT NOT NULL,
+                key TEXT NOT NULL
+            );
+            CREATE INDEX IF NOT EXISTS idx_batch_query_key ON batch_query (key);
+        """)
+        self._batch_table_ready = True
 
     def clear_channel(self, channel: ChannelName, target: Target) -> None:
         ch, tg = channel.value, target
@@ -127,19 +188,11 @@ class InvertedIndex:
             params: list = [ch, tg, *batch]
 
             if max_df is not None:
-                sql = f"""
-                    SELECT p.entity_id
-                    FROM postings p
-                    JOIN key_df d ON p.channel=d.channel AND p.target=d.target AND p.key=d.key
-                    WHERE p.channel=? AND p.target=? AND p.key IN ({placeholders})
-                      AND d.df <= ?
-                """
+                sql = _SQL_SCORED_MAXDF.format(placeholders=placeholders)
                 params.append(max_df)
             else:
-                sql = f"""
-                    SELECT entity_id FROM postings
-                    WHERE channel=? AND target=? AND key IN ({placeholders})
-                """
+                sql = _SQL_SCORED_IN.format(placeholders=placeholders)
+
             for (eid,) in self._conn.execute(sql, params):
                 scores[eid] += 1
         return scores
@@ -162,13 +215,91 @@ class InvertedIndex:
             batch = key_list[i : i + chunk]
             placeholders = ",".join("?" * len(batch))
             params = [ch, tg, *batch]
-            sql = f"""
-                SELECT DISTINCT entity_id FROM postings
-                WHERE channel=? AND target=? AND key IN ({placeholders})
-            """
+            sql = _SQL_EXACT_IN.format(placeholders=placeholders)
             for (eid,) in self._conn.execute(sql, params):
                 found.add(eid)
         return found
+
+    def lookup_keys_exact_batch(
+        self,
+        channel: ChannelName,
+        target: Target,
+        queries: Sequence[tuple[str, Sequence[str]]],
+    ) -> dict[str, set[str]]:
+        """
+        Batch exact lookup: many S1 rows in one SQLite join per sub-batch.
+
+        queries: (query_id, keys) — typically S1 entity_id and blocking keys.
+        """
+        if not queries:
+            return {}
+
+        ch, tg = channel.value, target
+        self._ensure_batch_table()
+        out: dict[str, set[str]] = {qid: set() for qid, _ in queries}
+
+        sub_batch = 2500
+        for start in range(0, len(queries), sub_batch):
+            chunk = queries[start : start + sub_batch]
+            pairs: list[tuple[str, str]] = []
+            for qid, keys in chunk:
+                for k in {k for k in keys if k}:
+                    pairs.append((qid, k))
+            if not pairs:
+                continue
+
+            with self._conn:
+                self._conn.execute("DELETE FROM batch_query")
+                self._conn.executemany(
+                    "INSERT INTO batch_query (qid, key) VALUES (?, ?)",
+                    pairs,
+                )
+                for qid, eid in self._conn.execute(_SQL_BATCH_EXACT, (ch, tg)):
+                    out[qid].add(eid)
+
+        return out
+
+    def lookup_keys_batch(
+        self,
+        channel: ChannelName,
+        target: Target,
+        queries: Sequence[tuple[str, Sequence[str]]],
+        max_df: int | None = None,
+    ) -> dict[str, Counter]:
+        """Batch scored lookup (overlap counts) for many S1 rows at once."""
+        if not queries:
+            return {}
+
+        ch, tg = channel.value, target
+        self._ensure_batch_table()
+        out: dict[str, Counter] = {qid: Counter() for qid, _ in queries}
+
+        sub_batch = 1500
+        for start in range(0, len(queries), sub_batch):
+            chunk = queries[start : start + sub_batch]
+            pairs: list[tuple[str, str]] = []
+            for qid, keys in chunk:
+                for k in {k for k in keys if k}:
+                    pairs.append((qid, k))
+            if not pairs:
+                continue
+
+            with self._conn:
+                self._conn.execute("DELETE FROM batch_query")
+                self._conn.executemany(
+                    "INSERT INTO batch_query (qid, key) VALUES (?, ?)",
+                    pairs,
+                )
+                if max_df is not None:
+                    sql = _SQL_BATCH_SCORED_MAXDF
+                    params = (ch, tg, max_df)
+                else:
+                    sql = _SQL_BATCH_SCORED
+                    params = (ch, tg)
+                for qid, eid in self._conn.execute(sql, params):
+                    out[qid][eid] += 1
+
+        return out
 
     def set_meta(self, key: str, value: str) -> None:
         self._conn.execute(
@@ -220,3 +351,10 @@ def select_top_candidates(
         return filtered
     ranked = sorted(scores.items(), key=lambda x: (-x[1], x[0]))[:max_candidates]
     return {eid for eid, _ in ranked}
+
+
+def apply_candidate_cap(hits: set[str], max_candidates: int | None) -> set[str]:
+    """Match BaselineChannel cap semantics (insertion order from SQL iteration)."""
+    if max_candidates is None or len(hits) <= max_candidates:
+        return hits
+    return set(list(hits)[:max_candidates])
