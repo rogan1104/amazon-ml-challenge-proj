@@ -9,6 +9,7 @@ from pathlib import Path
 from analysis.retrieval.config import BaselineConfig, ChannelName
 from analysis.retrieval.index import InvertedIndex
 from analysis.retrieval.keys import baseline_keys
+from analysis.retrieval.mmap_baseline.benchmark import run_mmap_retrieval_benchmark
 from analysis.retrieval.mmap_baseline.build import build_baseline_mmap_index
 from analysis.retrieval.mmap_baseline.cli import verify_mmap_vs_sqlite
 from analysis.retrieval.mmap_baseline.lookup import BaselineMmapStore
@@ -265,6 +266,55 @@ class TestMmapBaselineSynthetic(unittest.TestCase):
             )
             self.assertTrue(partial_report["ok"], msg=partial_report.get("mismatch_examples"))
             self.assertEqual(partial_report["mmap_entity_counts"], {"S2": 2, "S3": 0})
+
+    def test_mmap_benchmark_smoke(self) -> None:
+        cfg = BaselineConfig()
+        s2_rows = [
+            {
+                "entity_id": "S2-1",
+                "business_name": "Bench Co Alpha",
+                "business_address": "1 Lane",
+                "country": "US",
+            },
+        ]
+        s1_rows = [
+            {
+                "entity_id": "S1-B",
+                "business_name": "Bench Co Alpha",
+                "business_address": "1 Lane",
+                "country": "US",
+            },
+        ]
+
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            s2_path = root / "s2.tsv"
+            s3_path = root / "s3.tsv"
+            s1_path = root / "s1.tsv"
+            _write_tsv(s2_path, s2_rows)
+            _write_tsv(s3_path, [])
+            _write_tsv(s1_path, s1_rows)
+
+            idx_root = root / "mmap"
+            build_baseline_mmap_index(
+                idx_root,
+                split="train",
+                paths={"S2": s2_path, "S3": s3_path},
+                cfg=cfg,
+            )
+
+            report = run_mmap_retrieval_benchmark(
+                idx_root,
+                split="train",
+                limit=500,
+                batch_size=10,
+                cfg=cfg,
+                s1_path=s1_path,
+            )
+            self.assertEqual(report["s1_rows_processed"], 1)
+            self.assertGreater(report["total_s2_candidate_pairs"], 0)
+            self.assertGreater(report["rows_per_sec"], 0)
+            self.assertEqual(report["engine"], "mmap_baseline")
 
 
 if __name__ == "__main__":

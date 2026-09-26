@@ -14,6 +14,10 @@ from analysis.retrieval.build import _index_path
 from analysis.retrieval.channels import BaselineChannel
 from analysis.retrieval.config import BaselineConfig, ChannelName, RetrievalConfig
 from analysis.retrieval.index import InvertedIndex, apply_candidate_cap
+from analysis.retrieval.mmap_baseline.benchmark import (
+    run_mmap_retrieval_benchmark,
+    write_benchmark_report,
+)
 from analysis.retrieval.mmap_baseline.build import build_baseline_mmap_index
 from analysis.retrieval.mmap_baseline.retrieve import MmapBaselineRetriever
 from analysis.retrieval.mmap_baseline.schema import (
@@ -153,6 +157,40 @@ def verify_mmap_vs_sqlite(
     }
 
 
+def cmd_benchmark(args: argparse.Namespace) -> None:
+    index_root = Path(args.index)
+    manifest = read_manifest(index_root)
+    if manifest is None or not manifest.complete:
+        raise SystemExit(f"Incomplete or missing mmap index: {index_root}")
+
+    cfg = BaselineMmapManifest.baseline_config_from_manifest(manifest.baseline_config)
+    report = run_mmap_retrieval_benchmark(
+        index_root,
+        split=args.split,
+        limit=args.limit,
+        batch_size=args.batch_size,
+        cfg=cfg,
+    )
+    if args.report_dir and str(args.report_dir).strip():
+        write_benchmark_report(report, Path(args.report_dir))
+
+    print(
+        f"benchmark: s1={report['s1_rows_processed']:,}/{args.limit} "
+        f"wall={report['wall_sec']:.3f}s "
+        f"({report['rows_per_sec']:,.1f} S1/s)"
+    )
+    print(
+        f"  candidates: S2 total={report['total_s2_candidate_pairs']:,} "
+        f"avg={report['avg_s2_candidates_per_s1']:.2f} | "
+        f"S3 total={report['total_s3_candidate_pairs']:,} "
+        f"avg={report['avg_s3_candidates_per_s1']:.2f} | "
+        f"combined avg={report['avg_combined_candidates_per_s1']:.2f} "
+        f"max={report['max_combined_candidates_per_s1']:,}"
+    )
+    if report.get("benchmark_json"):
+        print(f"  report: {report['benchmark_json']}")
+
+
 def cmd_verify(args: argparse.Namespace) -> None:
     index_root = Path(args.index)
     manifest = read_manifest(index_root)
@@ -246,6 +284,25 @@ def main() -> None:
         help="Compare against full SQLite index without entity restriction",
     )
     p_verify.set_defaults(func=cmd_verify)
+
+    p_bench = sub.add_parser(
+        "benchmark",
+        help="Time mmap baseline retrieval on first N S1 rows (no TSV output)",
+    )
+    p_bench.add_argument("--split", choices=("train", "test"), default="train")
+    p_bench.add_argument(
+        "--index",
+        default="reports/cache/baseline_mmap/train",
+        help="Mmap index root (full or smoke build)",
+    )
+    p_bench.add_argument("--limit", type=int, default=500, help="First N S1 rows")
+    p_bench.add_argument("--batch-size", type=int, default=50_000)
+    p_bench.add_argument(
+        "--report-dir",
+        default="reports/retrieval",
+        help="Write benchmark JSON here (set empty to skip)",
+    )
+    p_bench.set_defaults(func=cmd_benchmark)
 
     args = parser.parse_args()
     args.func(args)
