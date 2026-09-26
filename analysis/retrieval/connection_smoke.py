@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 from analysis.retrieval.config import CACHE, ChannelName
-from analysis.retrieval.index import InvertedIndex, readonly_sqlite_uri
+from analysis.retrieval.index import InvertedIndex, open_index_connection
 
 
 def default_index_path() -> Path:
@@ -18,12 +18,14 @@ def run_smoke(index_path: Path | None = None) -> int:
         print(f"SKIP: index not found: {index_path}", file=sys.stderr)
         return 2
 
-    uri = readonly_sqlite_uri(index_path)
-    print(f"readonly URI: {uri}")
+    resolved = index_path.resolve()
+    print(f"index path: {resolved}")
+
+    conn = open_index_connection(index_path, read_only=True)
+    conn.close()
 
     with InvertedIndex(index_path, read_only=True) as index:
-        postings = index._postings
-        n = index._conn.execute(f"SELECT COUNT(*) FROM {postings}").fetchone()[0]
+        n = index._conn.execute("SELECT COUNT(*) FROM postings").fetchone()[0]
         print(f"postings rows: {n:,}")
 
         index._ensure_batch_table()
