@@ -1,0 +1,48 @@
+{
+  "validation": {
+    "singleton_by_country": [
+      {
+        "country": "India",
+        "cnt": 883188,
+        "singleton_pct": 5.587825015738439
+      },
+      {
+        "country": "US",
+        "cnt": 1323633,
+        "singleton_pct": 5.582816384904275
+      }
+    ],
+    "recommendations": [
+      "OBSERVATION: Do NOT randomly split rows \u2014 split by S1 entity groups to prevent leakage.",
+      "OBSERVATION: Singletons are significant; macro F0.5 includes them at full weight.",
+      "OBSERVATION: France appears only in test \u2014 validation cannot measure France from train labels.",
+      "HYPOTHESIS: Stratify validation by (country, match_count_bucket) for representative evaluation.",
+      "HYPOTHESIS: Hold out entire S1 entities, not individual match pairs.",
+      "RECOMMENDATION: 80/20 S1-level split stratified by country and match_count (0,1,2,3,4+).",
+      "RECOMMENDATION: Report F_0.5 separately by country and singleton vs non-singleton.",
+      "RECOMMENDATION: Build hard-case validation subset from lowest-similarity true matches."
+    ],
+    "match_count_buckets": [
+      {
+        "bucket": "0_singleton",
+        "s1_count": 123247
+      },
+      {
+        "bucket": "1_match",
+        "s1_count": 119157
+      },
+      {
+        "bucket": "2_matches",
+        "s1_count": 375212
+      },
+      {
+        "bucket": "3_matches",
+        "s1_count": 530841
+      },
+      {
+        "bucket": "4+_matches",
+        "s1_count": 1058364
+      }
+    ]
+  }
+}

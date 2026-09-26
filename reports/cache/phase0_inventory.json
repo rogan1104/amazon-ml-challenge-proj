@@ -1,0 +1,190 @@
+{
+  "inventory": {
+    "train_S1": {
+      "label": "train_S1",
+      "path": "/Users/rohan/Downloads/student_resource/dataset/train/train_source1.tsv",
+      "relative_path": "dataset/train/train_source1.tsv",
+      "file_size_bytes": 210069713,
+      "file_size_mb": 200.34,
+      "row_count": 2206821,
+      "column_count": 4,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "dtypes_inferred": {
+        "entity_id": "str",
+        "business_name": "str",
+        "business_address": "str",
+        "country": "str"
+      },
+      "delimiter_tabs_per_row": 3,
+      "delimiter_correct": true,
+      "encoding": "utf-8",
+      "malformed_rows_sampled": 0,
+      "lines_sampled_for_malformed": 100000,
+      "approx_memory_mb": 500.8
+    },
+    "train_S2": {
+      "label": "train_S2",
+      "path": "/Users/rohan/Downloads/student_resource/dataset/train/train_source2.tsv",
+      "relative_path": "dataset/train/train_source2.tsv",
+      "file_size_bytes": 489301488,
+      "file_size_mb": 466.63,
+      "row_count": 5034616,
+      "column_count": 4,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "dtypes_inferred": {
+        "entity_id": "str",
+        "business_name": "str",
+        "business_address": "str",
+        "country": "str"
+      },
+      "delimiter_tabs_per_row": 3,
+      "delimiter_correct": true,
+      "encoding": "utf-8",
+      "malformed_rows_sampled": 0,
+      "lines_sampled_for_malformed": 100000,
+      "approx_memory_mb": 1166.6
+    },
+    "train_S3": {
+      "label": "train_S3",
+      "path": "/Users/rohan/Downloads/student_resource/dataset/train/train_source3.tsv",
+      "relative_path": "dataset/train/train_source3.tsv",
+      "file_size_bytes": 503705637,
+      "file_size_mb": 480.37,
+      "row_count": 5285603,
+      "column_count": 4,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "dtypes_inferred": {
+        "entity_id": "str",
+        "business_name": "str",
+        "business_address": "str",
+        "country": "str"
+      },
+      "delimiter_tabs_per_row": 3,
+      "delimiter_correct": true,
+      "encoding": "utf-8",
+      "malformed_rows_sampled": 0,
+      "lines_sampled_for_malformed": 100000,
+      "approx_memory_mb": 1200.9
+    },
+    "test_S1": {
+      "label": "test_S1",
+      "path": "/Users/rohan/Downloads/student_resource/dataset/test/test_source1.tsv",
+      "relative_path": "dataset/test/test_source1.tsv",
+      "file_size_bytes": 175022086,
+      "file_size_mb": 166.91,
+      "row_count": 1732544,
+      "column_count": 4,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "dtypes_inferred": {
+        "entity_id": "str",
+        "business_name": "str",
+        "business_address": "str",
+        "country": "str"
+      },
+      "delimiter_tabs_per_row": 3,
+      "delimiter_correct": true,
+      "encoding": "utf-8",
+      "malformed_rows_sampled": 0,
+      "lines_sampled_for_malformed": 100000,
+      "approx_memory_mb": 417.3
+    },
+    "test_S2": {
+      "label": "test_S2",
+      "path": "/Users/rohan/Downloads/student_resource/dataset/test/test_source2.tsv",
+      "relative_path": "dataset/test/test_source2.tsv",
+      "file_size_bytes": 509456422,
+      "file_size_mb": 485.86,
+      "row_count": 4887273,
+      "column_count": 4,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "dtypes_inferred": {
+        "entity_id": "str",
+        "business_name": "str",
+        "business_address": "str",
+        "country": "str"
+      },
+      "delimiter_tabs_per_row": 3,
+      "delimiter_correct": true,
+      "encoding": "utf-8",
+      "malformed_rows_sampled": 0,
+      "lines_sampled_for_malformed": 100000,
+      "approx_memory_mb": 1214.6
+    },
+    "test_S3": {
+      "label": "test_S3",
+      "path": "/Users/rohan/Downloads/student_resource/dataset/test/test_source3.tsv",
+      "relative_path": "dataset/test/test_source3.tsv",
+      "file_size_bytes": 506002772,
+      "file_size_mb": 482.56,
+      "row_count": 5082316,
+      "column_count": 4,
+      "columns": [
+        "entity_id",
+        "business_name",
+        "business_address",
+        "country"
+      ],
+      "dtypes_inferred": {
+        "entity_id": "str",
+        "business_name": "str",
+        "business_address": "str",
+        "country": "str"
+      },
+      "delimiter_tabs_per_row": 3,
+      "delimiter_correct": true,
+      "encoding": "utf-8",
+      "malformed_rows_sampled": 0,
+      "lines_sampled_for_malformed": 100000,
+      "approx_memory_mb": 1206.4
+    },
+    "train_GT": {
+      "label": "train_GT",
+      "path": "/Users/rohan/Downloads/student_resource/dataset/train/train_ground_truth.tsv",
+      "relative_path": "dataset/train/train_ground_truth.tsv",
+      "file_size_bytes": 127015583,
+      "file_size_mb": 121.13,
+      "row_count": 2206821,
+      "column_count": 2,
+      "columns": [
+        "source1_entity_id",
+        "matched_entity_ids"
+      ],
+      "dtypes_inferred": {
+        "source1_entity_id": "str",
+        "matched_entity_ids": "str"
+      },
+      "delimiter_tabs_per_row": 1,
+      "delimiter_correct": true,
+      "encoding": "utf-8",
+      "malformed_rows_sampled": 0,
+      "lines_sampled_for_malformed": 100000,
+      "approx_memory_mb": 302.8
+    },
+    "_elapsed_sec": 3.4
+  }
+}
