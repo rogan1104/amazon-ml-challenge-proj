@@ -2,9 +2,23 @@
 from __future__ import annotations
 
 import csv
+import sys
 from pathlib import Path
 
 from analysis.scoring.pairs import candidate_source
+
+
+def raise_csv_field_size_limit() -> None:
+    """Allow wide candidate_entity_ids columns (default csv limit is 128KiB)."""
+    limit = sys.maxsize
+    while True:
+        try:
+            csv.field_size_limit(limit)
+            return
+        except OverflowError:
+            limit = limit // 10
+            if limit <= 0:
+                return
 
 
 def validate_candidate_pairs_tsv(
@@ -20,6 +34,8 @@ def validate_candidate_pairs_tsv(
     path = Path(path)
     if not path.is_file():
         raise FileNotFoundError(path)
+
+    raise_csv_field_size_limit()
 
     seen_s1: set[str] = set()
     total_rows = 0
