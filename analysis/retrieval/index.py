@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import sqlite3
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Iterable, Sequence
 
@@ -24,11 +24,19 @@ _SQL_SCORED_MAXDF = """
     WHERE p.channel=? AND p.target=? AND p.key IN ({placeholders})
       AND d.df <= ?
 """
-_SQL_BATCH_EXACT = """
+# Legacy qid×key join (reference for equivalence tests only).
+_SQL_BATCH_EXACT_QID_JOIN = """
     SELECT b.qid, p.entity_id
     FROM batch_query b
     INNER JOIN postings p
         ON p.channel = ? AND p.target = ? AND p.key = b.key
+"""
+# Key-centric: scan each unique key's postings once, fan out to qids in Python.
+_SQL_KEYCENTRIC_POSTINGS = """
+    SELECT u.key, p.entity_id
+    FROM batch_unique_key u
+    INNER JOIN postings p
+        ON p.channel = ? AND p.target = ? AND p.key = u.key
 """
 _SQL_BATCH_SCORED = """
     SELECT b.qid, p.entity_id
@@ -131,8 +139,42 @@ class InvertedIndex:
                 key TEXT NOT NULL
             );
             CREATE INDEX IF NOT EXISTS idx_batch_query_key ON batch_query (key);
+
+            CREATE TEMP TABLE IF NOT EXISTS batch_unique_key (
+                key TEXT NOT NULL PRIMARY KEY
+            );
         """)
         self._batch_table_ready = True
+
+    def _fanout_keycentric_postings(
+        self,
+        channel: ChannelName,
+        target: Target,
+        key_to_qids: dict[str, set[str]],
+        out: dict[str, set[str]],
+    ) -> None:
+        """Fetch postings once per unique key; fan entity_ids to all sharing qids."""
+        if not key_to_qids:
+            return
+
+        ch, tg = channel.value, target
+        unique_keys = list(key_to_qids.keys())
+        key_chunk = 2000
+
+        for i in range(0, len(unique_keys), key_chunk):
+            keys_slice = unique_keys[i : i + key_chunk]
+            slice_map = {k: key_to_qids[k] for k in keys_slice}
+            with self._conn:
+                self._conn.execute("DELETE FROM batch_unique_key")
+                self._conn.executemany(
+                    "INSERT OR IGNORE INTO batch_unique_key (key) VALUES (?)",
+                    [(k,) for k in keys_slice],
+                )
+                for key, eid in self._conn.execute(
+                    _SQL_KEYCENTRIC_POSTINGS, (ch, tg),
+                ):
+                    for qid in slice_map.get(key, ()):
+                        out[qid].add(eid)
 
     def clear_channel(self, channel: ChannelName, target: Target) -> None:
         self._assert_writable()
@@ -250,10 +292,37 @@ class InvertedIndex:
         queries: Sequence[tuple[str, Sequence[str]]],
     ) -> dict[str, set[str]]:
         """
-        Batch exact lookup: many S1 rows in one SQLite join per sub-batch.
+        Batch exact lookup: key-centric — one postings scan per unique blocking key.
 
         queries: (query_id, keys) — typically S1 entity_id and blocking keys.
         """
+        if not queries:
+            return {}
+
+        self._ensure_batch_table()
+        out: dict[str, set[str]] = {qid: set() for qid, _ in queries}
+
+        sub_batch = 2500
+        for start in range(0, len(queries), sub_batch):
+            chunk = queries[start : start + sub_batch]
+            key_to_qids: dict[str, set[str]] = defaultdict(set)
+            for qid, keys in chunk:
+                for k in {k for k in keys if k}:
+                    key_to_qids[k].add(qid)
+            if not key_to_qids:
+                continue
+
+            self._fanout_keycentric_postings(channel, target, key_to_qids, out)
+
+        return out
+
+    def lookup_keys_exact_batch_qid_join(
+        self,
+        channel: ChannelName,
+        target: Target,
+        queries: Sequence[tuple[str, Sequence[str]]],
+    ) -> dict[str, set[str]]:
+        """Legacy qid×key join (equivalence tests only)."""
         if not queries:
             return {}
 
@@ -277,7 +346,9 @@ class InvertedIndex:
                     "INSERT INTO batch_query (qid, key) VALUES (?, ?)",
                     pairs,
                 )
-                for qid, eid in self._conn.execute(_SQL_BATCH_EXACT, (ch, tg)):
+                for qid, eid in self._conn.execute(
+                    _SQL_BATCH_EXACT_QID_JOIN, (ch, tg),
+                ):
                     out[qid].add(eid)
 
         return out
