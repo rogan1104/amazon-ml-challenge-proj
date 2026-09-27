@@ -1,0 +1,73 @@
+{
+  "leakage": {
+    "S1_train_id_samples": [
+      "S1-925783039",
+      "S1-773889195",
+      "S1-377745466",
+      "S1-133037285",
+      "S1-755362802",
+      "S1-851869949",
+      "S1-785847572",
+      "S1-27541239",
+      "S1-629417405",
+      "S1-22305073"
+    ],
+    "S2_train_id_samples": [
+      "S2-166376419",
+      "S2-764573417",
+      "S2-639257739",
+      "S2-163963287",
+      "S2-49942811",
+      "S2-138046867",
+      "S2-584977605",
+      "S2-277444929",
+      "S2-721031885",
+      "S2-508602797"
+    ],
+    "S1_test_id_samples": [
+      "S1-714132312",
+      "S1-106407869",
+      "S1-156285671",
+      "S1-689823050",
+      "S1-921369899",
+      "S1-481669221",
+      "S1-909865979",
+      "S1-280204013",
+      "S1-742053041",
+      "S1-913506265"
+    ],
+    "entity_id_overlap": {
+      "S1": 0,
+      "S2": 0,
+      "S3": 0
+    },
+    "exact_record_overlap_train_test_S1": 0,
+    "exact_record_overlap_train_test_S2": 0,
+    "shared_business_names_train_test_S1": 194461,
+    "S1_train_id_stats": {
+      "unique_ids": 2206821.0,
+      "total": 2206821.0,
+      "min_id_len": 6.0,
+      "max_id_len": 12.0,
+      "correct_prefix": 2206821.0
+    },
+    "S2_train_id_stats": {
+      "unique_ids": 5034616.0,
+      "total": 5034616.0,
+      "min_id_len": 6.0,
+      "max_id_len": 12.0,
+      "correct_prefix": 5034616.0
+    },
+    "S1_test_id_stats": {
+      "unique_ids": 1732544.0,
+      "total": 1732544.0,
+      "min_id_len": 6.0,
+      "max_id_len": 12.0,
+      "correct_prefix": 1732544.0
+    },
+    "identical_records": {
+      "S1_S2": 1,
+      "S1_S3": 17
+    }
+  }
+}

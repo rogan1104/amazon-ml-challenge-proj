@@ -1,0 +1,96 @@
+{
+  "cross_source": {
+    "S2_exact_duplicate_groups": {
+      "dup_groups": 25060.0,
+      "dup_rows": 50933.0
+    },
+    "S2_duplicate_name_groups": {
+      "dup_name_groups": 285556.0,
+      "dup_rows": 1032702.0
+    },
+    "S3_exact_duplicate_groups": {
+      "dup_groups": 18381.0,
+      "dup_rows": 37241.0
+    },
+    "S3_duplicate_name_groups": {
+      "dup_name_groups": 284995.0,
+      "dup_rows": 991515.0
+    },
+    "s1_to_s2_multiplicity": [
+      {
+        "matches": 0,
+        "s1_count": 287745
+      },
+      {
+        "matches": 1,
+        "s1_count": 789108
+      },
+      {
+        "matches": 2,
+        "s1_count": 652779
+      },
+      {
+        "matches": 3,
+        "s1_count": 333957
+      },
+      {
+        "matches": 4,
+        "s1_count": 119078
+      },
+      {
+        "matches": 5,
+        "s1_count": 24154
+      }
+    ],
+    "s1_to_s3_multiplicity": [
+      {
+        "matches": 0,
+        "s1_count": 266276
+      },
+      {
+        "matches": 1,
+        "s1_count": 716417
+      },
+      {
+        "matches": 2,
+        "s1_count": 668375
+      },
+      {
+        "matches": 3,
+        "s1_count": 372443
+      },
+      {
+        "matches": 4,
+        "s1_count": 145116
+      },
+      {
+        "matches": 5,
+        "s1_count": 35378
+      },
+      {
+        "matches": 6,
+        "s1_count": 2816
+      }
+    ],
+    "s2_to_s1_multiplicity": [
+      {
+        "s1_count": 1,
+        "s2_entity_count": 3693619
+      }
+    ],
+    "s3_to_s1_multiplicity": [
+      {
+        "s1_count": 1,
+        "s3_entity_count": 3944746
+      }
+    ],
+    "matching_type_summary": {
+      "S2_entities_in_gt": 3693619,
+      "S2_one_to_one_pct": 100.0,
+      "S2_many_to_one_count": 0,
+      "S3_entities_in_gt": 3944746,
+      "S3_one_to_one_pct": 100.0,
+      "S3_many_to_one_count": 0
+    }
+  }
+}
